@@ -1,5 +1,7 @@
 
 #include "../../Header/Main/GameService.h"
+#include "../../header/Graphics/GraphicService.h"
+#include "../../header/Event/EventService.h"
 
 namespace Main{
 
@@ -22,7 +24,7 @@ namespace Main{
     }
 
     void GameService::Destory() {
-
+        serviceLocator->DeleteServiceLocator();
     }
 
     GameService::GameService() {

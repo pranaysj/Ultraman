@@ -1,5 +1,6 @@
 #pragma once
-#include<SFML/Graphics.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
 
 namespace Event{
     enum class ButtonState

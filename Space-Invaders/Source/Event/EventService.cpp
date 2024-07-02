@@ -1,10 +1,12 @@
 #include "../../Header/Event/EventService.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Graphics/GraphicService.h"
 
 
 namespace Event {
 
     using namespace Global;
+    using namespace Graphics;
     using namespace sf;
 
     EventService::EventService() {

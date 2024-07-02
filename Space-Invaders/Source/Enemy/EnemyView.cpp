@@ -1,6 +1,7 @@
 #include "../../Header/Enemy/EnemyView.h"
 #include "../../Header/Enemy/EnemyController.h"
 #include"../../Header/Global/ServiceLocator.h"
+#include "../../header/Graphics/GraphicService.h"
 
 
 #pragma once

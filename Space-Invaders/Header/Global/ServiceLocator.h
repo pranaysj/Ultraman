@@ -12,13 +12,13 @@ namespace Global {
     class ServiceLocator {
         private:
 
-            Graphics::GraphicService* graphicService;
             Event::EventService* eventService;
-            Player::PlayerService* playerService;
-            Time::TimeService* timeService;
+            Graphics::GraphicService* graphicService;
             UI::UIService* uiService;
-            Enemy::EnemyService* enemyService;
+            Time::TimeService* timeService;
             Gameplay::GameplayService* gameplayService;
+            Player::PlayerService* playerService;
+            Enemy::EnemyService* enemyService;
 
             ServiceLocator();
             ~ServiceLocator();
@@ -40,5 +40,6 @@ namespace Global {
             UI::UIService* GetUIService();
             Enemy::EnemyService* GetEnemyService();
             Gameplay::GameplayService* GetGameplayService();
+            void DeleteServiceLocator();
         };
 }

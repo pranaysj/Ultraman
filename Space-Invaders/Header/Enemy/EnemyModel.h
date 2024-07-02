@@ -4,6 +4,12 @@
 namespace Enemy {
 	using namespace sf;
 	
+	enum class EnemyState
+	{
+		ALIVE,
+		DEAD,
+	};
+
 	enum class MovementDirection {
 		RIGHT,
 		LEFT,
