@@ -3,21 +3,22 @@
 #include"../../Header/Enemy/EnemyModel.h"
 #include"../../Header/Enemy/EnemyView.h"
 #include"../../Header/Global/ServiceLocator.h"
+#include"../../Header/Enemy/EnemyConfig.h"
 
 namespace Enemy {
 
 	using namespace Global;
 
 	void EnemyController::Move(){
-		switch (enemymodel->GetEnemyMovement())
+		switch (enemymodel->GetEnemyDirection())
 		{
-		case Enemy::MovementDirection::RIGHT:
+		case Enemy::EnemyDirection::RIGHT:
 			MoveRight();
 			break;
-		case Enemy::MovementDirection::LEFT:
+		case Enemy::EnemyDirection::LEFT:
 			MoveLeft();
 			break;
-		case Enemy::MovementDirection::DOWN:
+		case Enemy::EnemyDirection::DOWN:
 			MoveDown();
 			break;
 		}
@@ -29,7 +30,7 @@ namespace Enemy {
 		currentPositoin.x -= enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 		if (currentPositoin.x <= enemymodel->leftMostPosition.x) {
-			enemymodel->SetEnemyMovement(MovementDirection::DOWN);
+			enemymodel->SetEnemyDirection(EnemyDirection::DOWN);
 			enemymodel->SetRefPositon(currentPositoin);
 		}
 		else
@@ -44,7 +45,7 @@ namespace Enemy {
 		currentPositoin.x += enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 		if (currentPositoin.x >= enemymodel->rightMostPosition.x) {
-			enemymodel->SetEnemyMovement(Enemy::MovementDirection::DOWN);
+			enemymodel->SetEnemyDirection(EnemyDirection::DOWN);
 			enemymodel->SetRefPositon(currentPositoin);
 		}
 		else
@@ -61,10 +62,10 @@ namespace Enemy {
 		if (currentPositoin.y >= enemymodel->GetRefPositon().y + enemymodel->downwardMovement) {
 			//Left or Right
 			if (enemymodel->GetRefPositon().x <= enemymodel->leftMostPosition.x) {
-				enemymodel->SetEnemyMovement(MovementDirection::RIGHT);
+				enemymodel->SetEnemyDirection(EnemyDirection::RIGHT);
 			}
 			else{
-				enemymodel->SetEnemyMovement(MovementDirection::LEFT);
+				enemymodel->SetEnemyDirection(EnemyDirection::LEFT);
 			}
 		}
 		else
@@ -74,7 +75,7 @@ namespace Enemy {
 	}
 	
 	EnemyController::EnemyController(){
-		enemymodel = new EnemyModel();
+		enemymodel = new EnemyModel(EnemyType::ZAPPER); //Temporary
 		enemyView = new EnemyView();
 	}
 
