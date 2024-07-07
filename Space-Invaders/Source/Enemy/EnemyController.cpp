@@ -9,7 +9,7 @@ namespace Enemy {
 
 	using namespace Global;
 
-	void EnemyController::Move(){
+	/*void EnemyController::Move(){
 		switch (enemymodel->GetEnemyDirection())
 		{
 		case Enemy::EnemyDirection::RIGHT:
@@ -22,70 +22,70 @@ namespace Enemy {
 			MoveDown();
 			break;
 		}
-	}
+	}*/
 
-	void EnemyController::MoveLeft(){
-		sf::Vector2f currentPositoin = enemymodel->GetEnemyPositon();
+	//void EnemyController::MoveLeft(){
+	//	sf::Vector2f currentPositoin = enemyModel->GetEnemyPositon();
 
-		currentPositoin.x -= enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+	//	currentPositoin.x -= enemyModel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-		if (currentPositoin.x <= enemymodel->leftMostPosition.x) {
-			enemymodel->SetEnemyDirection(EnemyDirection::DOWN);
-			enemymodel->SetRefPositon(currentPositoin);
-		}
-		else
-		{
-			enemymodel->SetEnemyPositon(currentPositoin);
-		}
-	}
+	//	if (currentPositoin.x <= enemymodel->leftMostPosition.x) {
+	//		enemymodel->SetEnemyDirection(EnemyDirection::DOWN);
+	//		enemymodel->SetRefPositon(currentPositoin);
+	//	}
+	//	else
+	//	{
+	//		enemymodel->SetEnemyPositon(currentPositoin);
+	//	}
+	//}
 
-	void EnemyController::MoveRight(){
-		sf::Vector2f currentPositoin = enemymodel->GetEnemyPositon();
+	//void EnemyController::MoveRight(){
+	//	sf::Vector2f currentPositoin = enemymodel->GetEnemyPositon();
 
-		currentPositoin.x += enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+	//	currentPositoin.x += enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-		if (currentPositoin.x >= enemymodel->rightMostPosition.x) {
-			enemymodel->SetEnemyDirection(EnemyDirection::DOWN);
-			enemymodel->SetRefPositon(currentPositoin);
-		}
-		else
-		{
-			enemymodel->SetEnemyPositon(currentPositoin);
-		}
-	}
+	//	if (currentPositoin.x >= enemymodel->rightMostPosition.x) {
+	//		enemymodel->SetEnemyDirection(EnemyDirection::DOWN);
+	//		enemymodel->SetRefPositon(currentPositoin);
+	//	}
+	//	else
+	//	{
+	//		enemymodel->SetEnemyPositon(currentPositoin);
+	//	}
+	//}
 
-	void EnemyController::MoveDown(){
-		sf::Vector2f currentPositoin = enemymodel->GetEnemyPositon();
+	//void EnemyController::MoveDown(){
+	//	sf::Vector2f currentPositoin = enemymodel->GetEnemyPositon();
 
-		currentPositoin.y += enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+	//	currentPositoin.y += enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-		if (currentPositoin.y >= enemymodel->GetRefPositon().y + enemymodel->downwardMovement) {
-			//Left or Right
-			if (enemymodel->GetRefPositon().x <= enemymodel->leftMostPosition.x) {
-				enemymodel->SetEnemyDirection(EnemyDirection::RIGHT);
-			}
-			else{
-				enemymodel->SetEnemyDirection(EnemyDirection::LEFT);
-			}
-		}
-		else
-		{
-			enemymodel->SetEnemyPositon(currentPositoin);
-		}
-	}
+	//	if (currentPositoin.y >= enemymodel->GetRefPositon().y + enemymodel->downwardMovement) {
+	//		//Left or Right
+	//		if (enemymodel->GetRefPositon().x <= enemymodel->leftMostPosition.x) {
+	//			enemymodel->SetEnemyDirection(EnemyDirection::RIGHT);
+	//		}
+	//		else{
+	//			enemymodel->SetEnemyDirection(EnemyDirection::LEFT);
+	//		}
+	//	}
+	//	else
+	//	{
+	//		enemymodel->SetEnemyPositon(currentPositoin);
+	//	}
+	//}
 	
-	EnemyController::EnemyController(){
-		enemymodel = new EnemyModel(EnemyType::ZAPPER); //Temporary
+	EnemyController::EnemyController(EnemyType _type){
+		enemyModel = new EnemyModel(_type); //Temporary
 		enemyView = new EnemyView();
 	}
 
 	EnemyController::~EnemyController(){
-		delete(enemymodel);
+		delete(enemyModel);
 		delete(enemyView);
 	}
 
 	void EnemyController::Initialize(){
-		enemymodel->Initialize();
+		enemyModel->Initialize();
 		enemyView->Initialize(this);
 	}
 
@@ -99,6 +99,34 @@ namespace Enemy {
 	}
 	
 	sf::Vector2f EnemyController::GetEnemyPosition(){
-		return enemymodel->GetEnemyPositon();
+		return enemyModel->GetEnemyPositon();
+	}
+
+	void EnemyController::SetEnemyType(EnemyType _type){
+		enemytype = _type;
+	}
+
+	EnemyType EnemyController::GetEnemyType()
+	{
+		return enemytype;
+	}
+
+	void EnemyController::SetVerticalMovSpeed(float _vspeed)
+	{
+		verticalMovementSpeed = _vspeed;
+	}
+
+	float EnemyController::GetVerticalMovSpeed()
+	{
+		return verticalMovementSpeed;
+	}
+
+	void EnemyController::SetHorizontalMovSpeed(float _hspeed){
+		horizontalMovementSpeed = _hspeed;
+	}
+
+	float EnemyController::GtHorizontalMovSpeed()
+	{
+		return horizontalMovementSpeed;
 	}
 }

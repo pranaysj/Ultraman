@@ -1,17 +1,40 @@
+#pragma once
 #include "../../Header/Enemy/EnemyView.h"
 #include "../../Header/Enemy/EnemyController.h"
 #include"../../Header/Global/ServiceLocator.h"
 #include "../../header/Graphics/GraphicService.h"
+#include"../../Header/Enemy/EnemyConfig.h"
 
-
-#pragma once
 namespace Enemy {
 	using namespace Global;
 
-	void EnemyView::InitializeEnemySprite(){
-		if (enemyTexture.loadFromFile(enemyTexturePath)) {
-			enemySprite.setTexture(enemyTexture);
-			ScaleEnemySprite();
+	Enemy::EnemyView::EnemyView() {}
+
+	EnemyView::~EnemyView() {}
+
+	void EnemyView::Initialize(EnemyController* _controller){
+		enemyController = _controller;
+		gameWindow = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow();
+		InitializeEnemySprite(enemyController->GetEnemyType());
+	}
+	
+	void EnemyView::InitializeEnemySprite(EnemyType _type){
+		switch (_type)
+		{
+		case EnemyType::SUBZERO:
+			if (enemyTexture.loadFromFile(subzero_texture_path))
+			{
+				enemySprite.setTexture(enemyTexture);
+				ScaleEnemySprite();
+			}
+			break;
+		case::Enemy::EnemyType::ZAPPER:
+			if (enemyTexture.loadFromFile(zapper_texture_path))
+			{
+				enemySprite.setTexture(enemyTexture);
+				ScaleEnemySprite();
+			}
+			break;
 		}
 	}
 	void EnemyView::ScaleEnemySprite(){
@@ -22,18 +45,7 @@ namespace Enemy {
 		);
 	}
 
-	Enemy::EnemyView::EnemyView()
-	{
-	}
-	EnemyView::~EnemyView()
-	{
-	}
 
-	void EnemyView::Initialize(EnemyController* _controller){
-		enemyController = _controller;
-		gameWindow = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow();
-		InitializeEnemySprite();
-	}
 
 	void EnemyView::Update(){
 		enemySprite.setPosition(enemyController->GetEnemyPosition());

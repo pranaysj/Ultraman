@@ -5,7 +5,7 @@ namespace Enemy {
 	using namespace sf;
 	enum class EnemyType;
 	enum class EnemyState;
-	enum class EnemyDirection;
+	enum class MovementDirection;
 
 	/*enum class EnemyState
 	{
@@ -23,7 +23,7 @@ namespace Enemy {
 	private:
 		EnemyType enemyType;
 		EnemyState enemyState;
-		EnemyDirection enemyDirection;
+		MovementDirection movementDirection;
 
 		Vector2f enemyStartRefPositon = Vector2f(0.0f, 0.0f);
 		Vector2f enemyCurrentPositon;
@@ -33,7 +33,7 @@ namespace Enemy {
 		const Vector2f rightMostPosition = Vector2f(1800.0f, 950.0f);
 
 		const float maximumSpeed = 250.0f;
-		const float downwardMovement = 100.0f;
+		//const float downwardMovement = 100.0f;
 
 		EnemyModel(EnemyType _type);
 		~EnemyModel();
@@ -52,8 +52,8 @@ namespace Enemy {
 		EnemyState GetEnemyState();
 		void SetEnemyState(EnemyState _state);
 
-		EnemyDirection GetEnemyDirection();
-		void SetEnemyDirection(EnemyDirection _direction);
+		MovementDirection GetMovementDirection();
+		void SetMovementDirection(MovementDirection _direction);
 	};
 
 }

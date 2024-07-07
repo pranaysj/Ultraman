@@ -13,9 +13,9 @@ namespace Enemy {
 	}
 
 	void EnemyModel::Initialize(){
-		enemyCurrentPositon = enemyStartRefPositon; \
-			enemyState = EnemyState::PATROLLING;
-		//enemyMovement = MovementDirection::RIGHT;
+		enemyState = EnemyState::PATROLLING;
+		movementDirection = MovementDirection::RIGHT;
+		enemyCurrentPositon = enemyStartRefPositon; 
 	}
 	
 	Vector2f EnemyModel::GetEnemyPositon() {
@@ -50,21 +50,11 @@ namespace Enemy {
 		enemyState = _state;
 	}
 
-	EnemyDirection EnemyModel::GetEnemyDirection(){
-		return enemyDirection;
+	MovementDirection EnemyModel::GetMovementDirection(){
+		return movementDirection;
 	}
 
-	void EnemyModel::SetEnemyDirection(EnemyDirection _direction){
-		enemyDirection = _direction;
+	void EnemyModel::SetMovementDirection(MovementDirection _direction){
+		movementDirection = _direction;
 	}
-
-
-	/*void EnemyModel::SetEnemyMovement(MovementDirection _movement){
-		enemyMovement = _movement;
-	}
-
-	MovementDirection EnemyModel::GetEnemyMovement(){
-		return enemyMovement;
-	}*/
-
 }

@@ -13,7 +13,7 @@ namespace Enemy {
 		DEAD,
 	};
 
-	enum class EnemyDirection {
+	enum class MovementDirection {
 		LEFT,
 		RIGHT,
 		DOWN,

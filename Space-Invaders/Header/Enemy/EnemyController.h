@@ -5,26 +5,31 @@ namespace Enemy {
 	
 	class EnemyModel;
 	class EnemyView;
+
 	enum class EnemyState;
+	enum class EnemyType;
 
 	class EnemyController {
+
 	private:
 		float verticalMovementSpeed;
 		float horizontalMovementSpeed;
 
-		EnemyModel* enemymodel;
-		EnemyView* enemyView;
+		EnemyType enemytype;
 
-		virtual void Move();
-		void MoveLeft();
+		virtual void Move() = 0;
+		/*void MoveLeft();
 		void MoveRight();
-		void MoveDown();
+		void MoveDown();*/
 
 		void GetRandomInitialPosition();
 		void HandleOutOfBounds();
 
 	public:
-		EnemyController();
+		EnemyModel* enemyModel;
+		EnemyView* enemyView;
+
+		EnemyController(EnemyType _type);
 		virtual ~EnemyController();
 
 		virtual void Initialize();
@@ -32,6 +37,9 @@ namespace Enemy {
 		void Render();
 
 		sf::Vector2f GetEnemyPosition();
+
+		void SetEnemyType(EnemyType _type);
+		EnemyType GetEnemyType();
 
 		void SetVerticalMovSpeed(float _vspeed);
 		float GetVerticalMovSpeed();
