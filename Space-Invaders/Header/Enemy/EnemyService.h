@@ -3,10 +3,10 @@
 
 namespace Enemy {
 	class EnemyController;
+	enum class EnemyType;
+
 	class EnemyService {
 	private:
-		//EnemyController* controller;
-		//EnemyController* spawnEnemy;
 
 		std::vector<EnemyController*> enemyList;
 
@@ -15,6 +15,9 @@ namespace Enemy {
 
 		void UpdateSpawnTimer();
 		void ProcessEnemySpawn();
+
+		EnemyType GetRandomEnemyType();
+		EnemyController* CreateEnemy(EnemyType _enemyType);
 
 		void Destory();
 	public:
@@ -25,6 +28,7 @@ namespace Enemy {
 		void Update();
 		void Render();
 
-		void SpawnEnemy();
+		EnemyController* SpawnEnemy();
+		void DestroyEnemy(EnemyController* enemy_controller);
 	};
 }

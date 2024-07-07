@@ -7,18 +7,6 @@ namespace Enemy {
 	enum class EnemyState;
 	enum class MovementDirection;
 
-	/*enum class EnemyState
-	{
-		ALIVE,
-		DEAD,
-	};
-
-	enum class MovementDirection {
-		RIGHT,
-		LEFT,
-		DOWN
-	};*/
-
 	class EnemyModel {
 	private:
 		EnemyType enemyType;
@@ -29,11 +17,10 @@ namespace Enemy {
 		Vector2f enemyCurrentPositon;
 
 	public:
-		const Vector2f leftMostPosition = Vector2f(10.0f, 950.0f);
-		const Vector2f rightMostPosition = Vector2f(1800.0f, 950.0f);
+		const Vector2f leftMostPosition = Vector2f(10.0f, 50.0f);
+		const Vector2f rightMostPosition = Vector2f(1800.0f, 50.0f);
 
 		const float maximumSpeed = 250.0f;
-		//const float downwardMovement = 100.0f;
 
 		EnemyModel(EnemyType _type);
 		~EnemyModel();

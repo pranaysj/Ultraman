@@ -22,14 +22,14 @@ namespace Enemy {
 		switch (_type)
 		{
 		case EnemyType::SUBZERO:
-			if (enemyTexture.loadFromFile(subzero_texture_path))
+			if (enemyTexture.loadFromFile(droneOneTexturePath))
 			{
 				enemySprite.setTexture(enemyTexture);
 				ScaleEnemySprite();
 			}
 			break;
 		case::Enemy::EnemyType::ZAPPER:
-			if (enemyTexture.loadFromFile(zapper_texture_path))
+			if (enemyTexture.loadFromFile(droneTwoTexturePath))
 			{
 				enemySprite.setTexture(enemyTexture);
 				ScaleEnemySprite();

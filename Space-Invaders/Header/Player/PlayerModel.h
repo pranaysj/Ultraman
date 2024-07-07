@@ -18,8 +18,8 @@ namespace Player {
 
     public:
 
-        const Vector2f leftMostPosition = Vector2f(50.0f, 950.0f);
-        const Vector2f rightMostPosition = Vector2f(1800.0f, 950.0f);
+        const Vector2f leftMostPosition = Vector2f(0.0f, 950.0f);
+        const Vector2f rightMostPosition = Vector2f(1850.0f, 950.0f);
 
         const float maximumSpeed = 350.0f;
 

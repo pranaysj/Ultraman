@@ -1,7 +1,7 @@
 #pragma once
 namespace Enemy {
 	enum class EnemyType {
-		ZAPPER,
+		ZAPPER, 
 		SUBZERO,
 		UFO,
 		THUNDER_SNAKE,

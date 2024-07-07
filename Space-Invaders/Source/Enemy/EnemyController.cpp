@@ -9,73 +9,9 @@ namespace Enemy {
 
 	using namespace Global;
 
-	/*void EnemyController::Move(){
-		switch (enemymodel->GetEnemyDirection())
-		{
-		case Enemy::EnemyDirection::RIGHT:
-			MoveRight();
-			break;
-		case Enemy::EnemyDirection::LEFT:
-			MoveLeft();
-			break;
-		case Enemy::EnemyDirection::DOWN:
-			MoveDown();
-			break;
-		}
-	}*/
-
-	//void EnemyController::MoveLeft(){
-	//	sf::Vector2f currentPositoin = enemyModel->GetEnemyPositon();
-
-	//	currentPositoin.x -= enemyModel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
-
-	//	if (currentPositoin.x <= enemymodel->leftMostPosition.x) {
-	//		enemymodel->SetEnemyDirection(EnemyDirection::DOWN);
-	//		enemymodel->SetRefPositon(currentPositoin);
-	//	}
-	//	else
-	//	{
-	//		enemymodel->SetEnemyPositon(currentPositoin);
-	//	}
-	//}
-
-	//void EnemyController::MoveRight(){
-	//	sf::Vector2f currentPositoin = enemymodel->GetEnemyPositon();
-
-	//	currentPositoin.x += enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
-
-	//	if (currentPositoin.x >= enemymodel->rightMostPosition.x) {
-	//		enemymodel->SetEnemyDirection(EnemyDirection::DOWN);
-	//		enemymodel->SetRefPositon(currentPositoin);
-	//	}
-	//	else
-	//	{
-	//		enemymodel->SetEnemyPositon(currentPositoin);
-	//	}
-	//}
-
-	//void EnemyController::MoveDown(){
-	//	sf::Vector2f currentPositoin = enemymodel->GetEnemyPositon();
-
-	//	currentPositoin.y += enemymodel->maximumSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
-
-	//	if (currentPositoin.y >= enemymodel->GetRefPositon().y + enemymodel->downwardMovement) {
-	//		//Left or Right
-	//		if (enemymodel->GetRefPositon().x <= enemymodel->leftMostPosition.x) {
-	//			enemymodel->SetEnemyDirection(EnemyDirection::RIGHT);
-	//		}
-	//		else{
-	//			enemymodel->SetEnemyDirection(EnemyDirection::LEFT);
-	//		}
-	//	}
-	//	else
-	//	{
-	//		enemymodel->SetEnemyPositon(currentPositoin);
-	//	}
-	//}
 	
 	EnemyController::EnemyController(EnemyType _type){
-		enemyModel = new EnemyModel(_type); //Temporary
+		enemyModel = new EnemyModel(_type);
 		enemyView = new EnemyView();
 	}
 
@@ -86,19 +22,60 @@ namespace Enemy {
 
 	void EnemyController::Initialize(){
 		enemyModel->Initialize();
+		enemyModel->SetEnemyPositon(GetRandomInitialPosition());
 		enemyView->Initialize(this);
 	}
 
 	void EnemyController::Update(){
 		Move();
 		enemyView->Update();
+		HandleOutOfBounds();
 	}
 
 	void EnemyController::Render(){
 		enemyView->Render();
 	}
 	
-	sf::Vector2f EnemyController::GetEnemyPosition(){
+	sf::Vector2f EnemyController::GetRandomInitialPosition()
+	{
+		float x_offset_distance = (std::rand() % static_cast<int>(enemyModel->rightMostPosition.x - enemyModel->leftMostPosition.x));
+
+		float x_position = enemyModel->leftMostPosition.x + x_offset_distance;
+
+		float y_position = enemyModel->leftMostPosition.y;
+
+		return sf::Vector2f(x_position, y_position);
+	}
+
+	void EnemyController::HandleOutOfBounds(){
+		sf::Vector2f enemyPosition = GetEnemyPosition();
+		sf::Vector2u windowSize = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow()->getSize();
+
+		// Destroy the enemy if it goes out of bounds.
+		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
+			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
+		{
+			ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
+		}
+	}
+
+
+	sf::Vector2f EnemyController::GetEnemyPosition()
+	{
+		return enemyModel->GetEnemyPositon();;
+	}
+
+	EnemyState EnemyController::GetEnemyState()
+	{
+		return enemyModel->GetEnemyState();
+	}
+
+	EnemyType EnemyController::GetEnemyType()
+	{
+		return enemyModel->GetEnemyType();
+	}
+	
+	/*sf::Vector2f EnemyController::GetEnemyPosition(){
 		return enemyModel->GetEnemyPositon();
 	}
 
@@ -128,5 +105,5 @@ namespace Enemy {
 	float EnemyController::GtHorizontalMovSpeed()
 	{
 		return horizontalMovementSpeed;
-	}
+	}*/
 }
