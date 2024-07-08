@@ -1,22 +1,32 @@
 #pragma once
 #include"../../Header/Element/Bunker/BunkerController.h"
+#include"../../Header/Element/Bunker/BunkerView.h"
 
 namespace Element {
 	namespace Bunker {
-		BunkerController::BunkerController()
-		{
+		BunkerController::BunkerController(){
+			bunkerView = new BunkerView();
 		}
-		BunkerController::~BunkerController()
-		{
+
+		BunkerController::~BunkerController(){
+			delete(bunkerView);
 		}
-		void BunkerController::Initialize()
-		{
+
+		void BunkerController::Initialize(BunkerData _data){
+			bunkerData = _data;
+			bunkerView->Initialize(this);
 		}
-		void BunkerController::Update()
-		{
+
+		void BunkerController::Update(){
+			bunkerView->Update();
 		}
-		void BunkerController::Render()
-		{
+
+		void BunkerController::Render(){
+			bunkerView->Render();
+		}
+
+		sf::Vector2f BunkerController::GetBunkerPosition(){
+			return bunkerData.position;
 		}
 	}
 }

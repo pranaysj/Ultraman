@@ -1,14 +1,13 @@
 #pragma once
+#include<SFML/System/Vector2.hpp>
+
 namespace Element {
 	namespace Bunker {
-		class BunkerModel {
-		public:
-			BunkerModel();
-			~BunkerModel();
-
-			void Initialize();
-			void Update();
-			void Render();
+		struct BunkerData
+		{
+			sf::Vector2f position;
+			BunkerData();
+			BunkerData(sf::Vector2f position);
 		};
 	}
 }

@@ -3,20 +3,9 @@
 
 namespace Element {
 	namespace Bunker {
-		BunkerModel::BunkerModel()
-		{
-		}
-		BunkerModel::~BunkerModel()
-		{
-		}
-		void BunkerModel::Initialize()
-		{
-		}
-		void BunkerModel::Update()
-		{
-		}
-		void BunkerModel::Render()
-		{
+		BunkerData::BunkerData() {}
+		BunkerData::BunkerData(sf::Vector2f _position) {
+			this->position = _position
 		}
 	}
 }
