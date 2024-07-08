@@ -4,10 +4,10 @@ namespace UI {
 	namespace MainMenu {
 		class MainMenuUIController {
 		private:
-			const sf::String backgroundTexturePath = "assets/textures/space_invaders_bg.png";
+			/*const sf::String backgroundTexturePath = "assets/textures/space_invaders_bg.png";
 			const sf::String playButtonTexturePath = "assets/textures/PlayButton.png";
 			const sf::String instructionsButtonTexturePath = "assets/textures/InstructionsButton.png";
-			const sf::String quitButtonTexturePath = "assets/textures/QuitButton.png";
+			const sf::String quitButtonTexturePath = "assets/textures/QuitButton.png";*/
 
 			const float buttonWidth = 300.f;
 			const float buttonHeight = 140.f;

@@ -2,6 +2,7 @@
 #include "../../Header/Gameplay/GameplayView.h"
 #include "../../Header/Graphics/GraphicService.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include"../../Header/Global/Config.h"
 
 
 namespace Gameplay {
@@ -9,7 +10,7 @@ namespace Gameplay {
 	using namespace Graphics;
 
 	void Gameplay::GameplayView::InitializeBackgroundSprite(){
-		if (background_texture.loadFromFile(background_texture_path))
+		if (background_texture.loadFromFile(Config::background_texture_path))
 		{
 			background_sprite.setTexture(background_texture);
 			ScaleBackgroundSprite();

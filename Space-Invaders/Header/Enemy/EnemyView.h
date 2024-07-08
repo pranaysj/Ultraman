@@ -10,10 +10,10 @@ namespace Enemy {
 	class EnemyView {
 	private:
 
-		const String droneOneTexturePath = "assets/textures/Drone _1.png"; 
+		/*const String droneOneTexturePath = "assets/textures/Drone _1.png"; 
 		const String droneTwoTexturePath = "assets/textures/Drone _2.png"; 
 		const sf::String subzero_texture_path = "assets/textures/subzero.png";
-		const sf::String zapper_texture_path = "assets/textures/zapper.png";
+		const sf::String zapper_texture_path = "assets/textures/zapper.png";*/
 
 		const float enemySpriteWidth = 60.0f;
 		const float enemySpriteHeigh = 60.0f;

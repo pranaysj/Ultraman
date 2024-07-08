@@ -6,7 +6,7 @@ namespace Gameplay {
 
 	class GameplayView {
 	private:
-		const String background_texture_path = "assets/textures/space_invaders_bg.png";
+		//const String background_texture_path = "assets/textures/space_invaders_bg.png";
 		
 		RenderWindow* game_window;
 		

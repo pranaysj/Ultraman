@@ -4,6 +4,7 @@
 #include"../../Header/Global/ServiceLocator.h"
 #include "../../header/Graphics/GraphicService.h"
 #include"../../Header/Enemy/EnemyConfig.h"
+#include"../../Header/Global/Config.h"
 
 namespace Enemy {
 	using namespace Global;
@@ -22,14 +23,14 @@ namespace Enemy {
 		switch (_type)
 		{
 		case EnemyType::SUBZERO:
-			if (enemyTexture.loadFromFile(droneOneTexturePath))
+			if (enemyTexture.loadFromFile(Config::subzero_texture_path))
 			{
 				enemySprite.setTexture(enemyTexture);
 				ScaleEnemySprite();
 			}
 			break;
 		case::Enemy::EnemyType::ZAPPER:
-			if (enemyTexture.loadFromFile(droneTwoTexturePath))
+			if (enemyTexture.loadFromFile(Config::zapper_texture_path))
 			{
 				enemySprite.setTexture(enemyTexture);
 				ScaleEnemySprite();
