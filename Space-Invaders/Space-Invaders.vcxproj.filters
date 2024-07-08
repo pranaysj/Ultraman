@@ -473,6 +473,12 @@
     <ClInclude Include="Header\Global\Config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Sound\SoundService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Sound\SoundService.cpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\bubbleBobble.ttf" />
