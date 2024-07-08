@@ -3,6 +3,7 @@
 #include"../../Header/Global/ServiceLocator.h"
 #include"../../Header/Graphics/GraphicService.h"
 #include"../../Header/Event/EventService.h"
+#include"../../Header/Sound/SoundService.h"
 #include"../../Header/Global/Config.h"
 
 namespace UI {
@@ -11,6 +12,8 @@ namespace UI {
 		using namespace Global;
 		using namespace Event;
 		using namespace Main;
+		using namespace Sound;
+
 
 		MainMenuUIController::MainMenuUIController() {
 			gameWindow = nullptr;
@@ -92,12 +95,16 @@ namespace UI {
 			sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(*gameWindow));
 
 			if (ClickedButton(&playButtonSprite, mousePosition)) {
+				ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::BUTTON_CLICK);
+				ServiceLocator::GetInstance()->GetSoundService()->PlayBackgroundMusic();
 				GameService::SetGameState(GameState::GAMEPLAY);
 			}
 			if (ClickedButton(&instructionsButtonSprite, mousePosition)) {
+				ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::BUTTON_CLICK);
 				printf("Clicked Instruction Button \\n");
 			}
 			if (ClickedButton(&quitButtonSprite, mousePosition)) {
+				ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::BUTTON_CLICK);
 				gameWindow->close();
 			}
 		}

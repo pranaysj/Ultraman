@@ -1,6 +1,7 @@
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Main/GameService.h"
 
+
 namespace Global {
 
     using namespace Main;
@@ -12,6 +13,7 @@ namespace Global {
     using namespace Enemy;
     using namespace Gameplay;
     using namespace Element;
+    using namespace Sound;
 
     ServiceLocator::ServiceLocator() {
         graphicService = nullptr;
@@ -22,6 +24,7 @@ namespace Global {
         enemyService = nullptr;
         gameplayService = nullptr;
         elementService = nullptr;
+        soundService = nullptr;
         CreateService();
     }
 
@@ -38,6 +41,7 @@ namespace Global {
         enemyService = new EnemyService();
         gameplayService = new GameplayService();
         elementService = new ElementService();
+        soundService = new SoundService();
     }
 
     void ServiceLocator::ClearAllService() {
@@ -49,6 +53,7 @@ namespace Global {
         delete(enemyService);
         delete(gameplayService);
         delete(elementService);
+        delete(soundService);
     }
 
     ServiceLocator* ServiceLocator::GetInstance() {
@@ -65,6 +70,7 @@ namespace Global {
         enemyService->Initialize();
         uiService->Initialize();
         elementService->Initialize();
+        soundService->Initialize();
     }
 
     void ServiceLocator::Update() {
@@ -125,6 +131,10 @@ namespace Global {
     Element::ElementService* ServiceLocator::GetElementService()
     {
         return elementService;
+    }
+    SoundService* ServiceLocator::GetSoundService()
+    {
+        return soundService;
     }
     void ServiceLocator::DeleteServiceLocator(){
         delete(this);

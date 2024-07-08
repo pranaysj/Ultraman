@@ -11,7 +11,7 @@ namespace Sound
 	class SoundService
 	{
 	private:
-		const int backgroundMusicVolume = 30;
+		const int backgroundMusicVolume = 10;
 
 		sf::Music backgroundMusic;
 		sf::Sound soundEffect;
@@ -26,3 +26,4 @@ namespace Sound
 		void PlaySound(SoundType _soundType);
 		void PlayBackgroundMusic();
 	};
+}
