@@ -163,7 +163,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Bullet\BulletConfig.h" />
+    <ClInclude Include="Header\Bullet\BulletController.h" />
+    <ClInclude Include="Header\Bullet\BulletModel.h" />
     <ClInclude Include="Header\Bullet\BulletService.h" />
+    <ClInclude Include="Header\Bullet\BulletView.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerController.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerModel.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerView.h" />
@@ -292,7 +295,10 @@
     <ClInclude Include="sfml\include\SFML\Window\WindowBase.hpp" />
     <ClInclude Include="sfml\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="sfml\include\SFML\Window\WindowStyle.hpp" />
+    <ClInclude Include="Source\Bullet\BulletController.cpp" />
+    <ClInclude Include="Source\Bullet\BulletModel.cpp" />
     <ClInclude Include="Source\Bullet\BulletService.cpp" />
+    <ClInclude Include="Source\Bullet\BulletView.cpp" />
     <ClInclude Include="Source\Projectile\IProjectile .h" />
   </ItemGroup>
   <ItemGroup>

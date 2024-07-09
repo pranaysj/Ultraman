@@ -1,11 +1,16 @@
 #pragma once
 namespace Bullet {
+	enum class BulletType
+	{
+		LASER_BULLET,
+		TORPEDO,
+		FROST_BULLET,
+	};
+
 	enum class MovementDirection
 	{
-		FORWARD,
-		BACKWARD,
-		RIGHT,
-		LEFT
+		UP,
+		DOWN,
 	};
 }
 
