@@ -193,7 +193,7 @@
     <ClInclude Include="Header\Player\PlayerModel.h" />
     <ClInclude Include="Header\Player\PlayerService.h" />
     <ClInclude Include="Header\Player\PlayerView.h" />
-    <ClInclude Include="Header\Projectile\IProjectile .h" />
+    <ClInclude Include="Header\Projectile\IProjectile.h" />
     <ClInclude Include="Header\Sound\SoundService.h" />
     <ClInclude Include="Header\Time\TimeService.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuUIController.h" />

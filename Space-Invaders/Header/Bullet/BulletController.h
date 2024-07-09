@@ -1,7 +1,7 @@
 #pragma once
 
 #include"../../Header/Bullet/BulletConfig.h"
-#include"../../Header/Projectile/IProjectile .h"
+#include"../../Header/Projectile/IProjectile.h"
 
 namespace Bullet {
 	class BulletModel;

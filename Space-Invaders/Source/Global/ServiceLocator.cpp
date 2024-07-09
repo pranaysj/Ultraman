@@ -13,6 +13,7 @@ namespace Global {
     using namespace Enemy;
     using namespace Gameplay;
     using namespace Element;
+    using namespace Bullet;
     using namespace Sound;
 
     ServiceLocator::ServiceLocator() {
@@ -24,6 +25,7 @@ namespace Global {
         enemyService = nullptr;
         gameplayService = nullptr;
         elementService = nullptr;
+        bulletService = nullptr;
         soundService = nullptr;
         CreateService();
     }
@@ -41,6 +43,7 @@ namespace Global {
         enemyService = new EnemyService();
         gameplayService = new GameplayService();
         elementService = new ElementService();
+        bulletService = new BulletService();
         soundService = new SoundService();
     }
 
@@ -53,6 +56,7 @@ namespace Global {
         delete(enemyService);
         delete(gameplayService);
         delete(elementService);
+        delete(bulletService);
         delete(soundService);
     }
 
@@ -70,6 +74,7 @@ namespace Global {
         enemyService->Initialize();
         uiService->Initialize();
         elementService->Initialize();
+        bulletService->Initialize();
         soundService->Initialize();
     }
 
@@ -82,6 +87,7 @@ namespace Global {
             gameplayService->Update();
             playerService->Update();
             enemyService->Update();
+            bulletService->Update();
             elementService->Update();
         }
 
@@ -95,6 +101,7 @@ namespace Global {
             gameplayService->Render();
             playerService->Render();
             enemyService->Render();
+            bulletService->Render();
             elementService->Render();
         }
 
@@ -131,6 +138,10 @@ namespace Global {
     Element::ElementService* ServiceLocator::GetElementService()
     {
         return elementService;
+    }
+    Bullet::BulletService* ServiceLocator::GetBulletService()
+    {
+        return bulletService;
     }
     SoundService* ServiceLocator::GetSoundService()
     {
