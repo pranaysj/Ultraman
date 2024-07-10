@@ -4,11 +4,12 @@
 #include"../../Header/Enemy/EnemyView.h"
 #include"../../Header/Global/ServiceLocator.h"
 #include"../../Header/Enemy/EnemyConfig.h"
+#include"../../Header/Bullet/BulletConfig.h"
 
 namespace Enemy {
 
 	using namespace Global;
-
+	using namespace Bullet;
 	
 	EnemyController::EnemyController(EnemyType _type){
 		enemyModel = new EnemyModel(_type);
@@ -28,6 +29,8 @@ namespace Enemy {
 
 	void EnemyController::Update(){
 		Move();
+		UpdateFireTimer();
+		ProcessBulletFire();
 		enemyView->Update();
 		HandleOutOfBounds();
 	}
@@ -36,6 +39,18 @@ namespace Enemy {
 		enemyView->Render();
 	}
 	
+	void EnemyController::UpdateFireTimer(){
+		elapsed_fire_duration += ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+	}
+
+	void EnemyController::ProcessBulletFire(){
+		if (elapsed_fire_duration >= rate_of_fire)
+		{
+			FireBullet();
+			elapsed_fire_duration = 0.f; //set elapsed duration back to 0.
+		}
+	}
+
 	sf::Vector2f EnemyController::GetRandomInitialPosition()
 	{
 		float x_offset_distance = (std::rand() % static_cast<int>(enemyModel->rightMostPosition.x - enemyModel->leftMostPosition.x));

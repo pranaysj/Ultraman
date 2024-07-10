@@ -17,8 +17,15 @@ namespace Enemy {
 
 		//EnemyType enemytype;
 
+		float rate_of_fire = 3.f; //we want to fire the bullet every 3 seconds
+		float elapsed_fire_duration = 0.f;
+
 		EnemyModel* enemyModel;
 		EnemyView* enemyView;
+
+		void UpdateFireTimer();
+		void ProcessBulletFire();
+		virtual void FireBullet() = 0;
 
 		virtual void Move() = 0;
 

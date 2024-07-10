@@ -3,10 +3,12 @@
 #include "../../Header/Player/PlayerModel.h"
 #include "../../Header/Player/PlayerView.h"
 #include "../../Header/Event/EventService.h"
+#include "../../Header/Bullet/BulletConfig.h"
 
 namespace Player {
 	using namespace Global;
 	using namespace Event;
+	using namespace Bullet;
 
 	PlayerController::PlayerController() {
 		playerModel = new PlayerModel();
@@ -41,6 +43,10 @@ namespace Player {
 		if (eventService->PressedRightKey() || eventService->PressedDKey()) {
 			MoveRight();
 		}
+
+		if (eventService->PressedLeftMouseButton()) {
+			FireBullet();
+		}
 	}
 
 	void PlayerController::MoveLeft() {
@@ -57,6 +63,12 @@ namespace Player {
 
 		currentPosition.x = min(currentPosition.x, playerModel->rightMostPosition.x);
 		playerModel->SetPlayerPosition(currentPosition);
+	}
+
+	void PlayerController::FireBullet(){
+		ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(BulletType::LASER_BULLET,
+			playerModel->GetPlayerPosition() + playerModel->barrel_position_offset,
+			Bullet::MovementDirection::UP);
 	}
 
 

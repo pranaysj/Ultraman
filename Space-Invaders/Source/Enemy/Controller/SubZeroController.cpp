@@ -3,9 +3,12 @@
 #include"../../Header/Enemy/EnemyConfig.h"
 #include"../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Bullet/BulletConfig.h"
 
 namespace Enemy {
 	using namespace Global;
+	using namespace Bullet;
+	
 	namespace Controller {
 		SubZeroController::SubZeroController(EnemyType _type) : EnemyController(_type) {}
 
@@ -14,6 +17,7 @@ namespace Enemy {
 		void SubZeroController::Initialize(){
 			EnemyController::Initialize();
 			enemyModel->SetMovementDirection(MovementDirection::DOWN);
+			rate_of_fire = subzero_fire_rate;
 		}
 
 		void SubZeroController::Move(){ 
@@ -30,6 +34,12 @@ namespace Enemy {
 			currentPosition.y += verticalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 			enemyModel->SetEnemyPositon(currentPosition);
+		}
+
+		void SubZeroController::FireBullet(){
+			ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(BulletType::FROST_BULLET,
+				enemyModel->GetEnemyPositon() + enemyModel->barrel_position_offset,
+				Bullet::MovementDirection::DOWN);
 		}
 
 	}

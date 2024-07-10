@@ -48,25 +48,36 @@ namespace Bullet {
 
 	void BulletController::MoveUp(){
 		sf::Vector2f currentPosition = bulletModel->GetBulletPosition();
-		currentPosition.y -= bulletModel->GetMovementSpeed() * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		currentPosition.y -= bulletModel->GetMovementSpeed() * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 		bulletModel->SetBulletPosition(currentPosition);
 	}
 
 	void BulletController::MoveDown(){
+		sf::Vector2f currentPosition = bulletModel->GetBulletPosition();
 
+		currentPosition.y += bulletModel->GetMovementSpeed() * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+
+		bulletModel->SetBulletPosition(currentPosition);
 	}
 
 	void BulletController::HandleOutOfBounds(){
+		sf::Vector2f bulletPosition = GetProjectilePosition();
+		sf::Vector2u windowSize = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow()->getSize();
 
+		if (bulletPosition.x < 0 || bulletPosition.x > windowSize.x ||
+			bulletPosition.y < 0 || bulletPosition.y > windowSize.y)
+		{
+			ServiceLocator::GetInstance()->GetBulletService()->DestroyBullet(this);
+		}
 	}
 
 	sf::Vector2f BulletController::GetProjectilePosition(){
-		return sf::Vector2f();
+		return bulletModel->GetBulletPosition();
 	}
 
 	BulletType BulletController::GetBulletType(){
-		return BulletType();
+		return bulletModel->GetBulletType();
 	}
 }
 

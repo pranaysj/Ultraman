@@ -15,7 +15,7 @@ namespace Bullet {
 	}
 
 	float BulletModel::GetMovementSpeed(){
-		return 0.0f;
+		return movementSpeed;
 	}
 
 	void BulletModel::SetMovementSpeed(float _speed){

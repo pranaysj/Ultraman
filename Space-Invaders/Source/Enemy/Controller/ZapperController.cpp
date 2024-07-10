@@ -3,9 +3,12 @@
 #include "../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Bullet/BulletConfig.h"
 
 namespace Enemy {
 	using namespace Global;
+	using namespace Bullet;
+
 	namespace Controller {
 		ZapperController::ZapperController(EnemyType _type) : EnemyController(_type) {}
 
@@ -13,6 +16,7 @@ namespace Enemy {
 
 		void ZapperController::Initialize() {
 			EnemyController::Initialize();
+			rate_of_fire = zapper_fire_rate;
 		}
 
 		void ZapperController::Move(){
@@ -81,6 +85,12 @@ namespace Enemy {
 			{
 				enemyModel->SetEnemyPositon(currentPosition);
 			}
+		}
+
+		void ZapperController::FireBullet(){
+			ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(BulletType::TORPEDO,
+			enemyModel->GetEnemyPositon() + enemyModel->barrel_position_offset,
+			Bullet::MovementDirection::DOWN);
 		}
 	}
 }

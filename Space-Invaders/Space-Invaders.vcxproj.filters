@@ -96,6 +96,27 @@
     <ClCompile Include="Source\UI\UIService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Bullet\Controllers\FrostBulletController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\Controllers\LaserBulletController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\Controllers\TorpedoeController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\BulletController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\BulletModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\BulletService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\BulletView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sfml\include\SFML\Audio\AlResource.hpp">
@@ -482,34 +503,10 @@
     <ClInclude Include="Header\Projectile\IProjectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Bullet\BulletConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Bullet\BulletService.cpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Projectile\IProjectile .h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Bullet\BulletService.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Bullet\BulletController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Bullet\BulletModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Bullet\BulletView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Bullet\BulletView.cpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Bullet\BulletController.cpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Bullet\BulletModel.cpp">
+    <ClInclude Include="Header\Bullet\Controllers\FrostBulletController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Bullet\Controllers\LaserBulletController.h">
@@ -518,16 +515,19 @@
     <ClInclude Include="Header\Bullet\Controllers\TorpedoeController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Bullet\Controllers\LaserBulletController.cpp">
+    <ClInclude Include="Header\Bullet\BulletConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Bullet\Controllers\TorpedoeController.cpp">
+    <ClInclude Include="Header\Bullet\BulletController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Bullet\Controllers\FrostBulletController.h">
+    <ClInclude Include="Header\Bullet\BulletModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Bullet\Controllers\FrostBulletController.cpp">
+    <ClInclude Include="Header\Bullet\BulletService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Bullet\BulletView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

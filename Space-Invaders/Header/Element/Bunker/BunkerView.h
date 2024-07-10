@@ -7,8 +7,8 @@ namespace Element {
 
 		class BunkerView {
 		private:
-			const float bunkerSpriteWidth = 80.f;
-			const float bunkerSpriteHeight = 80.f;
+			const float bunkerSpriteWidth = 70.f;
+			const float bunkerSpriteHeight = 70.f;
 
 			BunkerController* bunkerController;
 			sf::RenderWindow* gameWindow;

@@ -14,8 +14,8 @@ namespace Player {
 		RenderWindow* gameWindow;
 
 		//const String playerTexturePath = "assets/textures/Ultraman.png";
-		const float playerSpriteWidth = 60.0f;
-		const float playerSpriteHeigh = 105.0f;
+		const float playerSpriteWidth = 50.0f;
+		const float playerSpriteHeigh = 85.0f;
 
 		Texture playerTexture;
 		Sprite playerSprite;

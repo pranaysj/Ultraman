@@ -15,8 +15,8 @@ namespace Enemy {
 		const sf::String subzero_texture_path = "assets/textures/subzero.png";
 		const sf::String zapper_texture_path = "assets/textures/zapper.png";*/
 
-		const float enemySpriteWidth = 60.0f;
-		const float enemySpriteHeigh = 60.0f;
+		const float enemySpriteWidth = 50.0f;
+		const float enemySpriteHeigh = 50.0f;
 
 		EnemyController* enemyController;
 		RenderWindow* gameWindow;
