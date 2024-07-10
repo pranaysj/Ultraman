@@ -19,10 +19,10 @@ namespace Bullet {
         void HandleOutOfBounds();
 
     public:
-        BulletController(BulletType type);
+        BulletController(BulletType _type);
         virtual ~BulletController() override;
 
-        void Initialize(sf::Vector2f position, Bullet::MovementDirection direction) override;
+        void Initialize(sf::Vector2f _position, Bullet::MovementDirection _direction) override;
         void Update() override;
         void Render() override;
 
