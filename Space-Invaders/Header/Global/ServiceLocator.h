@@ -26,7 +26,7 @@ namespace Global {
             Element::ElementService* elementService;
             Bullet::BulletService* bulletService;
             Sound::SoundService* soundService;
-            Powerup::PowerupService* PowerupService;
+            Powerup::PowerupService* powerupService;
 
             ServiceLocator();
             ~ServiceLocator();
