@@ -36,8 +36,16 @@ namespace Enemy {
 				ScaleEnemySprite();
 			}
 			break;
+		case::Enemy::EnemyType::UFO:
+			if (enemyTexture.loadFromFile(Config::ufo_texture_path))
+			{
+				enemySprite.setTexture(enemyTexture);
+				ScaleEnemySprite();
+			}
+			break;
 		}
 	}
+	
 	void EnemyView::ScaleEnemySprite(){
 		enemySprite.setScale(
 			static_cast<float>(enemySpriteWidth) / enemySprite.getTexture()->getSize().x,

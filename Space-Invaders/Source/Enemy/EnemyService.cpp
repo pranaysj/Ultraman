@@ -6,6 +6,7 @@
 #include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Enemy/Controller/ZapperController.h"
 #include "../../Header/Enemy/Controller/SubZeroController.h"
+#include "../../Header/Enemy/Controller/UFOController.h"
 
 namespace Enemy {
 	using namespace Time;
@@ -25,7 +26,7 @@ namespace Enemy {
 
 	EnemyType EnemyService::GetRandomEnemyType()
 	{
-		int randomType = std::rand() % 2;
+		int randomType = std::rand() % 3;
 		return static_cast<EnemyType>(randomType);
 	}
 
@@ -42,8 +43,8 @@ namespace Enemy {
 		case EnemyType::SUBZERO:
 			return new SubZeroController(Enemy::EnemyType::SUBZERO);
 
-			/*case::Enemy::EnemyType::UFO:
-				return new UFOController(Enemy::EnemyType::UFO);*/
+		case::Enemy::EnemyType::UFO:
+			return new UFOController(Enemy::EnemyType::UFO);
 		}
 	}
 
