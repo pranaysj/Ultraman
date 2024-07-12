@@ -15,11 +15,11 @@ void EventService::Update(){
 }
 
 void EventService::ProcessEvent(){
-    if(IsGameWindowOpen()){ // M
+    if(IsGameWindowOpen()){ 
 
         while(gameWindow->pollEvent(gameEvent)){ 
 
-            if(HasQuitGame() || GameWindowWasClosed()){ // M || M
+            if(HasQuitGame() || GameWindowWasClosed()){ 
 
                 gameWindow->close();
             }

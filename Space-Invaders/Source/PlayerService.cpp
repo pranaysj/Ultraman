@@ -41,9 +41,6 @@ void PlayerService::ProcessPlayerInput(){
     }
 }
 
-// void PlayerService::Move(float offset){
-//     position.x += offset;
-// }
 
 void PlayerService::MoveLeft(){
     position.x -= movementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
@@ -52,10 +49,6 @@ void PlayerService::MoveLeft(){
 void PlayerService::MoveRight(){
     position.x += movementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 }
-
-//int PlayerService::GetMovementSpeed(){
-//    return movement_speed;
-//}
 
 Vector2f PlayerService::GetPosition(){
     return position;

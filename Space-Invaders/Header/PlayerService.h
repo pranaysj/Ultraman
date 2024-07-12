@@ -31,10 +31,7 @@ class PlayerService{
 
         void MoveLeft();
         void MoveRight();
-        //void Move(float offset);
-        int GetMovementSpeed();
+
         Vector2f GetPosition();
 
-        // void takeDamage();
-        // void shootBullets();
 };
