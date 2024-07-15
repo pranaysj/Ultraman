@@ -4,7 +4,7 @@
 #include <iostream>
 
 namespace Enemy {
-	Enemy::EnemyModel::EnemyModel(EnemyType _type){
+	EnemyModel::EnemyModel(EnemyType _type){
 		enemyType = _type;
 	}
 

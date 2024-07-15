@@ -77,7 +77,7 @@ namespace Enemy {
 
 	sf::Vector2f EnemyController::GetEnemyPosition()
 	{
-		return enemyModel->GetEnemyPositon();;
+		return enemyModel->GetEnemyPositon();
 	}
 
 	EnemyState EnemyController::GetEnemyState()

@@ -36,6 +36,13 @@ namespace Enemy {
 				ScaleEnemySprite();
 			}
 			break;
+		case::Enemy::EnemyType::THUNDER_SNAKE:
+			if (enemyTexture.loadFromFile(Config::thunder_snake_texture_path))
+			{
+				enemySprite.setTexture(enemyTexture);
+				ScaleEnemySprite();
+			}
+			break;
 		case::Enemy::EnemyType::UFO:
 			if (enemyTexture.loadFromFile(Config::ufo_texture_path))
 			{

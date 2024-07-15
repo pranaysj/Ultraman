@@ -1,25 +1,23 @@
 #pragma
 #include "../../Header/Enemy/Controller/UFOController.h"
+#include "../../Header/Enemy/EnemyModel.h"
+#include"../../Header/Enemy/EnemyConfig.h"
+#include"../../Header/Global/ServiceLocator.h"
+
+
 
 namespace Enemy {
 	namespace Controller {
-		void Enemy::Controller::UFOController::Move()
+		UFOController::UFOController(EnemyType _type) : EnemyController(_type){}
+
+		UFOController::~UFOController(){}
+
+		void UFOController::Initialize()
 		{
+			EnemyController::Initialize();
 		}
 
-		void Enemy::Controller::UFOController::MoveLeft()
-		{
-		}
-
-		void Enemy::Controller::UFOController::MoveRight()
-		{
-		}
-
-		void Enemy::Controller::UFOController::FireBullet()
-		{
-		}
-
-		Powerup::PowerupType Enemy::Controller::UFOController::GetRandomPowerupType()
+		Powerup::PowerupType UFOController::GetRandomPowerupType()
 		{
 			std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
@@ -29,16 +27,54 @@ namespace Enemy {
 			return static_cast<Powerup::PowerupType>(random_value);
 		}
 
-		Enemy::Controller::UFOController::UFOController(EnemyType type)
+		void UFOController::Move()
 		{
+			switch (enemyModel->GetMovementDirection())
+			{
+			case MovementDirection::RIGHT:
+				MoveRight();
+				break;
+			case MovementDirection::LEFT:
+				MoveLeft();
+				break;
+			}
 		}
 
-		Enemy::Controller::UFOController::~UFOController()
+		void UFOController::MoveLeft()
 		{
+			sf::Vector2f currentPositon = enemyModel->GetEnemyPositon();
+
+			currentPositon.x -= enemyModel->maximumSpeed * Global::ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+
+			if (currentPositon.x <= enemyModel->leftMostPosition.x) 
+			{
+				enemyModel->SetMovementDirection(MovementDirection::RIGHT);
+			}
+			else
+			{
+				enemyModel->SetEnemyPositon(currentPositon);
+			}
 		}
 
-		void Enemy::Controller::UFOController::Initialize()
+		void UFOController::MoveRight()
 		{
+			sf::Vector2f currentPositon = enemyModel->GetEnemyPositon();
+
+			currentPositon.x += enemyModel->maximumSpeed * Global::ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+
+			if (currentPositon.x >= enemyModel->rightMostPosition.x)
+			{
+				enemyModel->SetMovementDirection(MovementDirection::LEFT);
+			}
+			else
+			{
+				enemyModel->SetEnemyPositon(currentPositon);
+			}
+		}
+
+		void UFOController::FireBullet()
+		{
+			//make it empty
 		}
 
 	}

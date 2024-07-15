@@ -10,7 +10,7 @@ namespace Enemy {
 
 		std::vector<EnemyController*> enemyList;
 
-		const float spawnInterval = 2.0f;
+		const float spawnInterval = 3.0f;
 		float spwanTimer;
 
 		void UpdateSpawnTimer();
