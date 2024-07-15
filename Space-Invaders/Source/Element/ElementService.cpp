@@ -3,18 +3,10 @@
 
 
 namespace Element {
-	ElementService::ElementService(){
-
-	}
+	ElementService::ElementService(){}
 
 	ElementService::~ElementService(){
 		Destroy();
-	}
-
-	void ElementService::Destroy(){
-		for (int i = 0; i < bunkerList.size(); i++) {
-			delete(bunkerList[i]);
-		}
 	}
 
 	void ElementService::Initialize(){
@@ -36,6 +28,12 @@ namespace Element {
 	void ElementService::Render(){
 		for (int i = 0; i < bunkerList.size(); i++) {
 			bunkerList[i]->Render();
+		}
+	}
+
+	void ElementService::Destroy(){
+		for (int i = 0; i < bunkerList.size(); i++) {
+			delete(bunkerList[i]);
 		}
 	}
 }
