@@ -7,10 +7,10 @@ namespace UI
         class IUIController
         {
         public:
-            virtual void initialize() = 0;
-            virtual void update() = 0;
-            virtual void render() = 0;
-            virtual void show() = 0;
+            virtual void Initialize() = 0;
+            virtual void Update() = 0;
+            virtual void Render() = 0;
+            virtual void Show() = 0;
 
             virtual ~IUIController() { }
         };

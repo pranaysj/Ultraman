@@ -227,6 +227,7 @@
     <ClInclude Include="Header\Time\TimeService.h" />
     <ClInclude Include="Header\UI\Interface\IUIController.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuUIController.h" />
+    <ClInclude Include="Header\UI\UIElement\UiView.h" />
     <ClInclude Include="Header\UI\UIService.h" />
     <ClInclude Include="sfml\include\SFML\Audio.hpp" />
     <ClInclude Include="sfml\include\SFML\Audio\AlResource.hpp" />
@@ -329,6 +330,9 @@
     <ClInclude Include="sfml\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="sfml\include\SFML\Window\WindowStyle.hpp" />
     <ClInclude Include="Source\Projectile\IProjectile .h" />
+    <ClInclude Include="Header\UI\UIElement\ImageView.h" />
+    <ClInclude Include="Source\UI\UIElement\ImageView.cpp" />
+    <ClInclude Include="Source\UI\UIElement\UiView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\bubbleBobble.ttf" />

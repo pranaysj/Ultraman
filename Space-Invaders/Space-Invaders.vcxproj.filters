@@ -599,6 +599,18 @@
     <ClInclude Include="Header\UI\Interface\IUIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\UI\UIElement\UiView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UI\UIElement\UiView.cpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\UI\UIElement\ImageView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UI\UIElement\ImageView.cpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\bubbleBobble.ttf" />
