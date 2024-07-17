@@ -1,12 +1,14 @@
 
 #include "../../Header/UI/UIService.h"
 #include "../../Header/Main/GameService.h"
+#include"../../Header/UI/UIElement/TextView.h"
 
 namespace UI{
 
 	using namespace Main;
 	using namespace MainMenu;
 	using namespace Interface;
+	using namespace UIElement;
 
 	UIService::UIService() {
 		mainMenuController = nullptr;
@@ -23,6 +25,7 @@ namespace UI{
 	}
 
 	void UIService::Initialize() {
+		TextView::initializeTextView();
 		InitializeControllers();
 	}
 
@@ -37,13 +40,6 @@ namespace UI{
 
 	void UIService::Update() {
 
-		/*switch (GameService::GetGameState())
-		{
-			case GameState::MAIN_MENU:
-				return mainMenuController->Update();
-			break;
-		}*/
-
 		IUIController* uiController = GetCurrentUIController();
 		if (uiController)
 		{
@@ -52,12 +48,6 @@ namespace UI{
 	}
 
 	void UIService::Render() {
-		/*switch (GameService::GetGameState())
-		{
-			case GameState::MAIN_MENU:
-				return mainMenuController->Render();
-			break;
-		}*/
 
 		IUIController* uiController = GetCurrentUIController();
 		if (uiController)
