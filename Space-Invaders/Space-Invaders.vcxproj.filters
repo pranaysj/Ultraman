@@ -611,6 +611,12 @@
     <ClInclude Include="Source\UI\UIElement\ImageView.cpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\UI\UIElement\TextView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UI\UIElement\TextView.cpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\bubbleBobble.ttf" />
