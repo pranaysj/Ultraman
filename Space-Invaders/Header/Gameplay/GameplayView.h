@@ -1,20 +1,24 @@
 #pragma once
 #include<SFML/Graphics.hpp>
+#include"../../Header/UI/UIElement/ImageView.h"
 
 namespace Gameplay {
 	using namespace sf;
 
 	class GameplayView {
 	private:
-		//const String background_texture_path = "assets/textures/space_invaders_bg.png";
-		
 		RenderWindow* game_window;
 		
 		Texture background_texture;
 		Sprite background_sprite;
 
-		void InitializeBackgroundSprite();
-		void ScaleBackgroundSprite();
+		UI::UIElement::ImageView* gameplay_image;
+
+		void createUIElements();
+		void initializeImage();
+		sf::String getBackgroundTexturePath();
+
+		void Destory();
 
 	public:
 		GameplayView();

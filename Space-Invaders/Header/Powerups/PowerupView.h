@@ -20,9 +20,6 @@ namespace Powerup
         PowerupController* powerup_controller;
         UI::UIElement::ImageView* powerup_image;
 
-        /*void initializeImage(PowerupType);
-        void scaleImage();*/
-
         void createUIElements();
         void initializeImage();
         sf::String getPowerupTexturePath();

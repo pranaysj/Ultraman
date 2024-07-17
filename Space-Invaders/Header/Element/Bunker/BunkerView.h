@@ -1,5 +1,6 @@
 #pragma once
 #include<SFML/Graphics.hpp>
+#include"../../Header/UI/UIElement/ImageView.h"
 
 namespace Element {
 	namespace Bunker {
@@ -17,9 +18,13 @@ namespace Element {
 			sf::Sprite bunkerSprite;
 
 			//const sf::String bunkerTexturePath = "assets/textures/bunker.png";
+			UI::UIElement::ImageView* bunker_image;
 
-			void InitializeImage();
-			void ScaleSprite();
+			void createUIElements();
+			void initializeImage();
+			sf::String getBunkerTexturePath();
+
+			void Destory();
 
 		public:
 			BunkerView();

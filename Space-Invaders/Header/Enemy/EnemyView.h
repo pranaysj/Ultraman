@@ -1,5 +1,6 @@
 #pragma once
 #include<SFML/Graphics.hpp>
+#include"../../Header/UI/UIElement/ImageView.h"
 
 namespace Enemy {
 	using namespace sf;
@@ -10,11 +11,6 @@ namespace Enemy {
 	class EnemyView {
 	private:
 
-		/*const String droneOneTexturePath = "assets/textures/Drone _1.png"; 
-		const String droneTwoTexturePath = "assets/textures/Drone _2.png"; 
-		const sf::String subzero_texture_path = "assets/textures/subzero.png";
-		const sf::String zapper_texture_path = "assets/textures/zapper.png";*/
-
 		const float enemySpriteWidth = 50.0f;
 		const float enemySpriteHeigh = 50.0f;
 
@@ -23,8 +19,13 @@ namespace Enemy {
 		Texture enemyTexture;
 		Sprite enemySprite;
 
-		void InitializeEnemySprite(EnemyType _type);
-		void ScaleEnemySprite();
+		UI::UIElement::ImageView* enemy_image;
+
+		void createUIElements();
+		void initializeImage();
+		sf::String getEnemyTexturePath();
+
+		void Destory();
 
 	public:
 		EnemyView();

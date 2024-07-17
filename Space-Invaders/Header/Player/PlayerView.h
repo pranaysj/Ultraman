@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include"../../Header/UI/UIElement/ImageView.h"
 
 
 namespace Player {
@@ -20,8 +21,14 @@ namespace Player {
 		Texture playerTexture;
 		Sprite playerSprite;
 
-		void InitializePlayerSprite();
-		void ScalePlayerSprite();
+		/*void InitializePlayerSprite();
+		void ScalePlayerSprite();*/
+		UI::UIElement::ImageView* player_image;
+
+		void createUIElements();
+		void initializeImage();
+		sf::String getPlayerTexturePath();
+
 
 	public:
 		PlayerView();

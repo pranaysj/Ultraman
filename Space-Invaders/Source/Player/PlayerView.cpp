@@ -6,47 +6,48 @@
 
 namespace Player {
 	using namespace Global;
+	using namespace UI::UIElement;
 
-	PlayerView::PlayerView() {}
+	PlayerView::PlayerView() {
+		createUIElements();
+	}
 
 	PlayerView::~PlayerView() {}
 
-	void PlayerView::Initialize(PlayerController* controller) {
-		//gameWindow
-		//InitializePlayerSprite
-		playerController = controller;
-		gameWindow = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow();
-		InitializePlayerSprite();
+	void PlayerView::createUIElements()
+	{
+		player_image = new ImageView();
 	}
 
-	void PlayerView::InitializePlayerSprite() {
+	void PlayerView::Initialize(PlayerController* controller) {
+		playerController = controller;
+		initializeImage();
+		
+	}
+
+	void PlayerView::initializeImage()
+	{
+		player_image->Initialize(getPlayerTexturePath(),
+			playerSpriteWidth,
+			playerSpriteHeigh,
+			playerController->GetPlayerPosition());
+
+	}
+
+	sf::String PlayerView::getPlayerTexturePath()
+	{
 		if (playerTexture.loadFromFile(Config::player_texture_path)) {
 			playerSprite.setTexture(playerTexture);
-			ScalePlayerSprite();
 		}
-
-		//teture load
-		//Sprite set
-		//Scale the Sprite
-	}
-
-	void PlayerView::ScalePlayerSprite() {
-		//scale the sprite using SetSCale method
-		playerSprite.setScale(
-			static_cast<float>(playerSpriteWidth) / playerSprite.getTexture()->getSize().x,
-			static_cast<float>(playerSpriteHeigh) / playerSprite.getTexture()->getSize().y
-
-		);
 	}
 
 	void PlayerView::Update() {
-		//EMpty for now
 		playerSprite.setPosition(playerController->GetPlayerPosition());
+		player_image->Update();
 	}
 
 	void PlayerView::Render() {
-		//Draw the Sprite
-		gameWindow->draw(playerSprite);
+		player_image->Render();
 	}
 
 }

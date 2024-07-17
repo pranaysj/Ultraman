@@ -8,62 +8,73 @@
 namespace Bullet {
 
 	using namespace Global;
+	using namespace UI::UIElement;
 
 	BulletView::BulletView(){
-
+		createUIElements();
 	}
 
 	BulletView::~BulletView(){
-
+		Destory();
 	}
 
 	void BulletView::Initialize(BulletController* _controller){
 		bulletController = _controller;
-		gameWindow = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow();
-		InitializeImage(bulletController->GetBulletType());
+		initializeImage();
 	}
 
 
-	void BulletView::InitializeImage(BulletType _type){
-		switch (_type)
+	void BulletView::createUIElements()
+	{
+		bullet_image = new ImageView();
+	}
+
+	void BulletView::initializeImage()
+	{
+		bullet_image->Initialize(getBulletTexturePath(),
+			bulletSpriteWidth,
+			bulletSpriteHeight,
+			bulletController->GetProjectilePosition());
+	}
+
+	sf::String BulletView::getBulletTexturePath()
+	{
+		switch (bulletController->GetBulletType())
 		{
 		case::Bullet::BulletType::LASER_BULLET:
 			if (bulletTexture.loadFromFile(Config::laser_bullet_texture_path))
 			{
 				bulletSprite.setTexture(bulletTexture);
-				ScaleImage();
 			}
 			break;
 		case::Bullet::BulletType::FROST_BULLET:
 			if (bulletTexture.loadFromFile(Config::frost_beam_texture_path))
 			{
 				bulletSprite.setTexture(bulletTexture);
-				ScaleImage();
 			}
 			break;
 		case::Bullet::BulletType::TORPEDO:
 			if (bulletTexture.loadFromFile(Config::torpedoe_texture_path))
 			{
 				bulletSprite.setTexture(bulletTexture);
-				ScaleImage();
 			}
 			break;
 		}
 	}
 
-	void BulletView::ScaleImage(){
-		bulletSprite.setScale(
-			static_cast<float>(bulletSpriteWidth) / bulletSprite.getTexture()->getSize().x,
-			static_cast<float>(bulletSpriteHeight) / bulletSprite.getTexture()->getSize().y
-		);
-	}
-
 	void BulletView::Update(){
 		bulletSprite.setPosition(bulletController->GetProjectilePosition());
+		bullet_image->Update();
 	}
 
 	void BulletView::Render(){
-		gameWindow->draw(bulletSprite);
+		bullet_image->Render();
 	}
+	
+	void BulletView::Destory()
+	{
+		delete(bullet_image);
+	}
+
 }
 
