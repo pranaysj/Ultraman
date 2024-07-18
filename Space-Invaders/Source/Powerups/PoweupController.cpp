@@ -10,31 +10,31 @@ namespace Powerup
 
 	PowerupController::PowerupController(PowerupType type)
 	{
-		powerup_view = new PowerupView();
-		powerup_model = new PowerupModel(type);
+		powerupView = new PowerupView();
+		powerupModel = new PowerupModel(type);
 	}
 
 	PowerupController::~PowerupController()
 	{
-		delete (powerup_view);
-		delete (powerup_model);
+		delete (powerupView);
+		delete (powerupModel);
 	}
 
 	void PowerupController::Initialize(sf::Vector2f position)
 	{
-		powerup_model->initialize(position);
-		powerup_view->initialize(this);
+		powerupView->Initialize(this);
+		powerupModel->Initialize(position);
 	}
 
 	void PowerupController::Update()
 	{
 		UpdatePowerupPosition();
-		powerup_view->update();
+		powerupView->Update();
 	}
 
 	void PowerupController::Render()
 	{
-		powerup_view->render();
+		powerupView->Render();
 	}
 
 	void PowerupController::OnCollected()
@@ -43,10 +43,10 @@ namespace Powerup
 
 	void PowerupController::UpdatePowerupPosition()
 	{
-		sf::Vector2f currentPosition = powerup_model->GetPowerupPosition();
-		currentPosition.y += powerup_model->GetMovementSpeed() * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+		sf::Vector2f currentPosition = powerupModel->GetPowerupPosition();
+		currentPosition.y += powerupModel->GetMovementSpeed() * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-		powerup_model->SetPowerupPosition(currentPosition);
+		powerupModel->SetPowerupPosition(currentPosition);
 	}
 
 	void PowerupController::HandleOutOfBounds()
@@ -63,11 +63,11 @@ namespace Powerup
 
 	sf::Vector2f PowerupController::GetCollectiblePosition()
 	{
-		return powerup_model->GetPowerupPosition();
+		return powerupModel->GetPowerupPosition();
 	}
 
 	PowerupType PowerupController::GetPowerupType()
 	{
-		return powerup_model->GetPowerupType();
+		return powerupModel->GetPowerupType();
 	}
 }

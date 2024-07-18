@@ -8,7 +8,7 @@ namespace Bullet {
 	namespace Controller {
 		class FrostBulletController : public BulletController {
 		private:
-			const float frost_movement_speed = 500.0f;
+			const float frostMovementSpeed = 500.0f;
 
 
 

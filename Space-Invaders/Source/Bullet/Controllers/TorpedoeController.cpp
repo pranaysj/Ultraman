@@ -13,7 +13,7 @@ namespace Bullet
 		void TorpedoController::Initialize(sf::Vector2f position, MovementDirection direction)
 		{
 			BulletController::Initialize(position, direction);
-			bulletModel->SetMovementSpeed(torpedo_movement_speed);
+			bulletModel->SetMovementSpeed(torpedoMovementSpeed);
 		}
 	}
 }

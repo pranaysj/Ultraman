@@ -11,9 +11,9 @@ namespace UI
         void ImageView::Initialize(sf::String texture_path, float image_width, float image_height, sf::Vector2f position)
         {
             UIView::Initialize();
-            setTexture(texture_path);
-            setScale(image_width, image_height);
-            setPosition(position);
+            SetTexture(texture_path);
+            SetScale(image_width, image_height);
+            SetPosition(position);
         }
 
         void ImageView::Update()
@@ -25,56 +25,56 @@ namespace UI
         {
             UIView::Render();
 
-            if (ui_state == UIState::VISIBLE)
+            if (uiState == UIState::VISIBLE)
             {
-                game_window->draw(image_sprite);
+                gameWindow->draw(imageSprite);
             }
         }
 
-        void ImageView::setTexture(sf::String texture_path)
+        void ImageView::SetTexture(sf::String texture_path)
         {
-            if (image_texture.loadFromFile(texture_path))
+            if (imageTexture.loadFromFile(texture_path))
             {
-                image_sprite.setTexture(image_texture);
+                imageSprite.setTexture(imageTexture);
             }
         }
 
-        void ImageView::setScale(float width, float height)
+        void ImageView::SetScale(float width, float height)
         {
-            float scale_x = width / image_sprite.getTexture()->getSize().x;
-            float scale_y = height / image_sprite.getTexture()->getSize().y;
+            float scale_x = width / imageSprite.getTexture()->getSize().x;
+            float scale_y = height / imageSprite.getTexture()->getSize().y;
 
-            image_sprite.setScale(scale_x, scale_y);
+            imageSprite.setScale(scale_x, scale_y);
         }
 
-        void ImageView::setPosition(sf::Vector2f position)
+        void ImageView::SetPosition(sf::Vector2f position)
         {
-            image_sprite.setPosition(position);
+            imageSprite.setPosition(position);
         }
 
-        void ImageView::setRotation(float rotation_angle)
+        void ImageView::SetRotation(float rotation_angle)
         {
-            image_sprite.setRotation(rotation_angle);
+            imageSprite.setRotation(rotation_angle);
         }
 
-        void ImageView::setOriginAtCentre()
+        void ImageView::SetOriginAtCentre()
         {
-            image_sprite.setOrigin(image_sprite.getLocalBounds().width / 2, image_sprite.getLocalBounds().height / 2);
+            imageSprite.setOrigin(imageSprite.getLocalBounds().width / 2, imageSprite.getLocalBounds().height / 2);
         }
 
-        void ImageView::setImageAlpha(float alpha)
+        void ImageView::SetImageAlpha(float alpha)
         {
-            sf::Color color = image_sprite.getColor();
+            sf::Color color = imageSprite.getColor();
             color.a = alpha;
-            image_sprite.setColor(color);
+            imageSprite.setColor(color);
         }
 
-        void ImageView::setCentreAlinged()
+        void ImageView::SetCentreAlinged()
         {
-            float x_position = (game_window->getSize().x / 2) - (image_sprite.getGlobalBounds().width / 2);
-            float y_position = image_sprite.getGlobalBounds().getPosition().y;
+            float x_position = (gameWindow->getSize().x / 2) - (imageSprite.getGlobalBounds().width / 2);
+            float y_position = imageSprite.getGlobalBounds().getPosition().y;
 
-            image_sprite.setPosition(x_position, y_position);
+            imageSprite.setPosition(x_position, y_position);
         }
     }
 }

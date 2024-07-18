@@ -9,8 +9,22 @@ namespace Main{
 
     GameState GameService::currentState = GameState::BOOT;
 
-    void GameService::ShowMainMenu() {
-        SetGameState(GameState::MAIN_MENU);
+    GameService::GameService() {
+        serviceLocator = nullptr;
+        gameWindow = nullptr;
+    }
+
+    GameService::~GameService() {
+        Destory();
+    }
+
+    void GameService::Destory() {
+        serviceLocator->DeleteServiceLocator();
+    }
+
+    void GameService::Ignite() {
+        serviceLocator = Global::ServiceLocator::GetInstance();
+        Initialize();
     }
 
     void GameService::Initialize() {
@@ -23,22 +37,8 @@ namespace Main{
         gameWindow = serviceLocator->GetGraphicsService()->GetGameWindow();
     }
 
-    void GameService::Destory() {
-        serviceLocator->DeleteServiceLocator();
-    }
-
-    GameService::GameService() {
-        serviceLocator = nullptr;
-        gameWindow = nullptr;
-    }
-
-    GameService::~GameService() {
-        Destory();
-    }
-
-    void GameService::Ignite() {
-        serviceLocator = Global::ServiceLocator::GetInstance();
-        Initialize();
+    void GameService::ShowMainMenu() {
+        SetGameState(GameState::MAIN_MENU);
     }
 
     void GameService::Update() {
@@ -47,13 +47,13 @@ namespace Main{
     }
 
     void GameService::Render() {
-        gameWindow->clear(serviceLocator->GetGraphicsService()->getColorWindow());
+        gameWindow->clear(serviceLocator->GetGraphicsService()->GetColorWindow());
         serviceLocator->Render();
         gameWindow->display();
     }
 
     bool GameService::IsRunning() {
-        return serviceLocator->GetGraphicsService()->isGameWindowOpen();
+        return serviceLocator->GetGraphicsService()->IsGameWindowOpen();
     }
 
     void GameService::SetGameState(GameState _state){

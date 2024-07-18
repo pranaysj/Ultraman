@@ -22,16 +22,12 @@ namespace Player {
 
 	void PlayerController::Initialize() {
 		playerModel->Initialize();
-		playerView->Initialize(this); //this
+		playerView->Initialize(this);
 	}
 
 	void PlayerController::Update() {
 		ProcessPlayerInput();
 		playerView->Update();
-	}
-
-	void PlayerController::Render() {
-		playerView->Render();
 	}
 
 	void PlayerController::ProcessPlayerInput() {
@@ -71,10 +67,18 @@ namespace Player {
 			Bullet::MovementDirection::UP);
 	}
 
+	void PlayerController::Render() {
+		playerView->Render();
+	}
 
 	Vector2f PlayerController::GetPlayerPosition() {
 
 		return playerModel->GetPlayerPosition();
+	}
+
+	PlayerState PlayerController::GetPlayerState()
+	{
+		return playerModel->GetPlayerState();
 	}
 
 }

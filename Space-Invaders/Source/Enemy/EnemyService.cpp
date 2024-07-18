@@ -14,15 +14,67 @@ namespace Enemy {
 	using namespace Global;
 	using namespace Controller;
 
-	void EnemyService::UpdateSpawnTimer(){
+	EnemyService::EnemyService() {
+		std::srand(static_cast<unsigned>(std::time(nullptr)));
+	}
+
+	EnemyService::~EnemyService() {
+		Destory();
+	}
+
+	void EnemyService::Destory(){
+		for (int i = 0; i < enemyList.size(); i++)
+		{
+			delete(enemyList[i]);
+		}
+	}
+
+	void EnemyService::Initialize() {
+		spwanTimer = spawnInterval;
+	}
+
+	void EnemyService::Update(){
+
+		UpdateSpawnTimer();
+		ProcessEnemySpawn();
+
+		for (int i = 0; i < enemyList.size(); i++)
+		{
+			enemyList[i]->Update();
+		}
+	}
+
+	void EnemyService::UpdateSpawnTimer() {
 		spwanTimer += ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 	}
 
-	void EnemyService::ProcessEnemySpawn(){
+	void EnemyService::ProcessEnemySpawn() {
 		if (spwanTimer >= spawnInterval) {
 			SpawnEnemy();
 			spwanTimer = 0;
 		}
+	}
+
+	EnemyController* EnemyService::SpawnEnemy(){
+		EnemyController* enemyController = CreateEnemy(GetRandomEnemyType());
+
+		enemyController->Initialize();
+		enemyList.push_back(enemyController);
+
+		return enemyController;
+	}
+
+	void EnemyService::Render(){
+
+		for (int i = 0; i < enemyList.size(); i++)
+		{
+			enemyList[i]->Render();
+		}
+	}
+
+	void EnemyService::DestroyEnemy(EnemyController* _enemyController){
+		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), _enemyController), enemyList.end());
+		delete(_enemyController);
 	}
 
 	EnemyType EnemyService::GetRandomEnemyType()
@@ -47,58 +99,5 @@ namespace Enemy {
 		case::Enemy::EnemyType::UFO:
 			return new UFOController(Enemy::EnemyType::UFO);
 		}
-	}
-
-	void EnemyService::Destory(){
-		for (int i = 0; i < enemyList.size(); i++)
-		{
-			delete(enemyList[i]);
-		}
-	}
-
-	EnemyService::EnemyService(){
-		std::srand(static_cast<unsigned>(std::time(nullptr)));
-	}
-
-	EnemyService::~EnemyService(){
-		Destory();
-	}
-
-	void EnemyService::Initialize(){
-		spwanTimer = spawnInterval;
-	}
-
-	void EnemyService::Update(){
-		/*Detect the GameState then Update*/
-
-		UpdateSpawnTimer();
-		ProcessEnemySpawn();
-
-		for (int i = 0; i < enemyList.size(); i++)
-		{
-			enemyList[i]->Update();
-		}
-	}
-
-	void EnemyService::Render(){
-		/*Detect the GameState then Render*/
-		for (int i = 0; i < enemyList.size(); i++)
-		{
-			enemyList[i]->Render();
-		}
-	}
-
-	EnemyController* EnemyService::SpawnEnemy(){
-		EnemyController* enemyController = CreateEnemy(GetRandomEnemyType());
-
-		enemyController->Initialize();
-		enemyList.push_back(enemyController);
-
-		return enemyController;
-	}
-
-	void EnemyService::DestroyEnemy(EnemyController* _enemyController){
-		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), _enemyController), enemyList.end());
-		delete(_enemyController);
 	}
 }

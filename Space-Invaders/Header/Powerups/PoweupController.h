@@ -11,8 +11,8 @@ namespace Powerup
     class PowerupController : public Collectible::ICollectible
     {
     protected:
-        PowerupView* powerup_view;
-        PowerupModel* powerup_model;
+        PowerupView* powerupView;
+        PowerupModel* powerupModel;
 
         void UpdatePowerupPosition();
         void HandleOutOfBounds();

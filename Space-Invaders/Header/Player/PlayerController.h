@@ -4,7 +4,6 @@
 namespace Player {
 	using namespace sf;
 
-
 	enum class PlayerState;
 	class PlayerModel;
 	class PlayerView;
@@ -29,6 +28,7 @@ namespace Player {
 		void Render();
 
 		Vector2f GetPlayerPosition();
+		PlayerState GetPlayerState();
 	};
 }
 

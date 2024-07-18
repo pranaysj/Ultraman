@@ -8,64 +8,36 @@ namespace UI {
 	namespace MainMenu {
 		class MainMenuUIController : public Interface::IUIController {
 		private:
-			/*const sf::String backgroundTexturePath = "assets/textures/space_invaders_bg.png";
-			const sf::String playButtonTexturePath = "assets/textures/PlayButton.png";
-			const sf::String instructionsButtonTexturePath = "assets/textures/InstructionsButton.png";
-			const sf::String quitButtonTexturePath = "assets/textures/QuitButton.png";*/
+			
+			const float buttonWidth = 300.f;
+			const float buttonHeight = 140.f;
 
-			const float button_width = 300.f;
-			const float button_height = 140.f;
 
-			/*sf::Texture backgroundTexture;
-			sf::Sprite backgroundSprite;
+			const float playButton_Y_Position = 500.f;
+			const float instructionsButton_Y_Position = 700.f;
+			const float quit_Button_Y_Position = 900.f;
 
-			sf::Texture playButtonTexture;
-			sf::Sprite playButtonSprite;
+			const float backgroundAlpha = 85.f;
 
-			sf::Texture instructionsButtonTexture;
-			sf::Sprite instructionsButtonSprite;
+			UIElement::ImageView* backgroundImage;
 
-			sf::Texture quitButtonTexture;
-			sf::Sprite quitButtonSprite;
+			UIElement::ButtonView* playButton;
+			UIElement::ButtonView* instructionsButton;
+			UIElement::ButtonView* quitButton;
 
-			sf::RenderWindow* gameWindow;*/
+			void CreateImage();
+			void CreateButtons();
 
-			const float play_button_y_position = 500.f;
-			const float instructions_button_y_position = 700.f;
-			const float quit_button_y_position = 900.f;
+			void InitializeBackgroundImage();
+			void InitializeButtons();
 
-			const float background_alpha = 85.f;
+			void RegisterButtonCallback();
 
-			UIElement::ImageView* background_image;
+			void PlayButtonCallback();
+			void InstructionsButtonCallback();
+			void QuitButtonCallback();
 
-			UIElement::ButtonView* play_button;
-			UIElement::ButtonView* instructions_button;
-			UIElement::ButtonView* quit_button;
-
-			void createImage();
-			void createButtons();
-
-			void initializeBackgroundImage();
-			void initializeButtons();
-
-			void registerButtonCallback();
-			void ScaleBackgroundImage();
-
-			void playButtonCallback();
-			void instructionsButtonCallback();
-			void quitButtonCallback();
-
-			void destroy();
-
-			/*bool LoadButtonTextureFromFile();
-			void SetButtonSprites();
-
-			void ScaleAllButtons();
-			void ScaleButton(sf::Sprite* buttonToScale);
-			void PositionButtons();
-
-			void ProcessButtonInteractions();
-			bool ClickedButton(sf::Sprite*, sf::Vector2f);*/
+			void Destroy();
 
 		public:
 			MainMenuUIController();

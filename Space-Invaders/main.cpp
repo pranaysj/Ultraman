@@ -1,5 +1,7 @@
 #include "../../Header/Main/GameService.h"
+
 using namespace Main;
+
 int main() {
 
     GameService *gameService = new GameService();

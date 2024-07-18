@@ -73,14 +73,14 @@ namespace Global {
         graphicService->Initialize();
         timeService->Initialize();
         eventService->Initialize();
-        gameplayService->Initialize();
         playerService->Initialize();
-        enemyService->Initialize();
         uiService->Initialize();
+        enemyService->Initialize();
+        gameplayService->Initialize();
         elementService->Initialize();
         bulletService->Initialize();
-        soundService->Initialize();
         powerupService->Initialize();
+        soundService->Initialize();
     }
 
     void ServiceLocator::Update() {
@@ -115,49 +115,61 @@ namespace Global {
         uiService->Render();
     }
 
-    GraphicService* ServiceLocator::GetGraphicsService() {
+    GraphicService* ServiceLocator::GetGraphicsService()
+    {
         return graphicService;
     }
 
-    EventService* ServiceLocator::GetEventService() {
+    EventService* ServiceLocator::GetEventService()
+    {
         return eventService;
     }
 
-    PlayerService* ServiceLocator::GetPlayerService() {
+    PlayerService* ServiceLocator::GetPlayerService()
+    {
         return playerService;
     }
 
-    TimeService* ServiceLocator::GetTimeService() {
+    TimeService* ServiceLocator::GetTimeService()
+    {
         return timeService;
     }
 
-    UIService* ServiceLocator::GetUIService() {
+    UIService* ServiceLocator::GetUIService()
+    {
         return uiService;
     }
+
     Enemy::EnemyService* ServiceLocator::GetEnemyService()
     {
         return enemyService;
     }
+
     Gameplay::GameplayService* ServiceLocator::GetGameplayService()
     {
         return gameplayService;;
     }
+
     Element::ElementService* ServiceLocator::GetElementService()
     {
         return elementService;
     }
+
     Bullet::BulletService* ServiceLocator::GetBulletService()
     {
         return bulletService;
     }
+
     SoundService* ServiceLocator::GetSoundService()
     {
         return soundService;
     }
+
     Powerup::PowerupService* ServiceLocator::GetPowerupService()
     {
         return powerupService;
     }
+
     void ServiceLocator::DeleteServiceLocator(){
         delete(this);
     }

@@ -3,12 +3,14 @@
 #include <SFML/Window/Event.hpp>
 
 namespace Event{
+
     enum class ButtonState
     {
         PRESSED,
         HELD,
         RELEASED,
     };
+
     class EventService{
         private :
             ButtonState leftMouseButtonState;
@@ -34,6 +36,7 @@ namespace Event{
             void Initialize();
             void Update();
             void ProcessEvent();
+
             bool PressedEscapeKey();
             bool IsKeyboardEvent();
 

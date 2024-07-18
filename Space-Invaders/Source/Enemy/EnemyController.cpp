@@ -27,6 +27,17 @@ namespace Enemy {
 		enemyView->Initialize(this);
 	}
 
+	sf::Vector2f EnemyController::GetRandomInitialPosition()
+	{
+		float x_offset_distance = (std::rand() % static_cast<int>(enemyModel->rightMostPosition.x - enemyModel->leftMostPosition.x));
+
+		float x_position = enemyModel->leftMostPosition.x + x_offset_distance;
+
+		float y_position = enemyModel->leftMostPosition.y;
+
+		return sf::Vector2f(x_position, y_position);
+	}
+
 	void EnemyController::Update(){
 		Move();
 		UpdateFireTimer();
@@ -40,26 +51,15 @@ namespace Enemy {
 	}
 	
 	void EnemyController::UpdateFireTimer(){
-		elapsed_fire_duration += ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+		elapsedFireDuration += ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 	}
 
 	void EnemyController::ProcessBulletFire(){
-		if (elapsed_fire_duration >= rate_of_fire)
+		if (elapsedFireDuration >= rateOfFire)
 		{
 			FireBullet();
-			elapsed_fire_duration = 0.f; //set elapsed duration back to 0.
+			elapsedFireDuration = 0.f; //set elapsed duration back to 0.
 		}
-	}
-
-	sf::Vector2f EnemyController::GetRandomInitialPosition()
-	{
-		float x_offset_distance = (std::rand() % static_cast<int>(enemyModel->rightMostPosition.x - enemyModel->leftMostPosition.x));
-
-		float x_position = enemyModel->leftMostPosition.x + x_offset_distance;
-
-		float y_position = enemyModel->leftMostPosition.y;
-
-		return sf::Vector2f(x_position, y_position);
 	}
 
 	void EnemyController::HandleOutOfBounds(){
@@ -73,7 +73,6 @@ namespace Enemy {
 			ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
 		}
 	}
-
 
 	sf::Vector2f EnemyController::GetEnemyPosition()
 	{
@@ -89,36 +88,4 @@ namespace Enemy {
 	{
 		return enemyModel->GetEnemyType();
 	}
-	
-	/*sf::Vector2f EnemyController::GetEnemyPosition(){
-		return enemyModel->GetEnemyPositon();
-	}
-
-	void EnemyController::SetEnemyType(EnemyType _type){
-		enemytype = _type;
-	}
-
-	EnemyType EnemyController::GetEnemyType()
-	{
-		return enemytype;
-	}
-
-	void EnemyController::SetVerticalMovSpeed(float _vspeed)
-	{
-		verticalMovementSpeed = _vspeed;
-	}
-
-	float EnemyController::GetVerticalMovSpeed()
-	{
-		return verticalMovementSpeed;
-	}
-
-	void EnemyController::SetHorizontalMovSpeed(float _hspeed){
-		horizontalMovementSpeed = _hspeed;
-	}
-
-	float EnemyController::GtHorizontalMovSpeed()
-	{
-		return horizontalMovementSpeed;
-	}*/
 }

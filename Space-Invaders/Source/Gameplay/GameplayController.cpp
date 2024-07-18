@@ -1,6 +1,7 @@
+#pragma once
 #include "../../Header/Gameplay/GameplayController.h"
 #include "../../Header/Gameplay/GameplayView.h"
-#pragma once
+
 namespace Gameplay {
 	Gameplay::GameplayController::GameplayController(){
 		gameplayView = new GameplayView();

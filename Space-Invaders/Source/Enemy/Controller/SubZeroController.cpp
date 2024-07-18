@@ -17,7 +17,7 @@ namespace Enemy {
 		void SubZeroController::Initialize(){
 			EnemyController::Initialize();
 			enemyModel->SetMovementDirection(MovementDirection::DOWN);
-			rate_of_fire = subzero_fire_rate;
+			rateOfFire = subzeroFireRate;
 		}
 
 		void SubZeroController::Move(){ 

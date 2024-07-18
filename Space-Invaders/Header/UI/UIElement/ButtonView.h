@@ -14,15 +14,15 @@ namespace UI
 			using CallbackFunction = std::function<void()>;
 
 			// Store the callback function
-			CallbackFunction callback_function = nullptr;
+			CallbackFunction callbackFunction = nullptr;
 
 			void printButtonClicked();
 
 		protected:
-			sf::String button_title;
+			sf::String buttonTitle;
 
-			virtual void handleButtonInteraction();
-			virtual bool clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position);
+			virtual void HandleButtonInteraction();
+			virtual bool ClickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position);
 
 		public:
 			ButtonView();
@@ -32,7 +32,7 @@ namespace UI
 			virtual void Update() override;
 			virtual void Render() override;
 
-			void registerCallbackFuntion(CallbackFunction button_callback);
+			void RegisterCallbackFuntion(CallbackFunction button_callback);
 		};
 	}
 }

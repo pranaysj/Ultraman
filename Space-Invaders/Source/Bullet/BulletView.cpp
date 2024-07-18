@@ -11,7 +11,7 @@ namespace Bullet {
 	using namespace UI::UIElement;
 
 	BulletView::BulletView(){
-		createUIElements();
+		CreateUIElements();
 	}
 
 	BulletView::~BulletView(){
@@ -20,60 +20,50 @@ namespace Bullet {
 
 	void BulletView::Initialize(BulletController* _controller){
 		bulletController = _controller;
-		initializeImage();
+		InitializeImage();
 	}
 
 
-	void BulletView::createUIElements()
+	void BulletView::CreateUIElements()
 	{
-		bullet_image = new ImageView();
+		bulletImage = new ImageView();
 	}
 
-	void BulletView::initializeImage()
+	void BulletView::InitializeImage()
 	{
-		bullet_image->Initialize(getBulletTexturePath(),
+		bulletImage->Initialize(GetBulletTexturePath(),
 			bulletSpriteWidth,
 			bulletSpriteHeight,
 			bulletController->GetProjectilePosition());
 	}
 
-	sf::String BulletView::getBulletTexturePath()
+	sf::String BulletView::GetBulletTexturePath()
 	{
 		switch (bulletController->GetBulletType())
 		{
 		case::Bullet::BulletType::LASER_BULLET:
-			if (bulletTexture.loadFromFile(Config::laser_bullet_texture_path))
-			{
-				bulletSprite.setTexture(bulletTexture);
-			}
-			break;
+			return Config::laser_bullet_texture_path;
+
 		case::Bullet::BulletType::FROST_BULLET:
-			if (bulletTexture.loadFromFile(Config::frost_beam_texture_path))
-			{
-				bulletSprite.setTexture(bulletTexture);
-			}
-			break;
+			return Config::frost_beam_texture_path;
+
 		case::Bullet::BulletType::TORPEDO:
-			if (bulletTexture.loadFromFile(Config::torpedoe_texture_path))
-			{
-				bulletSprite.setTexture(bulletTexture);
-			}
-			break;
+			return Config::torpedoe_texture_path;
 		}
 	}
 
 	void BulletView::Update(){
 		bulletSprite.setPosition(bulletController->GetProjectilePosition());
-		bullet_image->Update();
+		bulletImage->Update();
 	}
 
 	void BulletView::Render(){
-		bullet_image->Render();
+		bulletImage->Render();
 	}
 	
 	void BulletView::Destory()
 	{
-		delete(bullet_image);
+		delete(bulletImage);
 	}
 
 }

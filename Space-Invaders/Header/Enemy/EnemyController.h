@@ -10,15 +10,10 @@ namespace Enemy {
 	enum class EnemyType;
 
 	class EnemyController {
-
 	protected:
-		/*float verticalMovementSpeed;
-		float horizontalMovementSpeed;*/
 
-		//EnemyType enemytype;
-
-		float rate_of_fire = 3.f; //we want to fire the bullet every 3 seconds
-		float elapsed_fire_duration = 0.f;
+		float rateOfFire = 3.f; //we want to fire the bullet every 3 seconds
+		float elapsedFireDuration = 0.f;
 
 		EnemyModel* enemyModel;
 		EnemyView* enemyView;
@@ -44,15 +39,6 @@ namespace Enemy {
 		sf::Vector2f GetEnemyPosition();
 		EnemyState GetEnemyState();
 		EnemyType GetEnemyType();
-
-		/*void SetEnemyType(EnemyType _type);
-		EnemyType GetEnemyType();*/
-
-		/*void SetVerticalMovSpeed(float _vspeed);
-		float GetVerticalMovSpeed();
-
-		void SetHorizontalMovSpeed(float _hspeed);
-		float GtHorizontalMovSpeed();*/
 
 	};
 }

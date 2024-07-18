@@ -14,8 +14,8 @@ namespace UI
 		class UIView
 		{
 		protected:
-			sf::RenderWindow* game_window;
-			UIState ui_state;
+			sf::RenderWindow* gameWindow;
+			UIState uiState;
 
 		public:
 			UIView();

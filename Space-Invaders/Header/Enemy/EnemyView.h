@@ -16,16 +16,15 @@ namespace Enemy {
 
 		EnemyController* enemyController;
 		RenderWindow* gameWindow;
+
 		Texture enemyTexture;
 		Sprite enemySprite;
 
-		UI::UIElement::ImageView* enemy_image;
+		UI::UIElement::ImageView* enemyImage;
 
-		void createUIElements();
-		void initializeImage();
-		sf::String getEnemyTexturePath();
-
-		void Destory();
+		void CreateUIElements();
+		void InitializeImage();
+		sf::String GetEnemyTexturePath();
 
 	public:
 		EnemyView();

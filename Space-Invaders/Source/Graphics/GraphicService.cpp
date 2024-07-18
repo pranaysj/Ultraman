@@ -15,29 +15,24 @@ namespace Graphics {
         delete(gameWindow);
     }
 
-    void GraphicService::setVideoMode() {
-        videoMode = new sf::VideoMode(game_window_width, game_window_height, sf::VideoMode::getDesktopMode().bitsPerPixel);
-    }
-
-    RenderWindow* GraphicService::createGameWindow() {
-        setVideoMode();
-        return new sf::RenderWindow(*videoMode, game_window_title, sf::Style::Fullscreen);
-    }
-
     void GraphicService::Initialize() {
-        gameWindow = createGameWindow();
-        //gameWindow->setFramerateLimit(frameRate);
+        gameWindow = CreateGameWindow();
     }
 
-    void GraphicService::Update() {
-
+    RenderWindow* GraphicService::CreateGameWindow() {
+        SetVideoMode();
+        return new sf::RenderWindow(*videoMode, gameWindowTitle, sf::Style::Fullscreen);
     }
 
-    void GraphicService::Render() {
-
+    void GraphicService::SetVideoMode() {
+        videoMode = new sf::VideoMode(gameWindowWidth, gameWindowHeight, sf::VideoMode::getDesktopMode().bitsPerPixel);
     }
 
-    bool GraphicService::isGameWindowOpen() {
+    void GraphicService::Update() {}
+
+    void GraphicService::Render() {}
+
+    bool GraphicService::IsGameWindowOpen() {
         return gameWindow->isOpen();;
     }
 
@@ -45,8 +40,8 @@ namespace Graphics {
         return gameWindow;
     }
 
-    Color GraphicService::getColorWindow() {
-        return window_color;
+    Color GraphicService::GetColorWindow() {
+        return windowColor;
     }
 
 }

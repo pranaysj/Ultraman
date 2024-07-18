@@ -176,6 +176,10 @@
     <ClCompile Include="Source\Sound\SoundService.cpp" />
     <ClCompile Include="Source\Time\TimeService.cpp" />
     <ClCompile Include="Source\UI\MainMenu\MainMenuUIController.cpp" />
+    <ClCompile Include="Source\UI\UIElement\ButtonView.cpp" />
+    <ClCompile Include="Source\UI\UIElement\ImageView.cpp" />
+    <ClCompile Include="Source\UI\UIElement\TextView.cpp" />
+    <ClCompile Include="Source\UI\UIElement\UiView.cpp" />
     <ClCompile Include="Source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +232,7 @@
     <ClInclude Include="Header\UI\Interface\IUIController.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuUIController.h" />
     <ClInclude Include="Header\UI\UIElement\ButtonView.h" />
+    <ClInclude Include="Header\UI\UIElement\ImageView.h" />
     <ClInclude Include="Header\UI\UIElement\TextView.h" />
     <ClInclude Include="Header\UI\UIElement\UiView.h" />
     <ClInclude Include="Header\UI\UIService.h" />
@@ -332,11 +337,6 @@
     <ClInclude Include="sfml\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="sfml\include\SFML\Window\WindowStyle.hpp" />
     <ClInclude Include="Source\Projectile\IProjectile .h" />
-    <ClInclude Include="Header\UI\UIElement\ImageView.h" />
-    <ClInclude Include="Source\UI\UIElement\ButtonView.cpp" />
-    <ClInclude Include="Source\UI\UIElement\ImageView.cpp" />
-    <ClInclude Include="Source\UI\UIElement\TextView.cpp" />
-    <ClInclude Include="Source\UI\UIElement\UiView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\bubbleBobble.ttf" />
@@ -361,6 +361,32 @@
     <None Include="sfml\include\SFML\System\Utf.inl" />
     <None Include="sfml\include\SFML\System\Vector2.inl" />
     <None Include="sfml\include\SFML\System\Vector3.inl" />
+    <None Include="sfml\lib\cmake\SFML\SFMLConfig.cmake" />
+    <None Include="sfml\lib\cmake\SFML\SFMLConfigDependencies.cmake" />
+    <None Include="sfml\lib\cmake\SFML\SFMLConfigVersion.cmake" />
+    <None Include="sfml\lib\cmake\SFML\SFMLSharedTargets-debug.cmake" />
+    <None Include="sfml\lib\cmake\SFML\SFMLSharedTargets-release.cmake" />
+    <None Include="sfml\lib\cmake\SFML\SFMLSharedTargets.cmake" />
+    <None Include="sfml\lib\cmake\SFML\SFMLStaticTargets-debug.cmake" />
+    <None Include="sfml\lib\cmake\SFML\SFMLStaticTargets-release.cmake" />
+    <None Include="sfml\lib\cmake\SFML\SFMLStaticTargets.cmake" />
+    <None Include="sfml\lib\Debug\sfml-audio-s-d.pdb" />
+    <None Include="sfml\lib\Debug\sfml-audio-s.pdb" />
+    <None Include="sfml\lib\Debug\sfml-audio.pdb" />
+    <None Include="sfml\lib\Debug\sfml-graphics-s-d.pdb" />
+    <None Include="sfml\lib\Debug\sfml-graphics-s.pdb" />
+    <None Include="sfml\lib\Debug\sfml-graphics.pdb" />
+    <None Include="sfml\lib\Debug\sfml-main-d.pdb" />
+    <None Include="sfml\lib\Debug\sfml-main-s.pdb" />
+    <None Include="sfml\lib\Debug\sfml-network-s-d.pdb" />
+    <None Include="sfml\lib\Debug\sfml-network-s.pdb" />
+    <None Include="sfml\lib\Debug\sfml-network.pdb" />
+    <None Include="sfml\lib\Debug\sfml-system-s-d.pdb" />
+    <None Include="sfml\lib\Debug\sfml-system-s.pdb" />
+    <None Include="sfml\lib\Debug\sfml-system.pdb" />
+    <None Include="sfml\lib\Debug\sfml-window-s-d.pdb" />
+    <None Include="sfml\lib\Debug\sfml-window-s.pdb" />
+    <None Include="sfml\lib\Debug\sfml-window.pdb" />
     <None Include="Space-Invaders\x64\Debug\openal32.dll" />
     <None Include="Space-Invaders\x64\Debug\sfml-audio-2.dll" />
     <None Include="Space-Invaders\x64\Debug\sfml-audio-d-2.dll" />
@@ -446,7 +472,39 @@
     <Object Include="Space-Invaders\x64\Debug\TimeService.obj" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="sfml\place your include and lib folders here.txt" />
     <Text Include="Space-Invaders\x64\Debug\Space-Invaders.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="sfml\lib\flac.lib" />
+    <Library Include="sfml\lib\freetype.lib" />
+    <Library Include="sfml\lib\ogg.lib" />
+    <Library Include="sfml\lib\openal32.lib" />
+    <Library Include="sfml\lib\sfml-audio-d.lib" />
+    <Library Include="sfml\lib\sfml-audio-s-d.lib" />
+    <Library Include="sfml\lib\sfml-audio-s.lib" />
+    <Library Include="sfml\lib\sfml-audio.lib" />
+    <Library Include="sfml\lib\sfml-graphics-d.lib" />
+    <Library Include="sfml\lib\sfml-graphics-s-d.lib" />
+    <Library Include="sfml\lib\sfml-graphics-s.lib" />
+    <Library Include="sfml\lib\sfml-graphics.lib" />
+    <Library Include="sfml\lib\sfml-main-d.lib" />
+    <Library Include="sfml\lib\sfml-main.lib" />
+    <Library Include="sfml\lib\sfml-network-d.lib" />
+    <Library Include="sfml\lib\sfml-network-s-d.lib" />
+    <Library Include="sfml\lib\sfml-network-s.lib" />
+    <Library Include="sfml\lib\sfml-network.lib" />
+    <Library Include="sfml\lib\sfml-system-d.lib" />
+    <Library Include="sfml\lib\sfml-system-s-d.lib" />
+    <Library Include="sfml\lib\sfml-system-s.lib" />
+    <Library Include="sfml\lib\sfml-system.lib" />
+    <Library Include="sfml\lib\sfml-window-d.lib" />
+    <Library Include="sfml\lib\sfml-window-s-d.lib" />
+    <Library Include="sfml\lib\sfml-window-s.lib" />
+    <Library Include="sfml\lib\sfml-window.lib" />
+    <Library Include="sfml\lib\vorbis.lib" />
+    <Library Include="sfml\lib\vorbisenc.lib" />
+    <Library Include="sfml\lib\vorbisfile.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

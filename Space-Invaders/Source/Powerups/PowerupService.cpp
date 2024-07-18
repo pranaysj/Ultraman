@@ -1,6 +1,5 @@
 #pragma
 #include"../../Header/Powerups/PowerupService.h"
-
 #include "../../Header/Powerups/PoweupController.h"
 #include "../../Header/Powerups/PowerupConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
@@ -15,24 +14,20 @@ namespace Powerup {
 	using namespace Controller;
 	using namespace Collectible;
 
-	PowerupService::PowerupService(){
-
-	}
+	PowerupService::PowerupService() {}
 
 	PowerupService::~PowerupService(){
 		Destroy();
 	}
 
-	void PowerupService::Initialize(){
-
-	}
+	void PowerupService::Initialize() {}
 
 	void PowerupService::Update(){
-		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->Update(); //loop and update
+		for (int i = 0; i < powerupList.size(); i++) powerupList[i]->Update(); //loop and update
 	}
 
 	void PowerupService::Render(){
-		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->Render(); //loop and render
+		for (int i = 0; i < powerupList.size(); i++) powerupList[i]->Render(); //loop and render
 	}
 
 	PowerupController* PowerupService::CreatePowerup(PowerupType powerup_type){
@@ -53,19 +48,20 @@ namespace Powerup {
 	}
 
 	PowerupController* PowerupService::SpawnPowerup(PowerupType powerup_type, sf::Vector2f position){
+		
 		PowerupController* powerup_controller = CreatePowerup(powerup_type);
 
 		powerup_controller->Initialize(position);
-		powerup_list.push_back(powerup_controller);
+		powerupList.push_back(powerup_controller);
 		return powerup_controller;
 	}
 
 	void PowerupService::DestroyPowerup(PowerupController* powerup_controller){
-		powerup_list.erase(std::remove(powerup_list.begin(), powerup_list.end(), powerup_controller), powerup_list.end());
+		powerupList.erase(std::remove(powerupList.begin(), powerupList.end(), powerup_controller), powerupList.end());
 		delete(powerup_controller);
 	}
 
 	void PowerupService::Destroy(){
-		for (int i = 0; i < powerup_list.size(); i++) delete (powerup_list[i]);
+		for (int i = 0; i < powerupList.size(); i++) delete (powerupList[i]);
 	}
 }

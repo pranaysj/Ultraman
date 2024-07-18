@@ -7,18 +7,14 @@ namespace Gameplay {
 
 	class GameplayView {
 	private:
-		RenderWindow* game_window;
+		RenderWindow* gameWindow;
 		
-		Texture background_texture;
-		Sprite background_sprite;
+		Texture backgroundTexture;
+		Sprite backgroundSprite;
 
-		UI::UIElement::ImageView* gameplay_image;
+		UI::UIElement::ImageView* backgroundImage;
 
-		void createUIElements();
-		void initializeImage();
-		sf::String getBackgroundTexturePath();
-
-		void Destory();
+		void InitializeBackgroundImage();
 
 	public:
 		GameplayView();

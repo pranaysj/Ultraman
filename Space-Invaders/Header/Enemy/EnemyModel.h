@@ -19,9 +19,13 @@ namespace Enemy {
 	public:
 		const Vector2f leftMostPosition = Vector2f(10.0f, 50.0f);
 		const Vector2f rightMostPosition = Vector2f(1800.0f, 50.0f);
+		
 		const sf::Vector2f barrel_position_offset = sf::Vector2f(20.f, 50.f); // we add this offset variable
 
-		const float maximumSpeed = 250.0f;
+		const float verticalTravelDistance = 100.f;
+
+		float verticalMovementSpeed = 30.0f;
+		float horizontalMovementSpeed = 100.0f;
 
 		EnemyModel(EnemyType _type);
 		~EnemyModel();

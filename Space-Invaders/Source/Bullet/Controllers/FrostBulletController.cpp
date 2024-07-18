@@ -6,17 +6,13 @@ namespace Bullet
 {
     namespace Controller
     {
-        FrostBulletController::FrostBulletController(BulletType _type) : BulletController(_type) {
+        FrostBulletController::FrostBulletController(BulletType _type) : BulletController(_type) {}
 
-        }
-
-        FrostBulletController::~FrostBulletController() {
-
-        }
+        FrostBulletController::~FrostBulletController() {}
 
         void FrostBulletController::Initialize(sf::Vector2f _position, MovementDirection _direction) {
             BulletController::Initialize(_position, _direction);
-            bulletModel->SetMovementSpeed(frost_movement_speed);
+            bulletModel->SetMovementSpeed(frostMovementSpeed);
         }
 
     }

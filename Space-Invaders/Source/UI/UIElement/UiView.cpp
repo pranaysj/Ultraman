@@ -16,8 +16,8 @@ namespace UI
 
 		void UIView::Initialize()
 		{
-			game_window = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow();
-			ui_state = UIState::VISIBLE;
+			gameWindow = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow();
+			uiState = UIState::VISIBLE;
 		}
 
 		void UIView::Update() { }
@@ -26,12 +26,12 @@ namespace UI
 
 		void UIView::Show()
 		{
-			ui_state = UIState::VISIBLE;
+			uiState = UIState::VISIBLE;
 		}
 
 		void UIView::Hide()
 		{
-			ui_state = UIState::HIDDEN;
+			uiState = UIState::HIDDEN;
 		}
 	}
 }

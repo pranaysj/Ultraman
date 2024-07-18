@@ -4,6 +4,9 @@
 
 namespace UI {
 
+
+	using namespace UI::Interface;
+
 	class UIService {
 	private:
 		IUIController* GetCurrentUIController();

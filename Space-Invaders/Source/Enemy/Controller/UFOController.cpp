@@ -44,7 +44,7 @@ namespace Enemy {
 		{
 			sf::Vector2f currentPositon = enemyModel->GetEnemyPositon();
 
-			currentPositon.x -= enemyModel->maximumSpeed * Global::ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			currentPositon.x -= enemyModel->horizontalMovementSpeed * Global::ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 			if (currentPositon.x <= enemyModel->leftMostPosition.x) 
 			{
@@ -60,7 +60,7 @@ namespace Enemy {
 		{
 			sf::Vector2f currentPositon = enemyModel->GetEnemyPositon();
 
-			currentPositon.x += enemyModel->maximumSpeed * Global::ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			currentPositon.x += enemyModel->horizontalMovementSpeed * Global::ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 			if (currentPositon.x >= enemyModel->rightMostPosition.x)
 			{

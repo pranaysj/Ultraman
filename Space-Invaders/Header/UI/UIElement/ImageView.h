@@ -8,8 +8,8 @@ namespace UI
 		class ImageView : public UIView
 		{
 		protected:
-			sf::Texture image_texture;
-			sf::Sprite image_sprite;
+			sf::Texture imageTexture;
+			sf::Sprite imageSprite;
 
 		public:
 			ImageView();
@@ -19,13 +19,13 @@ namespace UI
 			virtual void Update() override;
 			virtual void Render() override;
 
-			virtual void setTexture(sf::String texture_path);
-			virtual void setScale(float width, float height);
-			virtual void setPosition(sf::Vector2f position);
-			virtual void setRotation(float rotation_angle);
-			virtual void setOriginAtCentre();
-			virtual void setImageAlpha(float alpha);
-			virtual void setCentreAlinged();
+			virtual void SetTexture(sf::String texture_path);
+			virtual void SetScale(float width, float height);
+			virtual void SetPosition(sf::Vector2f position);
+			virtual void SetRotation(float rotation_angle);
+			virtual void SetOriginAtCentre();
+			virtual void SetImageAlpha(float alpha);
+			virtual void SetCentreAlinged();
 		};
 	}
 }

@@ -8,7 +8,7 @@ namespace UI
 	{
 		using namespace Global;
 
-		sf::Font TextView::font_bubble_bobble;
+		sf::Font TextView::fontBubbleBobble;
 		sf::Font TextView::font_DS_DIGIB;
 
 		TextView::TextView() = default;
@@ -19,11 +19,11 @@ namespace UI
 		{
 			UIView::Initialize();
 
-			setText(text_value);
-			setTextPosition(position);
-			setFont(font_type);
-			setFontSize(font_size);
-			setTextColor(color);
+			SetText(text_value);
+			SetTextPosition(position);
+			SetFont(font_type);
+			SetFontSize(font_size);
+			SetTextColor(color);
 		}
 
 		void TextView::Update()
@@ -35,34 +35,34 @@ namespace UI
 		{
 			UIView::Render();
 
-			if (ui_state == UIState::VISIBLE)
+			if (uiState == UIState::VISIBLE)
 			{
-				game_window->draw(text);
+				gameWindow->draw(text);
 			}
 		}
 
-		void TextView::initializeTextView()
+		void TextView::InitializeTextView()
 		{
-			loadFont();
+			LoadFont();
 		}
 
-		void TextView::loadFont()
+		void TextView::LoadFont()
 		{
-			font_bubble_bobble.loadFromFile(Config::bubble_bobble_font_path);
+			fontBubbleBobble.loadFromFile(Config::bubble_bobble_font_path);
 			font_DS_DIGIB.loadFromFile(Config::DS_DIGIB_font_path);
 		}
 
-		void TextView::setText(sf::String text_value)
+		void TextView::SetText(sf::String text_value)
 		{
 			text.setString(text_value);
 		}
 
-		void TextView::setFont(FontType font_type)
+		void TextView::SetFont(FontType font_type)
 		{
 			switch (font_type)
 			{
 			case FontType::BUBBLE_BOBBLE:
-				text.setFont(font_bubble_bobble);
+				text.setFont(fontBubbleBobble);
 				break;
 			case FontType::DS_DIGIB:
 				text.setFont(font_DS_DIGIB);
@@ -70,24 +70,24 @@ namespace UI
 			}
 		}
 
-		void TextView::setFontSize(int font_size)
+		void TextView::SetFontSize(int font_size)
 		{
 			text.setCharacterSize(font_size);
 		}
 
-		void TextView::setTextPosition(sf::Vector2f position)
+		void TextView::SetTextPosition(sf::Vector2f position)
 		{
 			text.setPosition(position);
 		}
 
-		void TextView::setTextColor(sf::Color color)
+		void TextView::SetTextColor(sf::Color color)
 		{
 			text.setFillColor(color);
 		}
 
-		void TextView::setTextCentreAligned()
+		void TextView::SetTextCentreAligned()
 		{
-			float x_position = (game_window->getSize().x - text.getLocalBounds().width) / 2;
+			float x_position = (gameWindow->getSize().x - text.getLocalBounds().width) / 2;
 			float y_position = text.getGlobalBounds().getPosition().y;
 
 			text.setPosition(sf::Vector2f(x_position, y_position));

@@ -13,11 +13,9 @@ namespace Player {
         playerState = PlayerState::ALIVE;
         playerPositon = initialPlayerPosition;
         playerScore = 0;
-
     }
 
-    Vector2f PlayerModel::GetPlayerPosition()
-    {
+    Vector2f PlayerModel::GetPlayerPosition() {
         return playerPositon;
     }
 
@@ -33,13 +31,11 @@ namespace Player {
         playerState = _state;
     }
 
-    int PlayerModel::GetPlayerScore()
-    {
+    int PlayerModel::GetPlayerScore() {
         return playerScore;
     }
 
-    void PlayerModel::SetPlayerScore(int _score)
-    {
+    void PlayerModel::SetPlayerScore(int _score) {
         playerScore = _score;
     }
 }

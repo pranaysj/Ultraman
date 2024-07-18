@@ -13,17 +13,15 @@ namespace Bullet
         const float bulletSpriteWidth = 15.f;
         const float bulletSpriteHeight = 15.f;
 
-        sf::RenderWindow* gameWindow;
         sf::Texture bulletTexture;
         sf::Sprite bulletSprite;
 
         BulletController* bulletController;
+        UI::UIElement::ImageView* bulletImage;
 
-        UI::UIElement::ImageView* bullet_image;
-
-        void createUIElements();
-        void initializeImage();
-        sf::String getBulletTexturePath();
+        void CreateUIElements();
+        void InitializeImage();
+        sf::String GetBulletTexturePath();
         void Destory();
 
     public:

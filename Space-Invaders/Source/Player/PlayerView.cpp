@@ -9,45 +9,38 @@ namespace Player {
 	using namespace UI::UIElement;
 
 	PlayerView::PlayerView() {
-		createUIElements();
+		CreateUIElements();
 	}
 
-	PlayerView::~PlayerView() {}
-
-	void PlayerView::createUIElements()
+	void PlayerView::CreateUIElements()
 	{
-		player_image = new ImageView();
+		playerImage = new ImageView();
+	}
+
+	PlayerView::~PlayerView() {
+		delete(playerImage);
 	}
 
 	void PlayerView::Initialize(PlayerController* controller) {
 		playerController = controller;
-		initializeImage();
-		
+		InitializeImage();
 	}
 
-	void PlayerView::initializeImage()
+	void PlayerView::InitializeImage()
 	{
-		player_image->Initialize(getPlayerTexturePath(),
+		playerImage->Initialize(Config::player_texture_path,
 			playerSpriteWidth,
 			playerSpriteHeigh,
 			playerController->GetPlayerPosition());
-
-	}
-
-	sf::String PlayerView::getPlayerTexturePath()
-	{
-		if (playerTexture.loadFromFile(Config::player_texture_path)) {
-			playerSprite.setTexture(playerTexture);
-		}
 	}
 
 	void PlayerView::Update() {
 		playerSprite.setPosition(playerController->GetPlayerPosition());
-		player_image->Update();
+		playerImage->Update();
 	}
 
 	void PlayerView::Render() {
-		player_image->Render();
+		playerImage->Render();
 	}
 
 }

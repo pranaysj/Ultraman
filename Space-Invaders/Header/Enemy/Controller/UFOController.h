@@ -15,6 +15,7 @@ namespace Enemy
             void MoveRight();
 
             void FireBullet() override;
+
             Powerup::PowerupType GetRandomPowerupType();
 
         public:

@@ -18,11 +18,10 @@ namespace Element {
 			sf::Sprite bunkerSprite;
 
 			//const sf::String bunkerTexturePath = "assets/textures/bunker.png";
-			UI::UIElement::ImageView* bunker_image;
+			UI::UIElement::ImageView* bunkerImage;
 
 			void createUIElements();
 			void initializeImage();
-			sf::String getBunkerTexturePath();
 
 			void Destory();
 

@@ -8,9 +8,7 @@ namespace Enemy {
 		enemyType = _type;
 	}
 
-	EnemyModel::~EnemyModel(){
-
-	}
+	EnemyModel::~EnemyModel(){}
 
 	void EnemyModel::Initialize(){
 		enemyState = EnemyState::PATROLLING;

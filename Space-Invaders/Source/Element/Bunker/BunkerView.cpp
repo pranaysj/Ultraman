@@ -10,38 +10,12 @@ namespace Element {
 		using namespace Global;
 		using namespace UI::UIElement;
 
-		void BunkerView::createUIElements()
-		{
-			bunker_image = new ImageView();
-		}
-
-		void BunkerView::initializeImage()
-		{
-			bunker_image->Initialize(getBunkerTexturePath(),
-				bunkerSpriteWidth,
-				bunkerSpriteHeight,
-				bunkerController->GetBunkerPosition());
-		}
-
-		sf::String BunkerView::getBunkerTexturePath()
-		{
-			if (bunkerTexture.loadFromFile(Config::bunker_texture_path))
-			{
-				bunkerSprite.setTexture(bunkerTexture);
-			}
-		}
-
-		void BunkerView::Destory()
-		{
-			delete(bunker_image);
-		}
-
 		BunkerView::BunkerView(){
 			createUIElements();
 		}
 
 		BunkerView::~BunkerView(){
-			Destory();
+			delete(bunkerImage);
 		}
 
 		void BunkerView::Initialize(BunkerController* _controller){
@@ -50,13 +24,26 @@ namespace Element {
 
 		}
 
+		void BunkerView::createUIElements()
+		{
+			bunkerImage = new ImageView();
+		}
+
+		void BunkerView::initializeImage()
+		{
+			bunkerImage->Initialize(Config::bunker_texture_path,
+				bunkerSpriteWidth,
+				bunkerSpriteHeight,
+				bunkerController->GetBunkerPosition());
+		}
+
+
 		void BunkerView::Update(){
-			bunkerSprite.setPosition(bunkerController->GetBunkerPosition());
-			bunker_image->Update();
+			bunkerImage->Update();
 		}
 
 		void BunkerView::Render(){
-			bunker_image->Render();
+			bunkerImage->Render();
 		}
 	}
 }

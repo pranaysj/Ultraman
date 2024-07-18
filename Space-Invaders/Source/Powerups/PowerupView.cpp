@@ -10,34 +10,35 @@ namespace Powerup
 	using namespace Global;
 	using namespace UI::UIElement;
 
-	PowerupView::PowerupView() { createUIElements(); }
+	PowerupView::PowerupView() { CreateUIElements(); }
 
-	PowerupView::~PowerupView() { destroy(); }
+	PowerupView::~PowerupView() { delete(powerupImage); }
+		
 
-	void PowerupView::initialize(PowerupController* controller)
+	void PowerupView::Initialize(PowerupController* controller)
 	{
-		powerup_controller = controller;
-		initializeImage();
+		powerupController = controller;
+		InitializeImage();
 	}
 
 
-	void PowerupView::createUIElements()
+	void PowerupView::CreateUIElements()
 	{
-		powerup_image = new ImageView();
+		powerupImage = new ImageView();
 	}
 
-	void PowerupView::initializeImage()
+	void PowerupView::InitializeImage()
 	{
-		powerup_image->Initialize(getPowerupTexturePath(),
-			powerup_sprite_width,
-			powerup_sprite_height,
-			powerup_controller->GetCollectiblePosition());
+		powerupImage->Initialize(GetPowerupTexturePath(),
+			powerupSpriteWidth,
+			powerupSpriteHeight,
+			powerupController->GetCollectiblePosition());
 		
 	}
 
-	sf::String PowerupView::getPowerupTexturePath()
+	sf::String PowerupView::GetPowerupTexturePath()
 	{
-		switch (powerup_controller->GetPowerupType())
+		switch (powerupController->GetPowerupType())
 		{
 		case::Powerup::PowerupType::SHIELD:
 			return Config::shield_texture_path;
@@ -53,19 +54,14 @@ namespace Powerup
 		}
 	}
 
-	void PowerupView::destroy()
+	void PowerupView::Update()
 	{
-		delete(powerup_image);
+		powerupSprite.setPosition(powerupController->GetCollectiblePosition());
+		powerupImage->Update();
 	}
 
-	void PowerupView::update()
+	void PowerupView::Render()
 	{
-		powerup_sprite.setPosition(powerup_controller->GetCollectiblePosition());
-		powerup_image->Update();
-	}
-
-	void PowerupView::render()
-	{
-		powerup_image->Render();
+		powerupImage->Render();
 	}
 }

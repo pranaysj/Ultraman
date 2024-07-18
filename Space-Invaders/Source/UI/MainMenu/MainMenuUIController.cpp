@@ -17,108 +17,108 @@ namespace UI
 
         MainMenuUIController::MainMenuUIController()
         {
-            createImage();
-            createButtons();
+            CreateImage();
+            CreateButtons();
         }
 
         MainMenuUIController::~MainMenuUIController()
         {
-            destroy();
+            Destroy();
         }
 
         void MainMenuUIController::Initialize()
         {
-            initializeBackgroundImage();
-            initializeButtons();
-            registerButtonCallback();
+            InitializeBackgroundImage();
+            InitializeButtons();
+            RegisterButtonCallback();
         }
 
-        void MainMenuUIController::createImage()
+        void MainMenuUIController::CreateImage()
         {
-            background_image = new ImageView();
+            backgroundImage = new ImageView();
         }
 
-        void MainMenuUIController::createButtons()
+        void MainMenuUIController::CreateButtons()
         {
-            play_button = new ButtonView();
-            instructions_button = new ButtonView();
-            quit_button = new ButtonView();
+            playButton = new ButtonView();
+            instructionsButton = new ButtonView();
+            quitButton = new ButtonView();
         }
 
-        void MainMenuUIController::initializeBackgroundImage()
+        void MainMenuUIController::InitializeBackgroundImage()
         {
             sf::RenderWindow* game_window = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow();
 
-            background_image->Initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
-            background_image->setImageAlpha(background_alpha);
+            backgroundImage->Initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
+            backgroundImage->SetImageAlpha(backgroundAlpha);
         }
 
-        void MainMenuUIController::initializeButtons()
+        void MainMenuUIController::InitializeButtons()
         {
-            play_button->Initialize("Play Button", Config::play_button_texture_path, button_width, button_height, sf::Vector2f(0, play_button_y_position));
-            instructions_button->Initialize("Instructions Button", Config::instructions_button_texture_path, button_width, button_height, sf::Vector2f(0, instructions_button_y_position));
-            quit_button->Initialize("Quit Button", Config::quit_button_texture_path, button_width, button_height, sf::Vector2f(0, quit_button_y_position));
+            playButton->Initialize("Play Button", Config::play_button_texture_path, buttonWidth, buttonHeight, sf::Vector2f(0, playButton_Y_Position));
+            instructionsButton->Initialize("Instructions Button", Config::instructions_button_texture_path, buttonWidth, buttonHeight, sf::Vector2f(0, instructionsButton_Y_Position));
+            quitButton->Initialize("Quit Button", Config::quit_button_texture_path, buttonWidth, buttonHeight, sf::Vector2f(0, quit_Button_Y_Position));
 
-            play_button->setCentreAlinged();
-            instructions_button->setCentreAlinged();
-            quit_button->setCentreAlinged();
+            playButton->SetCentreAlinged();
+            instructionsButton->SetCentreAlinged();
+            quitButton->SetCentreAlinged();
         }
 
-        void MainMenuUIController::registerButtonCallback()
+        void MainMenuUIController::RegisterButtonCallback()
         {
-            play_button->registerCallbackFuntion(std::bind(&MainMenuUIController::playButtonCallback, this));
-            instructions_button->registerCallbackFuntion(std::bind(&MainMenuUIController::instructionsButtonCallback, this));
-            quit_button->registerCallbackFuntion(std::bind(&MainMenuUIController::quitButtonCallback, this));
+            playButton->RegisterCallbackFuntion(std::bind(&MainMenuUIController::PlayButtonCallback, this));
+            instructionsButton->RegisterCallbackFuntion(std::bind(&MainMenuUIController::InstructionsButtonCallback, this));
+            quitButton->RegisterCallbackFuntion(std::bind(&MainMenuUIController::QuitButtonCallback, this));
         }
 
-        void MainMenuUIController::playButtonCallback()
+        void MainMenuUIController::PlayButtonCallback()
         {
             ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::BUTTON_CLICK);
             GameService::SetGameState(GameState::GAMEPLAY);
         }
 
-        void MainMenuUIController::instructionsButtonCallback()
+        void MainMenuUIController::InstructionsButtonCallback()
         {
             ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::BUTTON_CLICK);
         }
 
-        void MainMenuUIController::quitButtonCallback()
+        void MainMenuUIController::QuitButtonCallback()
         {
             ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow()->close();
         }
 
         void MainMenuUIController::Update()
         {
-            background_image->Update();
-            play_button->Update();
-            instructions_button->Update();
-            quit_button->Update();
+            backgroundImage->Update();
+            playButton->Update();
+            instructionsButton->Update();
+            quitButton->Update();
         }
 
         void MainMenuUIController::Render()
         {
-            background_image->Render();
-            play_button->Render();
-            instructions_button->Render();
-            quit_button->Render();
+            backgroundImage->Render();
+            playButton->Render();
+            instructionsButton->Render();
+            quitButton->Render();
         }
 
         void MainMenuUIController::Show()
         {
-            background_image->Show();
-            play_button->Show();
-            instructions_button->Show();
-            quit_button->Show();
+            backgroundImage->Show();
+            playButton->Show();
+            instructionsButton->Show();
+            quitButton->Show();
 
             ServiceLocator::GetInstance()->GetSoundService()->PlayBackgroundMusic();
         }
 
-        void MainMenuUIController::destroy()
+        void MainMenuUIController::Destroy()
         {
-            delete (play_button);
-            delete (instructions_button);
-            delete (quit_button);
-            delete (background_image);
+            delete (playButton);
+            delete (instructionsButton);
+            delete (quitButton);
+            delete (backgroundImage);
         }
     }
 }

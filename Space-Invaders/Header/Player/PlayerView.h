@@ -11,24 +11,17 @@ namespace Player {
 	class PlayerView {
 	private:
 
-		PlayerController* playerController;
-		RenderWindow* gameWindow;
-
-		//const String playerTexturePath = "assets/textures/Ultraman.png";
 		const float playerSpriteWidth = 50.0f;
 		const float playerSpriteHeigh = 85.0f;
 
 		Texture playerTexture;
 		Sprite playerSprite;
 
-		/*void InitializePlayerSprite();
-		void ScalePlayerSprite();*/
-		UI::UIElement::ImageView* player_image;
+		PlayerController* playerController;
+		UI::UIElement::ImageView* playerImage;
 
-		void createUIElements();
-		void initializeImage();
-		sf::String getPlayerTexturePath();
-
+		void CreateUIElements();
+		void InitializeImage();
 
 	public:
 		PlayerView();

@@ -4,35 +4,40 @@
 
 
 namespace Graphics {
+
     using namespace std;
     using namespace sf;
+
     class GraphicService {
     private:
 
-        const string game_window_title = "Outscal Presents - Alien Invader";
-        const int game_window_width = 1920;
-        const int game_window_height = 1080;
-        const Color window_color = Color::Blue;
         const int frameRate = 60;
+
+        const string gameWindowTitle = "Outscal Presents - Alien Invader";
+        
+        const int gameWindowWidth = 1920;
+        const int gameWindowHeight = 1080;
+        
+        const Color windowColor = Color::Blue;
 
         VideoMode* videoMode;
         RenderWindow* gameWindow;
 
-        void setVideoMode();
+        void SetVideoMode();
         void OnDestory();
 
     public:
         GraphicService();
         ~GraphicService();
 
-        RenderWindow* createGameWindow();
+        RenderWindow* CreateGameWindow();
 
         void Initialize();
         void Update();
         void Render();
-        bool isGameWindowOpen();
+        bool IsGameWindowOpen();
 
         RenderWindow* GetGameWindow();
-        Color getColorWindow();
+        Color GetColorWindow();
     };
 }
