@@ -6,7 +6,7 @@ namespace Enemy {
 		class SubZeroController : public EnemyController {
         private:
 
-            float verticalMovementSpeed = 100.f;
+            float subZeroVerticalMovementSpeed = 100.f;
             const float subzeroFireRate = 3.f;
 
             void Move() override;

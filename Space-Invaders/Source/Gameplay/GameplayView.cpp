@@ -30,7 +30,7 @@ namespace Gameplay {
 		backgroundImage->Initialize(Config::background_texture_path,
 			gameWindow->getSize().x,
 			gameWindow->getSize().y,
-			static_cast<sf::Vector2f>(gameWindow->getPosition()));
+			sf::Vector2f(0, 0));
 	}
 
 	void GameplayView::Update(){

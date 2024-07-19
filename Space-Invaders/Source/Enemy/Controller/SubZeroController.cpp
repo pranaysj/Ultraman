@@ -4,6 +4,7 @@
 #include"../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Bullet/BulletConfig.h"
+#include <iostream>
 
 namespace Enemy {
 	using namespace Global;
@@ -17,7 +18,8 @@ namespace Enemy {
 		void SubZeroController::Initialize(){
 			EnemyController::Initialize();
 			enemyModel->SetMovementDirection(MovementDirection::DOWN);
-			rateOfFire = subzeroFireRate;
+			//rateOfFire = subzeroFireRate;
+
 		}
 
 		void SubZeroController::Move(){ 
@@ -31,7 +33,7 @@ namespace Enemy {
 
 		void SubZeroController::MoveDown(){
 			sf::Vector2f currentPosition = enemyModel->GetEnemyPositon();
-			currentPosition.y += verticalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			currentPosition.y += subZeroVerticalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 			enemyModel->SetEnemyPositon(currentPosition);
 		}

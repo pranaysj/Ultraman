@@ -35,7 +35,7 @@ namespace Player {
 	}
 
 	void PlayerView::Update() {
-		playerSprite.setPosition(playerController->GetPlayerPosition());
+		playerImage->SetPosition(playerController->GetPlayerPosition());
 		playerImage->Update();
 	}
 

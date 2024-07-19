@@ -14,9 +14,11 @@ namespace Enemy {
 		MovementDirection movementDirection;
 
 		Vector2f enemyStartRefPositon = Vector2f(0.0f, 0.0f);
-		Vector2f enemyCurrentPositon;
+
+	protected:
 
 	public:
+		Vector2f enemyCurrentPositon;
 		const Vector2f leftMostPosition = Vector2f(10.0f, 50.0f);
 		const Vector2f rightMostPosition = Vector2f(1800.0f, 50.0f);
 		
@@ -24,8 +26,8 @@ namespace Enemy {
 
 		const float verticalTravelDistance = 100.f;
 
-		float verticalMovementSpeed = 30.0f;
-		float horizontalMovementSpeed = 250.0f;
+		/*float verticalMovementSpeed = 150.0f;
+		float horizontalMovementSpeed = 250.0f;*/
 
 		EnemyModel(EnemyType _type);
 		~EnemyModel();

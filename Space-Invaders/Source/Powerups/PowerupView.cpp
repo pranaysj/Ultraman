@@ -56,7 +56,7 @@ namespace Powerup
 
 	void PowerupView::Update()
 	{
-		powerupSprite.setPosition(powerupController->GetCollectiblePosition());
+		powerupImage->SetPosition(powerupController->GetCollectiblePosition());
 		powerupImage->Update();
 	}
 

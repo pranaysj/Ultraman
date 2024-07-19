@@ -53,7 +53,7 @@ namespace Bullet {
 	}
 
 	void BulletView::Update(){
-		bulletSprite.setPosition(bulletController->GetProjectilePosition());
+		bulletImage->SetPosition(bulletController->GetProjectilePosition());
 		bulletImage->Update();
 	}
 

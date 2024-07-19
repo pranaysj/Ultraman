@@ -16,7 +16,7 @@ namespace Enemy {
 
 		void ZapperController::Initialize() {
 			EnemyController::Initialize();
-			rateOfFire = zapperFireRate;
+			//rateOfFire = zapperFireRate;
 		}
 
 		void ZapperController::Move(){
@@ -37,7 +37,7 @@ namespace Enemy {
 		void ZapperController::MoveLeft(){
 			sf::Vector2f currentPosition = enemyModel->GetEnemyPositon();
 
-			currentPosition.x -= enemyModel->horizontalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			currentPosition.x -= zapperHoritonalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 			if (currentPosition.x <= enemyModel->leftMostPosition.x)
 			{
@@ -53,7 +53,7 @@ namespace Enemy {
 		void ZapperController::MoveRight(){
 			sf::Vector2f currentPositoin = enemyModel->GetEnemyPositon();
 
-			currentPositoin.x += enemyModel->horizontalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			currentPositoin.x += zapperHoritonalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
 			if (currentPositoin.x >= enemyModel->rightMostPosition.x) {
 				enemyModel->SetMovementDirection(MovementDirection::DOWN);
@@ -68,9 +68,9 @@ namespace Enemy {
 		void ZapperController::MoveDown(){
 			sf::Vector2f currentPosition = enemyModel->GetEnemyPositon();
 
-			currentPosition.y += enemyModel->verticalMovementSpeed * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			currentPosition.y += zapperVerticalTravelDistance * ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-			if (currentPosition.y >= enemyModel->GetRefPositon().y + verticalTravelDistance)
+			if (currentPosition.y >= enemyModel->GetRefPositon().y + enemyModel->verticalTravelDistance)
 			{
 				if (enemyModel->GetRefPositon().x <= enemyModel->leftMostPosition.x)
 				{

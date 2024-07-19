@@ -5,7 +5,8 @@ namespace Enemy{
 	namespace Controller {
 		class ZapperController : public EnemyController {
         private:
-            float verticalTravelDistance = 100.f;
+            const float zapperHoritonalMovementSpeed = 250.f;
+            const float zapperVerticalTravelDistance = 100.f;
             const float zapperFireRate = 3.f;
 
             void Move() override;

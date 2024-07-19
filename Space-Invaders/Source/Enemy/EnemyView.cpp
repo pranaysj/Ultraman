@@ -56,7 +56,7 @@ namespace Enemy {
 
 
 	void EnemyView::Update(){
-		enemySprite.setPosition(enemyController->GetEnemyPosition());
+		enemyImage->SetPosition(enemyController->GetEnemyPosition());
 		enemyImage->Update();
 	}
 

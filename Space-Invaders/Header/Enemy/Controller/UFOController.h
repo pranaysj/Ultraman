@@ -9,6 +9,8 @@ namespace Enemy
         class UFOController : public EnemyController
         {
         private:
+             
+            const float UFOHorizontalMovementSpeed = 100.f;
 
             void Move() override;
             void MoveLeft();

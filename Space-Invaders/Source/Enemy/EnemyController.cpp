@@ -5,6 +5,7 @@
 #include"../../Header/Global/ServiceLocator.h"
 #include"../../Header/Enemy/EnemyConfig.h"
 #include"../../Header/Bullet/BulletConfig.h"
+#include <iostream>
 
 namespace Enemy {
 
