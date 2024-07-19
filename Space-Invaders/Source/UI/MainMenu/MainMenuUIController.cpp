@@ -5,6 +5,7 @@
 #include "../../header/Global/Config.h"
 #include "../../header/Sound/SoundService.h"
 #include "../../header/Event/EventService.h"
+#include <iostream>
 
 namespace UI
 {
@@ -50,7 +51,7 @@ namespace UI
             sf::RenderWindow* game_window = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow();
 
             backgroundImage->Initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
-            backgroundImage->SetImageAlpha(backgroundAlpha);
+            //backgroundImage->SetImageAlpha(backgroundAlpha);
         }
 
         void MainMenuUIController::InitializeButtons()
@@ -111,6 +112,8 @@ namespace UI
             quitButton->Show();
 
             ServiceLocator::GetInstance()->GetSoundService()->PlayBackgroundMusic();
+
+            std::cout << "Image Draw" << std::endl;
         }
 
         void MainMenuUIController::Destroy()

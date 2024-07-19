@@ -25,7 +25,7 @@ namespace Enemy {
 		const float verticalTravelDistance = 100.f;
 
 		float verticalMovementSpeed = 30.0f;
-		float horizontalMovementSpeed = 100.0f;
+		float horizontalMovementSpeed = 250.0f;
 
 		EnemyModel(EnemyType _type);
 		~EnemyModel();

@@ -26,16 +26,17 @@ namespace Player {
 	}
 
 	void PlayerController::Update() {
-		ProcessPlayerInput();
 		playerView->Update();
+		ProcessPlayerInput();
 	}
 
 	void PlayerController::ProcessPlayerInput() {
 		EventService* eventService = ServiceLocator::GetInstance()->GetEventService();
 
-		if (eventService->PressedLeftKey() || eventService->PressedAKey()) {
+		if (eventService->PressedLeftKey() || eventService->PressedAKey()){
 			MoveLeft();
 		}
+
 		if (eventService->PressedRightKey() || eventService->PressedDKey()) {
 			MoveRight();
 		}

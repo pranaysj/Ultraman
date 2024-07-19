@@ -18,7 +18,7 @@ namespace Graphics {
         const int gameWindowWidth = 1920;
         const int gameWindowHeight = 1080;
         
-        const Color windowColor = Color::Blue;
+        const Color windowColor = Color::Green;
 
         VideoMode* videoMode;
         RenderWindow* gameWindow;

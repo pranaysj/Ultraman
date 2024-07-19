@@ -133,8 +133,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Enemy\Controller\ThunderSnakeController.cpp" />
-    <ClCompile Include="Source\Enemy\Controller\UFOController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\Bullet\BulletController.cpp" />
     <ClCompile Include="Source\Bullet\BulletModel.cpp" />
@@ -148,6 +146,8 @@
     <ClCompile Include="Source\Element\Bunker\BunkerView.cpp" />
     <ClCompile Include="Source\Element\ElementService.cpp" />
     <ClCompile Include="Source\Enemy\Controller\SubZeroController.cpp" />
+    <ClCompile Include="Source\Enemy\Controller\ThunderSnakeController.cpp" />
+    <ClCompile Include="Source\Enemy\Controller\UFOController.cpp" />
     <ClCompile Include="Source\Enemy\Controller\ZapperController.cpp" />
     <ClCompile Include="Source\Enemy\EnemyController.cpp" />
     <ClCompile Include="Source\Enemy\EnemyModel.cpp" />

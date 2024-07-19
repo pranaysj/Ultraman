@@ -1,4 +1,5 @@
 #include "../../header/UI/UIElement/ImageView.h"
+#include<iostream>
 
 namespace UI
 {
@@ -36,6 +37,7 @@ namespace UI
             if (imageTexture.loadFromFile(texture_path))
             {
                 imageSprite.setTexture(imageTexture);
+
             }
         }
 
@@ -50,6 +52,7 @@ namespace UI
         void ImageView::SetPosition(sf::Vector2f position)
         {
             imageSprite.setPosition(position);
+
         }
 
         void ImageView::SetRotation(float rotation_angle)

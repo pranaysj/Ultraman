@@ -4,19 +4,17 @@
 
 namespace UI {
 
-
-	using namespace UI::Interface;
-
 	class UIService {
 	private:
-		IUIController* GetCurrentUIController();
 
 		MainMenu::MainMenuUIController* mainMenuController;
 
 		void CreateControllers();
 		void InitializeControllers();
-		void Destroy();
 
+		Interface::IUIController* GetCurrentUIController();
+
+		void Destroy();
 
 	public:
 		UIService();
