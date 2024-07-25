@@ -623,6 +623,9 @@
     <ClInclude Include="Header\UI\Interface\IUIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Entity\EntityConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\bubbleBobble.ttf" />

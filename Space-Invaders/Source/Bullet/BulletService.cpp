@@ -32,7 +32,7 @@ namespace Bullet
 		}
 	}
 
-	BulletController* BulletService::CreateBullet(BulletType bullet_type)
+	BulletController* BulletService::CreateBullet(BulletType bullet_type, Entity::EntityType _ownerType)
 	{
 		switch (bullet_type)
 		{
@@ -54,9 +54,9 @@ namespace Bullet
 		}
 	}
 
-	BulletController* BulletService::SpawnBullet(BulletType bullet_type, sf::Vector2f position, MovementDirection direction)
+	BulletController* BulletService::SpawnBullet(BulletType bullet_type, sf::Vector2f position, MovementDirection direction, Entity::EntityType _ownerType)
 	{
-		BulletController* bullet_controller = CreateBullet(bullet_type);
+		BulletController* bullet_controller = CreateBullet(bullet_type, _ownerType);
 
 		bullet_controller->Initialize(position, direction);
 		bulletList.push_back(bullet_controller);

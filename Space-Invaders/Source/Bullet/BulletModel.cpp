@@ -1,8 +1,9 @@
 #pragma once
 #include "../../Header/Bullet/BulletModel.h"
 namespace Bullet {
-	Bullet::BulletModel::BulletModel(BulletType _type){
+	Bullet::BulletModel::BulletModel(BulletType _type, Entity::EntityType _ownerType){
 		bulletType = _type;
+		ownerType = _ownerType;
 	}
 
 	BulletModel::~BulletModel(){
@@ -44,6 +45,10 @@ namespace Bullet {
 
 	void BulletModel::SetMovementDirection(MovementDirection _direction){
 		movementDirection = _direction;
+	}
+	Entity::EntityType BulletModel::GetOwnerEntityType()
+	{
+		return ownerType;
 	}
 }
 

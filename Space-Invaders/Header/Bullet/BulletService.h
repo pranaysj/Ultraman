@@ -14,7 +14,7 @@ namespace Bullet
 	private:
 		std::vector<Projectile::IProjectile*> bulletList;
 
-		BulletController* CreateBullet(BulletType _type);
+		BulletController* CreateBullet(BulletType _type, Entity::EntityType _ownerType);
 		void Destroy();
 
 	public:
@@ -25,7 +25,7 @@ namespace Bullet
 		void Update();
 		void Render();
 
-		BulletController* SpawnBullet(BulletType _type, sf::Vector2f _position, MovementDirection _direction);
+		BulletController* SpawnBullet(BulletType _type, sf::Vector2f _position, MovementDirection _direction, Entity::EntityType _ownerType);
 		void DestroyBullet(BulletController* _controller);
 	};
 }
