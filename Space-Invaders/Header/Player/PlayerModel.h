@@ -6,7 +6,8 @@ namespace Player {
 
     enum class PlayerState {
         ALIVE,
-        DEAD
+        DEAD,
+        FROZEN
     };
 
     class PlayerModel {
