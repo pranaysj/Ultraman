@@ -30,7 +30,7 @@ namespace Player {
 		void MoveLeft();
 		void MoveRight();
 
-		bool ProcessBulletCollision(ICollider* _ollider);
+		bool ProcessBulletCollision(ICollider* _collider);
 		bool ProcessPowerupCollision(ICollider* _collider);
 		bool ProcessEnemyCollision(ICollider* _collider);
 
@@ -39,16 +39,14 @@ namespace Player {
 
 		void UpdateFireDuration();
 		void ProcessBulletFire();
-		void FireBullet(bool b_tripple_laser = false);
-		void FireBullet(sf::Vector2f position);
+		void FireBullet(bool boolTrippleLaser = false);
+		void FireBullet(sf::Vector2f _position);
 
 		void UpdatePowerupDuration();
 
 		void DisableShield();
 		void DisableRapidFire();
 		void DisableTrippleLaser();
-
-		void FireBullet();
 
 	public:
 		PlayerController();
