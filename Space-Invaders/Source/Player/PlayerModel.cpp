@@ -12,7 +12,10 @@ namespace Player {
     void PlayerModel::Reset() {
         playerState = PlayerState::ALIVE;
         playerPositon = initialPlayerPosition;
-        playerScore = 0;
+
+        boolShield = false;
+        boolRapidFire = false;
+        boolTrippleLaser = false;
     }
 
     Vector2f PlayerModel::GetPlayerPosition() {
@@ -29,6 +32,41 @@ namespace Player {
 
     void PlayerModel::SetPlayerState(PlayerState _state) {
         playerState = _state;
+    }
+
+    Entity::EntityType PlayerModel::GetEntityType()
+    {
+        return entityType;
+    }
+
+    bool PlayerModel::IsShieldEnabled()
+    {
+        return boolShield;
+    }
+
+    bool PlayerModel::IsRapidFireEnabled()
+    {
+        return boolRapidFire;
+    }
+
+    bool PlayerModel::IsTrippleLaserEnabled()
+    {
+        return boolTrippleLaser;
+    }
+
+    void PlayerModel::SetShieldState(bool _value)
+    {
+        boolShield = _value;
+    }
+
+    void PlayerModel::SetRapidFireState(bool _value)
+    {
+        boolRapidFire = _value;
+    }
+
+    void PlayerModel::SetTrippleFireState(bool _value)
+    {
+        boolTrippleLaser = _value;
     }
 
     int PlayerModel::GetPlayerScore() {

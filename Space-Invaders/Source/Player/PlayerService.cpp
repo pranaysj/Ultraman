@@ -25,5 +25,25 @@ namespace Player {
         playerController->Render();
     }
 
+    void PlayerService::EnableShield()
+    {
+        playerController -> EnableShield();
+    }
+
+    void PlayerService::EnableRapidFire()
+    {
+        playerController -> EnableRapidFire();
+    }
+
+    void PlayerService::EnableTrippleLaser()
+    {
+        playerController -> EnableTrippleLaser();
+    }
+
+    void PlayerService::Reset()
+    {
+        playerController->Reset();
+    }
+
 }
 
