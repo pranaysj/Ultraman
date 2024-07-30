@@ -4,6 +4,10 @@
 #include "../../Header/Player/PlayerView.h"
 #include "../../Header/Event/EventService.h"
 #include "../../Header/Bullet/BulletConfig.h"
+#include "../../Header/Bullet/BulletController.h"
+#include "../../Header/Powerups/PoweupController.h"
+#include "../../Header/Enemy/EnemyController.h"
+
 
 namespace Player {
 	using namespace Global;
@@ -231,11 +235,11 @@ namespace Player {
 		playerModel->SetTrippleFireState(false);
 	}
 
-	void PlayerController::FireBullet(){
+	/*void PlayerController::FireBullet(){
 		ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(BulletType::LASER_BULLET,
 			playerModel->GetPlayerPosition() + playerModel->barrel_position_offset,
 			Bullet::MovementDirection::UP);
-	}
+	}*/
 
 
 	void PlayerController::Reset()

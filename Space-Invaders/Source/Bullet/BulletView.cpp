@@ -60,6 +60,11 @@ namespace Bullet {
 	void BulletView::Render(){
 		bulletImage->Render();
 	}
+
+	sf::Sprite& BulletView::GetBulletSprite()
+	{
+		// TODO: insert return statement here
+	}
 	
 	void BulletView::Destory()
 	{

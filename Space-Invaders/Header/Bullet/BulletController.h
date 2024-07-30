@@ -2,18 +2,25 @@
 #include"../../Header/Bullet/BulletConfig.h"
 #include"../../Header/Projectile/IProjectile.h"
 #include"../../Header/Entity/EntityConfig.h"
+#include"../../Header/Collision/ICollider.h"
 
 namespace Bullet {
 	class BulletModel;
 	class BulletView;
 	enum class BulletType;
 
-	class BulletController : public Projectile::IProjectile {
+    class BulletController : public Projectile::IProjectile, public Collision::ICollider {
     protected:
         BulletView* bulletView;
         BulletModel* bulletModel;
 
         void UpdateProjectilePosition() override;
+
+        void ProcessBulletCollision(ICollider* other_collider);
+        void ProcessEnemyCollision(ICollider* other_collider);
+        void ProcessPlayerCollision(ICollider* other_collider);
+        void ProcessBunkerCollision(ICollider* other_collider);
+
         void MoveUp();
         void MoveDown();
         void HandleOutOfBounds();
@@ -28,8 +35,9 @@ namespace Bullet {
 
         sf::Vector2f GetProjectilePosition() override;
         BulletType GetBulletType();
-
         Entity::EntityType GetOwnerEntityType();
 
+        const sf::Sprite& GetColliderSprite() override;
+        void OnCollision(ICollider* other_collider) override;
 	};
 }

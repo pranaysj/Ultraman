@@ -31,5 +31,7 @@ namespace Bullet
         void Initialize(BulletController* _controller);
         void Update();
         void Render();
+
+        sf::Sprite& GetBulletSprite();
     };
 }
