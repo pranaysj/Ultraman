@@ -3,10 +3,12 @@
 #include "../../Header/Powerups/PowerupView.h"
 #include "../../Header/Powerups/PowerupModel.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../header/Player/PlayerController.h"
 
 namespace Powerup
 {
 	using namespace Global;
+	using namespace Player;
 
 	PowerupController::PowerupController(PowerupType type)
 	{
@@ -39,6 +41,7 @@ namespace Powerup
 
 	void PowerupController::OnCollected()
 	{
+		ApplyPowerup();
 	}
 
 	void PowerupController::UpdatePowerupPosition()
@@ -69,5 +72,21 @@ namespace Powerup
 	PowerupType PowerupController::GetPowerupType()
 	{
 		return powerupModel->GetPowerupType();
+	}
+
+	const sf::Sprite& PowerupController::GetColliderSprite()
+	{
+		return powerupView->GetPowerupSprite();;
+	}
+
+	void PowerupController::OnCollision(ICollider* other_collider)
+	{
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+
+		if (player_controller)
+		{
+			OnCollected();
+			ServiceLocator::GetInstance()->GetPowerupService()->DestroyPowerup(this);
+		}
 	}
 }

@@ -8,11 +8,13 @@
 #include "../../Header/Enemy/Controller/SubZeroController.h"
 #include "../../Header/Enemy/Controller/ThunderSnakeController.h"
 #include "../../Header/Enemy/Controller/UFOController.h"
+#include "../../Header/Collision/ICollider.h"
 
 namespace Enemy {
 	using namespace Time;
 	using namespace Global;
 	using namespace Controller;
+	using namespace Collision;
 
 	EnemyService::EnemyService() {
 		std::srand(static_cast<unsigned>(std::time(nullptr)));
@@ -22,11 +24,23 @@ namespace Enemy {
 		Destory();
 	}
 
+	void EnemyService::DestroyFlaggedEnemies()
+	{
+		for (int i = 0; i < flaggedEnemyList.size(); i++)
+		{
+			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(flaggedEnemyList[i]));
+			delete (flaggedEnemyList[i]);
+		}
+		flaggedEnemyList.clear();
+	}
+
 	void EnemyService::Destory(){
 		for (int i = 0; i < enemyList.size(); i++)
 		{
+			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(enemyList[i]));
 			delete(enemyList[i]);
 		}
+		enemyList.clear();
 	}
 
 	void EnemyService::Initialize() {
@@ -42,6 +56,8 @@ namespace Enemy {
 		{
 			enemyList[i]->Update();
 		}
+
+		DestroyFlaggedEnemies();
 	}
 
 	void EnemyService::UpdateSpawnTimer() {
@@ -59,6 +75,9 @@ namespace Enemy {
 		EnemyController* enemyController = CreateEnemy(GetRandomEnemyType());
 
 		enemyController->Initialize();
+
+		ServiceLocator::GetInstance()->GetCollisionService()->AddCollider(dynamic_cast<ICollider*>(enemyController));
+
 		enemyList.push_back(enemyController);
 
 		return enemyController;
@@ -66,20 +85,33 @@ namespace Enemy {
 
 	void EnemyService::Render(){
 
-		for (int i = 0; i < enemyList.size(); i++)
+		/*for (int i = 0; i < enemyList.size(); i++)
 		{
 			enemyList[i]->Render();
-		}
+		}*/
+		for (EnemyController* enemy : enemyList)
+			enemy->Render();
+	}
+
+	void EnemyService::Reset()
+	{
+		Destory();
+		spwanTimer = 0.0f;
 	}
 
 	void EnemyService::DestroyEnemy(EnemyController* _enemyController){
+		
+		dynamic_cast<ICollider*>(_enemyController)->DisableCollision();
+		flaggedEnemyList.push_back(_enemyController);
+
 		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), _enemyController), enemyList.end());
-		delete(_enemyController);
+		//delete(_enemyController);
 	}
 
 	EnemyType EnemyService::GetRandomEnemyType()
 	{
-		int randomType = std::rand() % 4;
+		//int randomType = std::rand() % 4;
+		int randomType = std::rand() % (static_cast<int>(Enemy::EnemyType::UFO) + 1);
 		return static_cast<EnemyType>(randomType);
 	}
 

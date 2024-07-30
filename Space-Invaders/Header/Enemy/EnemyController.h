@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include"../../Header/Collision/ICollider.h"
 
 namespace Enemy {
 	
@@ -9,7 +10,7 @@ namespace Enemy {
 	enum class EnemyState;
 	enum class EnemyType;
 
-	class EnemyController {
+	class EnemyController : public Collision::ICollider{
 	protected:
 
 		float rateOfFire = 3.f; //we want to fire the bullet every 3 seconds
@@ -25,7 +26,8 @@ namespace Enemy {
 		virtual void Move() = 0;
 
 		sf::Vector2f GetRandomInitialPosition();
-		void HandleOutOfBounds();
+		virtual void Destroy();
+		//void HandleOutOfBounds();
 
 	public:
 
@@ -39,6 +41,10 @@ namespace Enemy {
 		sf::Vector2f GetEnemyPosition();
 		EnemyState GetEnemyState();
 		EnemyType GetEnemyType();
+
+
+		const sf::Sprite& GetColliderSprite() override;
+		virtual void OnCollision(ICollider* other_collider) override;
 
 	};
 }

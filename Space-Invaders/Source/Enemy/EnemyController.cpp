@@ -1,16 +1,25 @@
 #pragma once
+#include <iostream>
 #include"../../Header/Enemy/EnemyController.h"
 #include"../../Header/Enemy/EnemyModel.h"
 #include"../../Header/Enemy/EnemyView.h"
 #include"../../Header/Global/ServiceLocator.h"
 #include"../../Header/Enemy/EnemyConfig.h"
 #include"../../Header/Bullet/BulletConfig.h"
-#include <iostream>
+#include "../../Header/Entity/EntityConfig.h"
+#include "../../Header/Bullet/BulletController.h"
+#include "../../Header/Player/PlayerController.h"
+#include "../../Header/Sound/SoundService.h"
 
 namespace Enemy {
 
 	using namespace Global;
+	using namespace Time;
 	using namespace Bullet;
+	using namespace Collision;
+	using namespace Entity;
+	using namespace Player;
+	using namespace Sound;
 	
 	EnemyController::EnemyController(EnemyType _type){
 		enemyModel = new EnemyModel(_type);
@@ -43,8 +52,8 @@ namespace Enemy {
 		Move();
 		UpdateFireTimer();
 		ProcessBulletFire();
+		//HandleOutOfBounds();
 		enemyView->Update();
-		HandleOutOfBounds();
 	}
 
 	void EnemyController::Render(){
@@ -63,17 +72,16 @@ namespace Enemy {
 		}
 	}
 
-	void EnemyController::HandleOutOfBounds(){
-		sf::Vector2f enemyPosition = GetEnemyPosition();
-		sf::Vector2u windowSize = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow()->getSize();
-
-		// Destroy the enemy if it goes out of bounds.
-		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
-			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
-		{
-			ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
-		}
-	}
+	//void EnemyController::HandleOutOfBounds(){
+	//	sf::Vector2f enemyPosition = GetEnemyPosition();
+	//	sf::Vector2u windowSize = ServiceLocator::GetInstance()->GetGraphicsService()->GetGameWindow()->getSize();
+	//	// Destroy the enemy if it goes out of bounds.
+	//	if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
+	//		enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
+	//	{
+	//		ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
+	//	}
+	//}
 
 	sf::Vector2f EnemyController::GetEnemyPosition()
 	{
@@ -88,5 +96,32 @@ namespace Enemy {
 	EnemyType EnemyController::GetEnemyType()
 	{
 		return enemyModel->GetEnemyType();
+	}
+
+	const sf::Sprite& EnemyController::GetColliderSprite()
+	{
+		return enemyView->GetEnemySprite();
+	}
+
+	void EnemyController::OnCollision(ICollider* other_collider)
+	{
+		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
+		if (bullet_controller && bullet_controller->GetOwnerEntityType() != EntityType::ENEMY)
+		{
+			Destroy();
+			return;
+		}
+
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+		if (player_controller)
+		{
+			Destroy();
+			return;
+		}
+	}
+
+	void EnemyController::Destroy()
+	{
+		ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
 	}
 }

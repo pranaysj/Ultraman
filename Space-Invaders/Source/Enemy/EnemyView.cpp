@@ -63,4 +63,9 @@ namespace Enemy {
 	void EnemyView::Render(){
 		enemyImage->Render();
 	}
+
+	sf::Sprite& EnemyView::GetEnemySprite()
+	{
+		// TODO: insert return statement here
+	}
 }

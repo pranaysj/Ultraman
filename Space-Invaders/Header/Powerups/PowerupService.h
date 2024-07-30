@@ -12,9 +12,12 @@ namespace Powerup
 	class PowerupService
 	{
 	private:
+
+		std::vector<Collectible::ICollectible*> flaggedPowerupList;
 		std::vector<Collectible::ICollectible*> powerupList;
 
 		PowerupController* CreatePowerup(PowerupType powerup_type);
+		void DestroyFlaggedPowerup();
 		void Destroy();
 
 	public:

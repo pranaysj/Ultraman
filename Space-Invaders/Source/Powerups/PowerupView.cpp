@@ -64,4 +64,8 @@ namespace Powerup
 	{
 		powerupImage->Render();
 	}
+
+	void PowerupView::GetPowerupSprite()
+	{
+	}
 }

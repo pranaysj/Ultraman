@@ -7,8 +7,8 @@ namespace Enemy {
 
 	class EnemyService {
 	private:
-
 		std::vector<EnemyController*> enemyList;
+		std::vector<EnemyController*> flaggedEnemyList;
 
 		const float spawnInterval = 3.0f;
 		float spwanTimer;
@@ -19,6 +19,7 @@ namespace Enemy {
 		EnemyType GetRandomEnemyType();
 		EnemyController* CreateEnemy(EnemyType _enemyType);
 
+		void DestroyFlaggedEnemies();
 		void Destory();
 	public:
 		EnemyService();
@@ -27,6 +28,8 @@ namespace Enemy {
 		void Initialize();
 		void Update();
 		void Render();
+
+		void Reset();
 
 		EnemyController* SpawnEnemy();
 		void DestroyEnemy(EnemyController* enemy_controller);
