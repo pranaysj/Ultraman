@@ -37,6 +37,10 @@ namespace Element {
 				bunkerController->GetBunkerPosition());
 		}
 
+		void BunkerView::Destory()
+		{
+		}
+
 
 		void BunkerView::Update(){
 			bunkerImage->Update();
@@ -44,6 +48,11 @@ namespace Element {
 
 		void BunkerView::Render(){
 			bunkerImage->Render();
+		}
+
+		const sf::Sprite& BunkerView::GetBunkerSprite()
+		{
+			// TODO: insert return statement here
 		}
 	}
 }

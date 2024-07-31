@@ -80,7 +80,8 @@ namespace Powerup {
 	}
 
 	void PowerupService::Destroy(){
-		for (int i = 0; i < powerupList.size(); i++)
-			delete (powerupList[i]);
+		for (Collectible::ICollectible* powerup : powerupList) {
+			delete(powerup);
+		}
 	}
 }

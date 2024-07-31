@@ -42,13 +42,13 @@ namespace Bullet {
 		switch (bulletController->GetBulletType())
 		{
 		case::Bullet::BulletType::LASER_BULLET:
-			return Config::laser_bullet_texture_path;
+			return Bullet::BulletConfig::laser_bullet_texture_path;
 
 		case::Bullet::BulletType::FROST_BULLET:
-			return Config::frost_beam_texture_path;
+			return Bullet::BulletConfig::frost_beam_texture_path;
 
 		case::Bullet::BulletType::TORPEDO:
-			return Config::torpedoe_texture_path;
+			return Bullet::BulletConfig::torpedoe_texture_path;
 		}
 	}
 

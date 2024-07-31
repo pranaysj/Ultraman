@@ -1,8 +1,13 @@
 #pragma once
 #include"../../Header/Element/ElementService.h"
+#include"../../Header/Global/ServiceLocator.h"
+#include"../../Header/Collision/ICollider.h"
 
 
 namespace Element {
+	using namespace Global;
+	using namespace Collision;
+
 	ElementService::ElementService(){}
 
 	ElementService::~ElementService(){
@@ -10,30 +15,80 @@ namespace Element {
 	}
 
 	void ElementService::Initialize(){
+		/*for (int i = 0; i < bunkerDataList.size(); i++)
+		{
+			Bunker::BunkerController* bunker_controller = new Bunker::BunkerController();
+
+			bunker_controller->Initialize(bunkerDataList[i]);
+			bunkerList.push_back(bunker_controller);
+		}*/
+
+		SpawnBunkers();
+	}
+
+	void ElementService::Update(){
+		/*for (int i = 0; i < bunkerList.size(); i++) {
+			bunkerList[i]->Update();
+		}*/
+
+		for (Bunker::BunkerController * bunker : bunkerList)
+			bunker->Update();
+
+		DestroyFlaggedBunkers();
+	}
+
+	void ElementService::Render(){
+		/*for (int i = 0; i < bunkerList.size(); i++) {
+			bunkerList[i]->Render();
+		}*/
+		for (Bunker::BunkerController* bunker : bunkerList)
+			bunker->Render();
+	}
+
+	void ElementService::Reset()
+	{
+		Destroy();
+		SpawnBunkers();
+	}
+
+	void ElementService::DestroyBunker(Bunker::BunkerController* bunker_controller)
+	{
+		flaggedBunkerList.push_back(bunker_controller);
+		bunkerList.erase(std::remove(bunkerList.begin(), bunkerList.end(), bunker_controller), bunkerList.end());
+	}
+
+	void ElementService::SpawnBunkers()
+	{
 		for (int i = 0; i < bunkerDataList.size(); i++)
 		{
 			Bunker::BunkerController* bunker_controller = new Bunker::BunkerController();
 
 			bunker_controller->Initialize(bunkerDataList[i]);
 			bunkerList.push_back(bunker_controller);
+
+			ServiceLocator::GetInstance()->GetCollisionService()->AddCollider(dynamic_cast<ICollider*>(bunker_controller));
 		}
 	}
 
-	void ElementService::Update(){
-		for (int i = 0; i < bunkerList.size(); i++) {
-			bunkerList[i]->Update();
+	void ElementService::DestroyFlaggedBunkers()
+	{
+		for (int i = 0; i < flaggedBunkerList.size(); i++)
+		{
+			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(flaggedBunkerList[i]));
+			delete (flaggedBunkerList[i]);
 		}
-	}
-
-	void ElementService::Render(){
-		for (int i = 0; i < bunkerList.size(); i++) {
-			bunkerList[i]->Render();
-		}
+		flaggedBunkerList.clear();
 	}
 
 	void ElementService::Destroy(){
-		for (int i = 0; i < bunkerList.size(); i++) {
+		/*for (int i = 0; i < bunkerList.size(); i++) {
+			delete(bunkerList[i]);
+		}*/
+		for (int i = 0; i < bunkerList.size(); i++)
+		{
+			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(bunkerList[i]));
 			delete(bunkerList[i]);
 		}
+		bunkerList.clear();
 	}
 }
