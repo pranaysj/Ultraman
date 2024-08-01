@@ -55,5 +55,6 @@ namespace Global {
             Sound::SoundService* GetSoundService();
             Powerup::PowerupService* GetPowerupService();
             Collision::CollisionService* GetCollisionService();
+            void DeleteServiceLocator();
         };
 }

@@ -24,11 +24,12 @@ namespace Main {
 
         void Initialize();
         void InitializeVariable();
-        void ShowMainMenu();
+        void ShowSplashScreen();
+        void Destory();
 
     public:
         GameService();
-        ~GameService();
+        virtual ~GameService();
 
         void Ignite();
         void Update();
