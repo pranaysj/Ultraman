@@ -96,6 +96,11 @@ namespace Enemy {
 			//make it empty
 		}
 
+		void UFOController::Destroy()
+		{
+			EnemyController::Destroy();
+		}
+
 		
 
 

@@ -181,7 +181,5 @@ namespace Global {
         return collisionService;
     }
 
-    void ServiceLocator::DeleteServiceLocator(){
-        delete(this);
-    }
+  
 }

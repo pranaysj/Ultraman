@@ -1,6 +1,10 @@
 #include"../../Header/Player/PlayerModel.h"
 
 namespace Player {
+
+    int PlayerModel::player_lives;
+    int PlayerModel::enemies_killed;
+
     PlayerModel::PlayerModel() {}
 
     PlayerModel::~PlayerModel() {}
@@ -12,6 +16,9 @@ namespace Player {
     void PlayerModel::Reset() {
         playerState = PlayerState::ALIVE;
         playerPositon = initialPlayerPosition;
+
+        player_lives = max_player_lives;
+        enemies_killed = 0;
 
         boolShield = false;
         boolRapidFire = false;
@@ -69,12 +76,12 @@ namespace Player {
         boolTrippleLaser = _value;
     }
 
-    int PlayerModel::GetPlayerScore() {
+    /*int PlayerModel::GetPlayerScore() {
         return playerScore;
     }
 
     void PlayerModel::SetPlayerScore(int _score) {
         playerScore = _score;
-    }
+    }*/
 }
 

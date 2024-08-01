@@ -15,12 +15,10 @@ namespace Main{
     }
 
     GameService::~GameService() {
-        Destory();
+       
     }
 
-    void GameService::Destory() {
-        serviceLocator->DeleteServiceLocator();
-    }
+
 
     void GameService::Ignite() {
         serviceLocator = Global::ServiceLocator::GetInstance();

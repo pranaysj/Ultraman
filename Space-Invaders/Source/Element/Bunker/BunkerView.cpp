@@ -52,7 +52,7 @@ namespace Element {
 
 		const sf::Sprite& BunkerView::GetBunkerSprite()
 		{
-			// TODO: insert return statement here
+			return bunkerImage->GetSprite();
 		}
 	}
 }

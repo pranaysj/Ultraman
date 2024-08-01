@@ -13,7 +13,7 @@ namespace Bullet {
 
 
 		public:
-			FrostBulletController(BulletType _type);
+			FrostBulletController(BulletType _type, Entity::EntityType owner_type);
 			~FrostBulletController();
 
 			void Initialize(sf::Vector2f _position, MovementDirection _direction) override;

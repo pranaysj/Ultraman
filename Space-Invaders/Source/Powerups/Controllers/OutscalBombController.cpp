@@ -18,6 +18,5 @@ namespace Powerup
             ServiceLocator::GetInstance()->GetEnemyService()->Reset();
         }
 
-        void OutscalBombController::OnCollected() {}
     }
 }

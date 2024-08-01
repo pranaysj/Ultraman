@@ -61,9 +61,9 @@ namespace Bullet {
 		bulletImage->Render();
 	}
 
-	sf::Sprite& BulletView::GetBulletSprite()
+	const sf::Sprite& BulletView::GetBulletSprite()
 	{
-		// TODO: insert return statement here
+		return bulletImage->GetSprite();
 	}
 	
 	void BulletView::Destory()

@@ -46,13 +46,13 @@ namespace Bullet
 		switch (bullet_type)
 		{
 		case::Bullet::BulletType::LASER_BULLET:
-			return new LaserBulletController(Bullet::BulletType::LASER_BULLET);
+			return new LaserBulletController(Bullet::BulletType::LASER_BULLET, _ownerType);
 
 		case::Bullet::BulletType::FROST_BULLET:
-			return new FrostBulletController(Bullet::BulletType::FROST_BULLET);
+			return new FrostBulletController(Bullet::BulletType::FROST_BULLET, _ownerType);
 
 		case::Bullet::BulletType::TORPEDO:
-			return new TorpedoController(Bullet::BulletType::TORPEDO);
+			return new TorpedoController(Bullet::BulletType::TORPEDO, _ownerType);
 		}
 	}
 
@@ -90,21 +90,26 @@ namespace Bullet
 
 		bullet_controller->Initialize(position, direction);
 
+		ServiceLocator::GetInstance()->GetCollisionService()->AddCollider(dynamic_cast<ICollider*>(bullet_controller));
 		bulletList.push_back(bullet_controller);
 		return bullet_controller;
 	}
 
 	void BulletService::DestroyBullet(BulletController* bullet_controller)
 	{
-		if (std::find(flaggedBulletList.begin(), flaggedBulletList.end(), bullet_controller) == flaggedBulletList.end())
-		{
-			flaggedBulletList.push_back(bullet_controller);
-			bulletList.erase(std::remove(bulletList.begin(), bulletList.end(), bullet_controller), bulletList.end());
-		}
+		//if (std::find(flaggedBulletList.begin(), flaggedBulletList.end(), bullet_controller) == flaggedBulletList.end())
+		//{
+		//	flaggedBulletList.push_back(bullet_controller);
+		//	bulletList.erase(std::remove(bulletList.begin(), bulletList.end(), bullet_controller), bulletList.end());
+		//}
 
+		//bulletList.erase(std::remove(bulletList.begin(), bulletList.end(), bullet_controller), bulletList.end());
+		//
+		////delete(bullet_controller);
+
+		dynamic_cast<ICollider*>(bullet_controller)->DisableCollision();
+		flaggedBulletList.push_back(bullet_controller);
 		bulletList.erase(std::remove(bulletList.begin(), bulletList.end(), bullet_controller), bulletList.end());
-		
-		//delete(bullet_controller);
 	}
 
 	void BulletService::Reset()

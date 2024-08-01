@@ -13,6 +13,7 @@ namespace Enemy {
 			void MoveLeft();
 
 			void FireBullet() override;
+			void Destroy() override;
 
 		public:
 			ThunderSnakeController(EnemyType _type);

@@ -58,12 +58,15 @@ namespace Player {
 
 		void Reset();
 
+		void DecreasePlayerLive();
+		inline void IncreaseEnemiesKilled(int val) { PlayerModel::enemies_killed += val; }
+
 		void EnableShield();
 		void EnableRapidFire();
 		void EnableTrippleLaser();
 
 		Vector2f GetPlayerPosition();
-		int GetPlayerScore();
+		//int GetPlayerScore();
 		PlayerState GetPlayerState();
 
 		const sf::Sprite& GetColliderSprite() override;

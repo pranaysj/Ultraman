@@ -19,6 +19,8 @@ namespace Player {
         void Update();
         void Render();
 
+        void IncreaseEnemiesKilled(int val);
+
         void EnableShield();
         void EnableRapidFire();
         void EnableTrippleLaser();

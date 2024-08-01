@@ -24,41 +24,27 @@ namespace Enemy {
 		Destory();
 	}
 
-	void EnemyService::DestroyFlaggedEnemies()
-	{
-		for (int i = 0; i < flaggedEnemyList.size(); i++)
-		{
-			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(flaggedEnemyList[i]));
-			delete (flaggedEnemyList[i]);
-		}
-		flaggedEnemyList.clear();
-	}
-
-	void EnemyService::Destory(){
-		for (int i = 0; i < enemyList.size(); i++)
-		{
-			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(enemyList[i]));
-			delete(enemyList[i]);
-		}
-		enemyList.clear();
-	}
-
 	void EnemyService::Initialize() {
 		spwanTimer = spawnInterval;
 	}
 
-	void EnemyService::Update(){
+	void EnemyService::Update() {
 
 		UpdateSpawnTimer();
 		ProcessEnemySpawn();
 
-		for (int i = 0; i < enemyList.size(); i++)
-		{
-			enemyList[i]->Update();
-		}
+		for (EnemyController* enemy : enemyList)
+			enemy->Update();
 
 		DestroyFlaggedEnemies();
 	}
+
+	void EnemyService::Render() {
+
+		for (EnemyController* enemy : enemyList)
+			enemy->Render();
+	}
+
 
 	void EnemyService::UpdateSpawnTimer() {
 		spwanTimer += ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
@@ -83,35 +69,11 @@ namespace Enemy {
 		return enemyController;
 	}
 
-	void EnemyService::Render(){
-
-		/*for (int i = 0; i < enemyList.size(); i++)
-		{
-			enemyList[i]->Render();
-		}*/
-		for (EnemyController* enemy : enemyList)
-			enemy->Render();
-	}
-
-	void EnemyService::Reset()
-	{
-		Destory();
-		spwanTimer = 0.0f;
-	}
-
-	void EnemyService::DestroyEnemy(EnemyController* _enemyController){
-		
-		dynamic_cast<ICollider*>(_enemyController)->DisableCollision();
-		flaggedEnemyList.push_back(_enemyController);
-
-		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), _enemyController), enemyList.end());
-		//delete(_enemyController);
-	}
 
 	EnemyType EnemyService::GetRandomEnemyType()
 	{
-		//int randomType = std::rand() % 4;
-		int randomType = std::rand() % (static_cast<int>(Enemy::EnemyType::UFO) + 1);
+		int randomType = std::rand() % 4;
+		//int randomType = std::rand() % (static_cast<int>(Enemy::EnemyType::UFO) + 1);
 		return static_cast<EnemyType>(randomType);
 	}
 
@@ -131,5 +93,41 @@ namespace Enemy {
 		case::Enemy::EnemyType::UFO:
 			return new UFOController(Enemy::EnemyType::UFO);
 		}
+	}
+
+
+	void EnemyService::DestroyFlaggedEnemies()
+	{
+		for (int i = 0; i < flaggedEnemyList.size(); i++)
+		{
+			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(flaggedEnemyList[i]));
+			delete (flaggedEnemyList[i]);
+		}
+		flaggedEnemyList.clear();
+	}
+
+	void EnemyService::DestroyEnemy(EnemyController* _enemyController) {
+
+		dynamic_cast<ICollider*>(_enemyController)->DisableCollision();
+		flaggedEnemyList.push_back(_enemyController);
+
+		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), _enemyController), enemyList.end());
+		//delete(_enemyController);
+	}
+
+	void EnemyService::Destory() {
+		for (int i = 0; i < enemyList.size(); i++)
+		{
+			ServiceLocator::GetInstance()->GetCollisionService()->RemoveCollider(dynamic_cast<ICollider*>(enemyList[i]));
+			delete(enemyList[i]);
+		}
+		enemyList.clear();
+	}
+
+
+	void EnemyService::Reset()
+	{
+		Destory();
+		spwanTimer = 0.0f;
 	}
 }

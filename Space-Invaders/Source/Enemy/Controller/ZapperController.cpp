@@ -90,7 +90,12 @@ namespace Enemy {
 		void ZapperController::FireBullet(){
 			ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(BulletType::TORPEDO,
 			enemyModel->GetEnemyPositon() + enemyModel->barrel_position_offset,
-			Bullet::MovementDirection::DOWN);
+			Bullet::MovementDirection::DOWN, enemyModel->GetEntityType());
+		}
+
+		void ZapperController::Destroy()
+		{
+			EnemyController::Destroy();
 		}
 	}
 }

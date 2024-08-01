@@ -14,6 +14,8 @@ namespace Enemy {
 
             void FireBullet() override;
 
+            void Destroy() override;
+
         public:
             SubZeroController(EnemyType _type);
             ~SubZeroController();

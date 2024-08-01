@@ -35,9 +35,9 @@ namespace Bullet {
 		return bulletType;
 	}
 
-	void BulletModel::SetBulletType(BulletType _type){
+	/*void BulletModel::SetBulletType(BulletType _type){
 		bulletType = _type;
-	}
+	}*/
 
 	MovementDirection BulletModel::GetMovementDirection(){
 		return movementDirection;

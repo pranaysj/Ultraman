@@ -1,6 +1,7 @@
 #pragma once
 #include<SFML/Graphics.hpp>
 #include"../../Header/Entity/EntityConfig.h"
+#include"../../Header/UI/GameplayUIController/GameplayUIController.h"
 
 namespace Player {
     using namespace sf;
@@ -14,12 +15,21 @@ namespace Player {
     class PlayerModel {
     private:
 
+        friend class PlayerController;
+
+        friend void UI::GameplayUI::GameplayUIController::UpdateEnemiesKilledText();
+        friend void UI::GameplayUI::GameplayUIController::DrawPlayerLives();
+
         Vector2f initialPlayerPosition = Vector2f(950.0f, 930.0f);
-        
+        const int max_player_lives = 3;
+
         Vector2f playerPositon;
         PlayerState playerState;
         Entity::EntityType entityType;
-        int playerScore;
+
+        //int playerScore;
+        static int player_lives;
+        static int enemies_killed;
 
         bool boolShield;
         bool boolRapidFire;
@@ -29,7 +39,7 @@ namespace Player {
 
         const Vector2f leftMostPosition = Vector2f(0.0f, 950.0f);
         const Vector2f rightMostPosition = Vector2f(1850.0f, 950.0f);
-        const Vector2f barrelpositionOffset = Vector2f(-5.f, -2.f);
+        const Vector2f barrelpositionOffset = Vector2f(-5.f, -15.f);
         const Vector2f secondWeaponPositionOffset = sf::Vector2f(45.f, 0.f);
         const Vector2f thirdWeaponPositionOffset = sf::Vector2f(-45.f, 0.f);
         
@@ -43,14 +53,15 @@ namespace Player {
         const float rapidFireCooldownDuration = 0.05f;
         const float trippleLaserPositionOffset = 30.f;
 
-        float elapsedShieldDuration;
+        /*float elapsedShieldDuration;
         float elapsedRapidFireDuration;
         float elapsedTrippleLaserDuration;
 
         float elapsedFireDuration;
-        float elapsedFreezeDuration;
+        float elapsedFreezeDuration;*/
 
         const float playerMaximumSpeed = 350.0f;
+        static const int invincible_player_alpha = 170.f;
 
         PlayerModel();
         ~PlayerModel();
@@ -61,8 +72,8 @@ namespace Player {
         Vector2f GetPlayerPosition();
         void SetPlayerPosition(Vector2f _position);
 
-        int GetPlayerScore();
-        void SetPlayerScore(int _score);
+        /*int GetPlayerScore();
+        void SetPlayerScore(int _score);*/
 
         PlayerState GetPlayerState();
         void SetPlayerState(PlayerState _state);

@@ -79,6 +79,7 @@ namespace UI
 
             imageSprite.setPosition(x_position, y_position);
         }
+
         const sf::Sprite& ImageView::GetSprite()
         {
             return imageSprite;

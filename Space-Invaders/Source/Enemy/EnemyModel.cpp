@@ -55,4 +55,9 @@ namespace Enemy {
 	void EnemyModel::SetMovementDirection(MovementDirection _direction){
 		movementDirection = _direction;
 	}
+
+	Entity::EntityType EnemyModel::GetEntityType()
+	{
+		return entity_type;
+	}
 }

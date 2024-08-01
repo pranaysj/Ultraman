@@ -23,18 +23,22 @@ namespace Bullet
 
         void Initialize(sf::Vector2f _position, MovementDirection _direction);
 
-        float GetMovementSpeed();
-        void SetMovementSpeed(float _speed);
-
         sf::Vector2f GetBulletPosition();
         void SetBulletPosition(sf::Vector2f _position);
 
         BulletType GetBulletType();
-        void SetBulletType(BulletType _type);
+        Entity::EntityType GetOwnerEntityType();
 
         MovementDirection GetMovementDirection();
         void SetMovementDirection(MovementDirection _direction);
 
-        Entity::EntityType GetOwnerEntityType();
+
+        float GetMovementSpeed();
+        void SetMovementSpeed(float _speed);
+
+        //void SetBulletType(BulletType _type);
+
+
+
     };
 }

@@ -14,14 +14,16 @@ namespace Player {
 		const float playerSpriteWidth = 50.0f;
 		const float playerSpriteHeigh = 85.0f;
 
-		Texture playerTexture;
-		Sprite playerSprite;
+		/*Texture playerTexture;
+		Sprite playerSprite;*/
 
 		PlayerController* playerController;
 		UI::UIElement::ImageView* playerImage;
 
 		void CreateUIElements();
 		void InitializeImage();
+
+		void Destory();
 
 	public:
 		PlayerView();
@@ -31,6 +33,7 @@ namespace Player {
 		void Update();
 		void Render();
 
+		void SetPlayerHighlight(bool b_highlight);
 		const sf::Sprite& GetPlayerSprite();
 	};
 }

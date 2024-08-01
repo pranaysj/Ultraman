@@ -7,13 +7,13 @@ namespace Powerup
     {
         class OutscalBombController : public PowerupController
         {
+        protected:
+            void ApplyPowerup() override;
+
         public:
             OutscalBombController(PowerupType type);
             virtual ~OutscalBombController();
 
-            void ApplyPowerup() override;
-
-            void OnCollected() override;
         };
     }
 }

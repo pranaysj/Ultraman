@@ -65,9 +65,16 @@ namespace Enemy {
 
 		void ThunderSnakeController::FireBullet()
 		{
-			Global::ServiceLocator::GetInstance()->GetBulletService()->SpawnBullet(Bullet::BulletType::TORPEDO,
-			enemyModel->GetEnemyPositon() + enemyModel->barrel_position_offset,
-			Bullet::MovementDirection::DOWN);
+			Global::ServiceLocator::GetInstance()->GetBulletService()->
+				SpawnBullet(Bullet::BulletType::TORPEDO,
+					enemyModel->GetEnemyPositon() + enemyModel->barrel_position_offset,
+					Bullet::MovementDirection::DOWN,
+					enemyModel->GetEntityType());
+		}
+
+		void ThunderSnakeController::Destroy()
+		{
+			EnemyController::Destroy();
 		}
 	}
 }

@@ -54,6 +54,11 @@ namespace Powerup
 		}
 	}
 
+	void PowerupView::Destroy()
+	{
+		delete(powerupImage);
+	}
+
 	void PowerupView::Update()
 	{
 		powerupImage->SetPosition(powerupController->GetCollectiblePosition());
@@ -65,7 +70,8 @@ namespace Powerup
 		powerupImage->Render();
 	}
 
-	void PowerupView::GetPowerupSprite()
+	const sf::Sprite& PowerupView::GetPowerupSprite()
 	{
+		return powerupImage->GetSprite();
 	}
 }

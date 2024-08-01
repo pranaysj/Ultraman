@@ -14,7 +14,7 @@ namespace Player {
 
 	void PlayerView::CreateUIElements()
 	{
-		playerImage = new ImageView();
+		Destory();
 	}
 
 	PlayerView::~PlayerView() {
@@ -34,6 +34,11 @@ namespace Player {
 			playerController->GetPlayerPosition());
 	}
 
+	void PlayerView::Destory()
+	{
+		playerImage = new ImageView();
+	}
+
 	void PlayerView::Update() {
 		playerImage->SetPosition(playerController->GetPlayerPosition());
 		playerImage->Update();
@@ -41,6 +46,18 @@ namespace Player {
 
 	void PlayerView::Render() {
 		playerImage->Render();
+	}
+
+	void PlayerView::SetPlayerHighlight(bool b_highlight)
+	{
+		if (b_highlight)
+		{
+			playerImage->SetImageAlpha(PlayerModel::invincible_player_alpha);
+		}
+		else
+		{
+			playerImage->SetImageAlpha(255);
+		}
 	}
 
 	const sf::Sprite& PlayerView::GetPlayerSprite()

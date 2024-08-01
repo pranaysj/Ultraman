@@ -1,20 +1,27 @@
 #include "../../Header/Player/PlayerController.h"
-#include"../../Header/Global/ServiceLocator.h"
-#include "../../Header/Player/PlayerModel.h"
 #include "../../Header/Player/PlayerView.h"
+#include "../../Header/Player/PlayerModel.h"
+#include"../../Header/Global/ServiceLocator.h"
 #include "../../Header/Event/EventService.h"
 #include "../../Header/Bullet/BulletConfig.h"
+#include "../../Header/Entity/EntityConfig.h"
 #include "../../Header/Bullet/BulletController.h"
-#include "../../Header/Powerups/PoweupController.h"
 #include "../../Header/Enemy/EnemyController.h"
+#include "../../Header/Powerups/PoweupController.h"
+#include "../../Header/Sound/SoundService.h"
+#include "../../Header/Main/GameService.h"
 
 
 namespace Player {
 	using namespace Global;
 	using namespace Event;
 	using namespace Bullet;
+	using namespace Entity;
 	using namespace Enemy;
 	using namespace Powerup;
+	using namespace Sound;
+	using namespace Main;
+	using namespace Gameplay;
 
 
 	PlayerController::PlayerController() {
@@ -52,6 +59,11 @@ namespace Player {
 
 	void PlayerController::Render() {
 		playerView->Render();
+	}
+
+	void PlayerController::Reset()
+	{
+		playerModel->Reset();
 	}
 
 	void PlayerController::ProcessPlayerInput() {
@@ -97,10 +109,13 @@ namespace Player {
 		{
 			if (bulletController->GetBulletType() == BulletType::FROST_BULLET)
 			{
-				playerModel->SetPlayerState(PlayerState::FROZEN);
-				playerModel->elapsedFreezeDuration = playerModel->freezeDuration;
+				FreezePlayer();
+				/*playerModel->SetPlayerState(PlayerState::FROZEN);
+				playerModel->elapsedFreezeDuration = playerModel->freezeDuration;*/
 			}
-			else ServiceLocator::GetInstance()->GetGameplayService()->Restart();
+			else {
+				DecreasePlayerLive();
+			}
 			return true;
 		}
 
@@ -127,7 +142,8 @@ namespace Player {
 
 		if (enemyController)
 		{
-			ServiceLocator::GetInstance()->GetGameplayService()->Restart();
+			/*ServiceLocator::GetInstance()->GetGameplayService()->Restart();*/
+			DecreasePlayerLive();
 			return true;
 		}
 		return false;
@@ -135,30 +151,36 @@ namespace Player {
 
 	void PlayerController::UpdateFreezeDuration()
 	{
-		if(playerModel->elapsedFreezeDuration > 0)
+		if(elapsed_freez_duration > 0)
 		{
-			playerModel->elapsedFreezeDuration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			elapsed_freez_duration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-			if (playerModel->elapsedFreezeDuration <= 0)
+			if (elapsed_freez_duration <= 0) {
 				playerModel->SetPlayerState(PlayerState::ALIVE);
+				playerView->SetPlayerHighlight(false);
+
+			}
 		}
 	}
 
 	void PlayerController::FreezePlayer()
 	{
+		playerModel->SetPlayerState(PlayerState::FROZEN);
+		elapsed_freez_duration = playerModel->freezeDuration;
+		playerView->SetPlayerHighlight(true);
 	}
 
 	void PlayerController::UpdateFireDuration()
 	{
-		if (playerModel->elapsedFireDuration >= 0)
+		if (elapsed_fire_duration >= 0)
 		{
-			playerModel->elapsedFireDuration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			elapsed_fire_duration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 		}
 	}
 
 	void PlayerController::ProcessBulletFire()
 	{
-		if (playerModel->elapsedFireDuration > 0) return;
+		if (elapsed_fire_duration > 0) return;
 
 		if (playerModel->IsTrippleLaserEnabled())
 			FireBullet(true);
@@ -166,9 +188,9 @@ namespace Player {
 		else FireBullet();
 
 		if (playerModel->IsRapidFireEnabled())
-			playerModel->elapsedFireDuration = playerModel->rapidFireCooldownDuration;
+			elapsed_fire_duration = playerModel->rapidFireCooldownDuration;
 
-		else playerModel->elapsedFireDuration = playerModel->fireCooldownDuration;
+		else elapsed_fire_duration = playerModel->fireCooldownDuration;
 	}
 
 	void PlayerController::FireBullet(bool _boolTrippleLaser)
@@ -182,6 +204,8 @@ namespace Player {
 			FireBullet(bullet_position + playerModel->secondWeaponPositionOffset);
 			FireBullet(bullet_position + playerModel->thirdWeaponPositionOffset);
 		}
+
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::BULLET_FIRE);
 	}
 
 	void PlayerController::FireBullet(sf::Vector2f _position)
@@ -195,43 +219,69 @@ namespace Player {
 
 	void PlayerController::UpdatePowerupDuration()
 	{
-		if (playerModel->elapsedShieldDuration > 0)
+		if (elapsed_shield_duration > 0)
 		{
-			playerModel->elapsedShieldDuration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			elapsed_shield_duration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-			if (playerModel->elapsedShieldDuration <= 0)
+			if (elapsed_shield_duration <= 0)
 				DisableShield();
 		}
 
-		if (playerModel->elapsedRapidFireDuration > 0)
+		if (elapsed_rapid_fire_duration > 0)
 		{
-			playerModel->elapsedRapidFireDuration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			elapsed_rapid_fire_duration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-			if (playerModel->elapsedRapidFireDuration <= 0)
+			if (elapsed_rapid_fire_duration <= 0)
 				DisableRapidFire();
 		}
 
-		if (playerModel->elapsedTrippleLaserDuration > 0)
+		if (elapsed_tripple_laser_duration > 0)
 		{
-			playerModel->elapsedTrippleLaserDuration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+			elapsed_tripple_laser_duration -= ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
 
-			if (playerModel->elapsedTrippleLaserDuration <= 0)
+			if (elapsed_tripple_laser_duration <= 0)
 				DisableTrippleLaser();
 		}
 	}
 
+	void PlayerController::EnableShield()
+	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_ENABLED);
+		elapsed_shield_duration = playerModel->shiledPowerUpDuration;
+		playerModel->SetShieldState(true);
+		playerView->SetPlayerHighlight(true);
+	}
+
 	void PlayerController::DisableShield()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_DISABLED);
+		playerView->SetPlayerHighlight(false);
 		playerModel->SetShieldState(false);
+	}
+
+	void PlayerController::EnableRapidFire()
+	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_ENABLED);
+		elapsed_rapid_fire_duration = playerModel->rapidFirePowerUpDuration;
+		playerModel->SetRapidFireState(true);
 	}
 
 	void PlayerController::DisableRapidFire()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_DISABLED);
 		playerModel->SetRapidFireState(false);
+	}
+
+	void PlayerController::EnableTrippleLaser()
+	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_ENABLED);
+		elapsed_tripple_laser_duration = playerModel->trippleLaserPowerUpDuration;
+		playerModel->SetTrippleFireState(true);
 	}
 
 	void PlayerController::DisableTrippleLaser()
 	{
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::POWERUP_DISABLED);
 		playerModel->SetTrippleFireState(false);
 	}
 
@@ -242,27 +292,13 @@ namespace Player {
 	}*/
 
 
-	void PlayerController::Reset()
+	void PlayerController::DecreasePlayerLive()
 	{
-		playerModel->Reset();
-	}
-
-	void PlayerController::EnableShield()
-	{
-		playerModel->elapsedShieldDuration = playerModel->shiledPowerUpDuration;
-		playerModel->SetShieldState(true);
-	}
-
-	void PlayerController::EnableRapidFire()
-	{
-		playerModel->elapsedRapidFireDuration = playerModel->rapidFirePowerUpDuration;
-		playerModel->SetRapidFireState(true);
-	}
-
-	void PlayerController::EnableTrippleLaser()
-	{
-		playerModel->elapsedTrippleLaserDuration = playerModel->trippleLaserPowerUpDuration;
-		playerModel->SetTrippleFireState(true);
+		PlayerModel::player_lives -= 1;
+		if (PlayerModel::player_lives <= 0)
+		{
+			Reset();
+		}
 	}
 
 	Vector2f PlayerController::GetPlayerPosition() {
@@ -270,10 +306,10 @@ namespace Player {
 		return playerModel->GetPlayerPosition();
 	}
 
-	int PlayerController::GetPlayerScore()
+	/*int PlayerController::GetPlayerScore()
 	{
 		return playerModel->GetPlayerScore();
-	}
+	}*/
 
 	PlayerState PlayerController::GetPlayerState()
 	{

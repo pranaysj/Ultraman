@@ -7,11 +7,13 @@ namespace Powerup
     {
         class ShieldController : public PowerupController
         {
+        protected:
+            void ApplyPowerup() override;
+
         public:
             ShieldController(PowerupType type);
             virtual ~ShieldController();
 
-            void OnCollected() override;
         };
     }
 }

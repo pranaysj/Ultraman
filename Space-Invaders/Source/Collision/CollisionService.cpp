@@ -3,17 +3,11 @@
 
 
 namespace Collision {
-	CollisionService::CollisionService()
-	{
-	}
+	CollisionService::CollisionService() { }
 
-	CollisionService::~CollisionService()
-	{
-	}
+	CollisionService::~CollisionService() { }
 
-	void CollisionService::Initialize()
-	{
-	}
+	void CollisionService::Initialize() { }
 
 	void CollisionService::Update()
 	{
@@ -59,7 +53,7 @@ namespace Collision {
 
 	bool CollisionService::AreActiveColliders(int _indexI, int _indexJ)
 	{
-		return (_indexI < colliderList.size() && _indexJ < colliderList.size() && colliderList[_indexI] != nullptr && colliderList[_indexJ] == nullptr);
+		return (_indexI < colliderList.size() && _indexJ < colliderList.size() && colliderList[_indexI] != nullptr && colliderList[_indexJ] != nullptr);
 	}
 
 

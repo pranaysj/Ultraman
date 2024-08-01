@@ -9,15 +9,18 @@ namespace Global
 	const sf::String Config::player_texture_path = "assets/textures/Ultraman.png";
 
 
-	const sf::String Config::zapper_texture_path = "assets/textures/Drone _1.png";
+	const sf::String Config::zapper_texture_path = "assets/textures/zapper.png";
 
 	const sf::String Config::thunder_snake_texture_path = "assets/textures/thunder_snake.png";
 
-	const sf::String Config::subzero_texture_path = "assets/textures/Drone _2.png";
+	const sf::String Config::subzero_texture_path = "assets/textures/subzero.png";
 
 	const sf::String Config::ufo_texture_path = "assets/textures/ufo.png";
 
 	const sf::String Config::bunker_texture_path = "assets/textures/bunker.png";
+
+
+	const sf::String Config::explosion_texture_path = "assets/textures/explosion.png";
 
 
 	const sf::String Config::shield_texture_path = "assets/textures/shield.png";
@@ -29,20 +32,13 @@ namespace Global
 	const sf::String Config::outscal_bomb_texture_path = "assets/textures/outscal_bomb.png";
 
 
-	const sf::String Config::laser_bullet_texture_path = "assets/textures/laser_bullet.png";
+	const sf::String Config::play_button_texture_path = "assets/textures/play_button.png";
 
-	const sf::String Config::torpedoe_texture_path = "assets/textures/torpedoe.png";
+	const sf::String Config::instructions_button_texture_path = "assets/textures/instructions_button.png";
 
-	const sf::String Config::frost_beam_texture_path = "assets/textures/frost_beam.png";
+	const sf::String Config::quit_button_texture_path = "assets/textures/quit_button.png";
 
-
-	const sf::String Config::play_button_texture_path = "assets/textures/PlayButton.png";
-
-	const sf::String Config::instructions_button_texture_path = "assets/textures/InstructionsButton.png";
-
-	const sf::String Config::quit_button_texture_path = "assets/textures/QuitButton.png";
-
-	const sf::String Config::menu_button_texture_path = "assets/textures/MenuButton.png";
+	const sf::String Config::menu_button_texture_path = "assets/textures/menu_button.png";
 
 
 	const sf::String Config::bubble_bobble_font_path = "assets/fonts/bubbleBobble.ttf";
@@ -53,4 +49,12 @@ namespace Global
 	const sf::String Config::background_music_path = "assets/sounds/background_music.mp3";
 
 	const sf::String Config::button_click_sound_path = "assets/sounds/button_click_sound.wav";
+
+	const sf::String Config::bullet_fire_sound_path = "assets/sounds/bullet_fire.ogg";
+
+
+
+	const sf::String Config::powerup_enabled_sound_path = "assets/sounds/powerup_enabled.ogg";
+
+	const sf::String Config::powerup_disabled_sound_path = "assets/sounds/powerup_disabled.ogg";
 }
