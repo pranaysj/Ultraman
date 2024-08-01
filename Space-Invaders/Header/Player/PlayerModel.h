@@ -40,8 +40,8 @@ namespace Player {
         const Vector2f leftMostPosition = Vector2f(0.0f, 950.0f);
         const Vector2f rightMostPosition = Vector2f(1850.0f, 950.0f);
         const Vector2f barrelpositionOffset = Vector2f(-5.f, -15.f);
-        const Vector2f secondWeaponPositionOffset = sf::Vector2f(45.f, 0.f);
-        const Vector2f thirdWeaponPositionOffset = sf::Vector2f(-45.f, 0.f);
+        const Vector2f secondWeaponPositionOffset = sf::Vector2f(30.f, 0.f);
+        const Vector2f thirdWeaponPositionOffset = sf::Vector2f(60.f, 0.f);
         
         const float shiledPowerUpDuration = 10.f;
         const float rapidFirePowerUpDuration = 10.f;

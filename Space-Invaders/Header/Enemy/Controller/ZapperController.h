@@ -7,7 +7,7 @@ namespace Enemy{
         private:
             const float zapperHoritonalMovementSpeed = 250.f;
             const float zapperVerticalTravelDistance = 100.f;
-            const float zapperFireRate = 3.f;
+            const float zapperFireRate = 2.f;
 
             void Move() override;
             void MoveLeft();

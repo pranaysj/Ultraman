@@ -10,7 +10,7 @@ namespace Enemy
         {
         private:
              
-            const float UFOHorizontalMovementSpeed = 100.f;
+            const float UFOHorizontalMovementSpeed = 200.f;
 
             void Move() override;
             void MoveLeft();

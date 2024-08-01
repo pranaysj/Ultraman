@@ -10,6 +10,7 @@
 #include "../../Header/Powerups/PoweupController.h"
 #include "../../Header/Sound/SoundService.h"
 #include "../../Header/Main/GameService.h"
+#include<iostream>
 
 
 namespace Player {
@@ -78,7 +79,7 @@ namespace Player {
 		}
 
 		if (eventService->PressedLeftMouseButton()) {
-			FireBullet();
+			ProcessBulletFire();
 		}
 	}
 

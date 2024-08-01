@@ -6,7 +6,7 @@ namespace Enemy {
 		class ThunderSnakeController : public EnemyController {
 		private:
 			const float thunderSnakeHorizontalMovementSpeed = 250.0f;
-			const float thunderSnakeVerticalMovementSpeed = 80.0f;
+			const float thunderSnakeVerticalMovementSpeed = 60.0f;
 
 			void Move() override;
 			void MoveRight();

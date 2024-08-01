@@ -97,16 +97,6 @@ namespace Bullet
 
 	void BulletService::DestroyBullet(BulletController* bullet_controller)
 	{
-		//if (std::find(flaggedBulletList.begin(), flaggedBulletList.end(), bullet_controller) == flaggedBulletList.end())
-		//{
-		//	flaggedBulletList.push_back(bullet_controller);
-		//	bulletList.erase(std::remove(bulletList.begin(), bulletList.end(), bullet_controller), bulletList.end());
-		//}
-
-		//bulletList.erase(std::remove(bulletList.begin(), bulletList.end(), bullet_controller), bulletList.end());
-		//
-		////delete(bullet_controller);
-
 		dynamic_cast<ICollider*>(bullet_controller)->DisableCollision();
 		flaggedBulletList.push_back(bullet_controller);
 		bulletList.erase(std::remove(bulletList.begin(), bulletList.end(), bullet_controller), bulletList.end());

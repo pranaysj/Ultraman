@@ -10,7 +10,7 @@ namespace Powerup
 
         void TrippleLaserController::ApplyPowerup()
         {
-            ServiceLocator::GetInstance()->GetPlayerService()->EnableShield();
+            ServiceLocator::GetInstance()->GetPlayerService()->EnableTrippleLaser();
 
         }
 

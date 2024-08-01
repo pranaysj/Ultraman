@@ -75,13 +75,5 @@ namespace Player {
     {
         boolTrippleLaser = _value;
     }
-
-    /*int PlayerModel::GetPlayerScore() {
-        return playerScore;
-    }
-
-    void PlayerModel::SetPlayerScore(int _score) {
-        playerScore = _score;
-    }*/
 }
 

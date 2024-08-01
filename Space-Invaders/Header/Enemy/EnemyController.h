@@ -13,7 +13,7 @@ namespace Enemy {
 	class EnemyController : public Collision::ICollider{
 	protected:
 
-		float rateOfFire = 3.f; //we want to fire the bullet every 3 seconds
+		float rateOfFire = 2.f; //we want to fire the bullet every 3 seconds
 		float elapsedFireDuration = 0.f;
 
 		EnemyModel* enemyModel;

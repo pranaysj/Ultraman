@@ -49,7 +49,7 @@ namespace Player {
 
     void PlayerService::EnableTrippleLaser()
     {
-        playerController -> EnableTrippleLaser();
+        playerController->EnableTrippleLaser();
     }
 
     void PlayerService::Reset()
