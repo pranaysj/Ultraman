@@ -21,11 +21,12 @@ namespace Sound
 		sf::Sound soundEffect;
 
 		sf::Sound powerup_sound_effect;
+		sf::Sound explosion_sound_effect;
 
 
 		sf::SoundBuffer buffer_bullet_fire;
 		sf::SoundBuffer bufferButtonClick;
-
+		sf::SoundBuffer buffer_explosion;
 		sf::SoundBuffer buffer_powerup_enabled;
 		sf::SoundBuffer buffer_powerup_disabled;
 

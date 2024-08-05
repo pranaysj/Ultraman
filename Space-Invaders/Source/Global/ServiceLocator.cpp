@@ -50,10 +50,10 @@ namespace Global {
         gameplayService = new GameplayService();
         elementService = new ElementService();
         bulletService = new BulletService();
+        animationService = new AnimationService();
         soundService = new SoundService();
         powerupService = new PowerupService();
         collisionService = new CollisionService();
-        animationService = new AnimationService();
     }
 
     void ServiceLocator::ClearAllService() {
@@ -82,15 +82,15 @@ namespace Global {
         timeService->Initialize();
         eventService->Initialize();
         playerService->Initialize();
-        uiService->Initialize();
         enemyService->Initialize();
         gameplayService->Initialize();
         elementService->Initialize();
         bulletService->Initialize();
         powerupService->Initialize();
-        soundService->Initialize();
         collisionService->Initialize();
         animationService->Initialize();
+        uiService->Initialize();
+        soundService->Initialize();
     }
 
     void ServiceLocator::Update() {

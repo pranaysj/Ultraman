@@ -48,6 +48,10 @@ namespace Sound
 			soundEffect.play();
 			break;
 
+		case SoundType::EXPLOSION:
+			explosion_sound_effect.setBuffer(buffer_explosion);
+			explosion_sound_effect.play();
+			break;
 
 		case SoundType::POWERUP_ENABLED:
 			powerup_sound_effect.setBuffer(buffer_powerup_enabled);
