@@ -40,5 +40,7 @@ namespace Global
 		static const sf::String bullet_fire_sound_path;
 		static const sf::String powerup_enabled_sound_path;
 		static const sf::String powerup_disabled_sound_path;
+
+		static const sf::String explosion_sound_path;
 	};
 }

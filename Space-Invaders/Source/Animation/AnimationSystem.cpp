@@ -25,6 +25,8 @@ namespace Animation {
 		currentFrame = 0;
 		frameTime = sf::seconds(animationSystemConfig.frameDuration);
 
+		printf("%.3f\n", frameTime);
+
 		InitializeImage();
 	}
 

@@ -33,6 +33,9 @@ namespace Sound
 			printf("Error loading background music file");
 		if (!buffer_powerup_disabled.loadFromFile(Config::powerup_disabled_sound_path))
 			printf("Error loading background music file");
+
+		if (!buffer_explosion.loadFromFile(Config::explosion_sound_path))
+			printf("Error loading background music file");
 	}
 
 	void SoundService::PlaySound(SoundType _soundType){
