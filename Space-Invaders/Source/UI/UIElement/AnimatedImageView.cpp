@@ -79,8 +79,8 @@ namespace UI {
 
 		void AnimatedImageView::FadeIn()
 		{
-			float aplha = std::min(1.f, elapsed_duration/animation_duration);
-			imageSprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(aplha/255)));
+			float alpha = std::min(1.f, elapsed_duration/animation_duration);
+			imageSprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(alpha * 255)));
 		}
 
 		void AnimatedImageView::FadeOut()

@@ -18,12 +18,12 @@ namespace UI
 
         SplashScreenUIController::SplashScreenUIController()
         {
-            outscal_logo_view = new ImageView();
+            outscalLogoView = new AnimatedImageView();
         }
 
         SplashScreenUIController::~SplashScreenUIController()
         {
-            delete (outscal_logo_view);
+            delete (outscalLogoView);
         }
 
         void SplashScreenUIController::Initialize()
@@ -33,35 +33,29 @@ namespace UI
 
         void SplashScreenUIController::Update()
         {
-            UpdateTimer();
-            ShowMainMenu();
+            outscalLogoView->Update();
         }
 
         void SplashScreenUIController::Render()
         {
-            outscal_logo_view->Render();
+            outscalLogoView->Render();
         }
 
         void SplashScreenUIController::InitializeOutscalLogo()
         {
             sf::Vector2f position = GetLogoPosition();
-            outscal_logo_view->Initialize(Config::outscal_logo_texture_path, logo_width, logo_height, position);
-
+            outscalLogoView->Initialize(Config::outscal_logo_texture_path, logo_width, logo_height, position);
         }
 
-        void SplashScreenUIController::ShowMainMenu()
+        void SplashScreenUIController::FadeInAnimationCallback()
         {
-            if (elapsed_duration >= splash_screen_duration)
-            {
-                ServiceLocator::GetInstance()->GetSoundService()->PlayBackgroundMusic();
-                GameService::SetGameState(GameState::MAIN_MENU);
-            }
-
+            outscalLogoView->PlayAnimation(AnimationType::FADE_OUT, splash_screen_duration, std::bind(&SplashScreenUIController::FadeOutAnimationCallback, this));
         }
 
-        void SplashScreenUIController::UpdateTimer()
+        void SplashScreenUIController::FadeOutAnimationCallback()
         {
-            elapsed_duration += ServiceLocator::GetInstance()->GetTimeService()->GetDeltaTime();
+            ServiceLocator::GetInstance()->GetSoundService()->PlayBackgroundMusic();
+            GameService::SetGameState(GameState::MAIN_MENU);
         }
 
         sf::Vector2f SplashScreenUIController::GetLogoPosition()
@@ -76,7 +70,7 @@ namespace UI
 
         void SplashScreenUIController::Show()
         {
-
+            outscalLogoView->PlayAnimation(AnimationType::FADE_IN, splash_screen_duration, std::bind(&SplashScreenUIController::FadeInAnimationCallback, this));
         }
     }
 }
