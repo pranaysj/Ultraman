@@ -177,6 +177,12 @@
     <ClCompile Include="Source\UI\UIElement\AnimatedImageView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Animation\AnimationSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Animation\AnimationService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sfml\include\SFML\Audio\AlResource.hpp">
@@ -659,10 +665,16 @@
     <ClInclude Include="Header\UI\UIElement\AnimatedImageView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfig.h">
+    <ClInclude Include="Header\Animation\AnimationSystemConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfigData.h">
+    <ClInclude Include="Header\Animation\AnimationSystemConfigData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Animation\AnimationSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Animation\AnimationService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

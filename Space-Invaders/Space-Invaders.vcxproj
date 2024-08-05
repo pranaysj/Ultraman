@@ -133,6 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Animation\AnimationService.cpp" />
+    <ClCompile Include="Source\Animation\AnimationSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\Bullet\BulletConfig.cpp" />
     <ClCompile Include="Source\Bullet\BulletController.cpp" />
@@ -189,8 +191,10 @@
     <ClCompile Include="Source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfig.h" />
-    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfigData.h" />
+    <ClInclude Include="Header\Animation\AnimationService.h" />
+    <ClInclude Include="Header\Animation\AnimationSystem.h" />
+    <ClInclude Include="Header\Animation\AnimationSystemConfig.h" />
+    <ClInclude Include="Header\Animation\AnimationSystemConfigData.h" />
     <ClInclude Include="Header\Bullet\BulletConfig.h" />
     <ClInclude Include="Header\Bullet\BulletController.h" />
     <ClInclude Include="Header\Bullet\BulletModel.h" />

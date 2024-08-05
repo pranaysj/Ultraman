@@ -1,7 +1,7 @@
 #pragma once
 #include<SFML/Graphics.hpp>
 
-namespace AnimationSystem {
+namespace Animation {
 	struct AnimationSystemConfig {
 
 		sf::String animationTexturePath;
