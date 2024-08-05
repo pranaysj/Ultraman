@@ -4,8 +4,8 @@
 #include "../../Header/Global/Config.h"
 
 namespace Animation {
-	using namespace UI::UIElement;
 	using namespace Global;
+	using namespace UI::UIElement;
 
 
 	AnimationSystem::AnimationSystem(AnimationSystemConfig _config)
@@ -24,9 +24,7 @@ namespace Animation {
 		animationPostion = _position;
 		currentFrame = 0;
 		frameTime = sf::seconds(animationSystemConfig.frameDuration);
-
-		printf("%.3f\n", frameTime);
-
+		printf("%d\n", animationSystemConfig.frameDuration);
 		InitializeImage();
 	}
 

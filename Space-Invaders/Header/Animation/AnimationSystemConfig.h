@@ -17,7 +17,7 @@ namespace Animation {
 
 		AnimationSystemConfig() = default;
 
-		AnimationSystemConfig(sf::String _animationTexturePath, float _spriteWidth, float _spriteHeight, float _tileWidth, float _tileHeight, int _numberOfAnimationFrame, int _frameDuration) :
+		AnimationSystemConfig(sf::String _animationTexturePath, float _spriteWidth, float _spriteHeight, float _tileWidth, float _tileHeight, int _numberOfAnimationFrame, float _frameDuration) :
 			animationTexturePath(_animationTexturePath),
 			spriteSheetWidth(_spriteWidth),
 			spriteSheetHeight(_spriteHeight),
