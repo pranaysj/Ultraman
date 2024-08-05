@@ -53,7 +53,7 @@ namespace Global {
         soundService = new SoundService();
         powerupService = new PowerupService();
         collisionService = new CollisionService();
-        animationService = new CollisionService();
+        animationService = new AnimationService();
     }
 
     void ServiceLocator::ClearAllService() {

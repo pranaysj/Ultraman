@@ -10,6 +10,7 @@
 #include "../../Header/Bullet/BulletController.h"
 #include "../../Header/Player/PlayerController.h"
 #include "../../Header/Sound/SoundService.h"
+#include "../../Header/Animation/AnimationSystem.h"
 
 namespace Enemy {
 
@@ -20,6 +21,7 @@ namespace Enemy {
 	using namespace Entity;
 	using namespace Player;
 	using namespace Sound;
+	using namespace Animation;
 	
 	EnemyController::EnemyController(EnemyType _type){
 		enemyModel = new EnemyModel(_type);
@@ -122,6 +124,9 @@ namespace Enemy {
 
 	void EnemyController::Destroy()
 	{
+		ServiceLocator::GetInstance()->GetAnimationService()->SpawnAnimationSystem(enemyModel->GetEnemyPositon(), Animation::AnimationType::EXPLOSION);
+		ServiceLocator::GetInstance()->GetSoundService()->PlaySound(SoundType::EXPLOSION);
+
 		ServiceLocator::GetInstance()->GetPlayerService()->IncreaseEnemiesKilled(1);
 		ServiceLocator::GetInstance()->GetEnemyService()->DestroyEnemy(this);
 	}
