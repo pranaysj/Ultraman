@@ -11,8 +11,8 @@ namespace Enemy {
 	class EnemyView {
 	private:
 
-		const float enemySpriteWidth = 50.0f;
-		const float enemySpriteHeigh = 50.0f;
+		const float enemySpriteWidth = 70.0f;
+		const float enemySpriteHeigh = 70.0f;
 
 		EnemyController* enemyController;
 		RenderWindow* gameWindow;

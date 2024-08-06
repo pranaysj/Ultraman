@@ -427,6 +427,7 @@
     <Image Include="assets\textures\Drone _1.png" />
     <Image Include="assets\textures\Drone _2.png" />
     <Image Include="assets\textures\explosion.png" />
+    <Image Include="assets\textures\Explosion_1.png" />
     <Image Include="assets\textures\frost_beam.png" />
     <Image Include="assets\textures\InstructionsButton.png" />
     <Image Include="assets\textures\instructions_button.png" />
@@ -444,11 +445,14 @@
     <Image Include="assets\textures\shield.png" />
     <Image Include="assets\textures\space_invaders_bg.png" />
     <Image Include="assets\textures\subzero.png" />
+    <Image Include="assets\textures\ThunderSnake.png" />
     <Image Include="assets\textures\thunder_snake.png" />
     <Image Include="assets\textures\torpedoe.png" />
     <Image Include="assets\textures\tripple_laser.png" />
     <Image Include="assets\textures\ufo.png" />
+    <Image Include="assets\textures\UFO_1.png" />
     <Image Include="assets\textures\Ultraman.png" />
+    <Image Include="assets\textures\Ultraman_BG.png" />
     <Image Include="assets\textures\zapper.png" />
   </ItemGroup>
   <ItemGroup>

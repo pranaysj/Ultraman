@@ -60,7 +60,7 @@ namespace Main{
     }
 
     void GameService::Render() {
-        gameWindow->clear();
+        gameWindow->clear(Color(1, 116, 178, 255));
         serviceLocator->Render();
         gameWindow->display();
     }

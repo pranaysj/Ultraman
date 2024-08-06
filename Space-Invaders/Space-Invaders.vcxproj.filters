@@ -850,6 +850,18 @@
     <Image Include="assets\textures\Drone _2.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\textures\Explosion_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\Ultraman_BG.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\ThunderSnake.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\UFO_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Object Include="Space-Invaders\x64\Debug\EventService.obj" />
