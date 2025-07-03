@@ -92,6 +92,7 @@ namespace Bullet
 
 		ServiceLocator::GetInstance()->GetCollisionService()->AddCollider(dynamic_cast<ICollider*>(bullet_controller));
 		bulletList.push_back(bullet_controller);
+
 		return bullet_controller;
 	}
 

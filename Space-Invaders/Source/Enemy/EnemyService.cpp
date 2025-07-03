@@ -112,7 +112,7 @@ namespace Enemy {
 		flaggedEnemyList.push_back(_enemyController);
 
 		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), _enemyController), enemyList.end());
-		//delete(_enemyController);
+		//delete(_enemyController);	
 	}
 
 	void EnemyService::Destory() {
